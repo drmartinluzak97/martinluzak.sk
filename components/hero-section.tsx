@@ -140,8 +140,8 @@ export function HeroSection() {
               {/* Languages / tags footer */}
               <div className="flex flex-wrap items-center justify-between gap-2 pt-1 font-mono text-xs text-muted-foreground">
                 <div className="flex items-center gap-1.5">
-                  <Globe className="h-3.5 w-3.5 text-primary" />
-                  <span>Slovak (Native) • English (Fluent)</span>
+                  <Globe className="h-3.5 w-3.5 text-primary shrink-0" />
+                  <span>Slovak (C2) • English (B2) • German (A2)</span>
                 </div>
                 <span className="rounded-md border border-border/60 bg-background/50 px-2 py-0.5 text-[11px] group-hover:border-primary/40 group-hover:text-primary transition-colors">
                   Vienna / Remote

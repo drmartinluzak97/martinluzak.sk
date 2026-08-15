@@ -118,7 +118,7 @@ export function Footer() {
           </div>
 
           <p className="font-mono text-xs text-muted-foreground text-center sm:text-right">
-            © {new Date().getFullYear()} Martin Lužák — All experiments reserved
+            © {new Date().getFullYear()} Martin Lužák — Human heart. Technical logic. AI assisted.
           </p>
         </div>
       </div>
