@@ -1,0 +1,78 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Spustiť Localhost (Dev Server)",
+      "type": "shell",
+      "command": "pnpm dev",
+      "windows": {
+        "command": "pnpm.cmd dev"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "nextjs",
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*(Starting|ready|compiling).*",
+          "endsPattern": ".*(Ready in|Compiled|Local:).*"
+        }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "Spustiť Localhost (npm run dev)",
+      "type": "shell",
+      "command": "npm run dev",
+      "windows": {
+        "command": "npm.cmd run dev"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "nextjs",
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*(Starting|ready|compiling).*",
+          "endsPattern": ".*(Ready in|Compiled|Local:).*"
+        }
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "Build projektu (pnpm build)",
+      "type": "shell",
+      "command": "pnpm build",
+      "windows": {
+        "command": "pnpm.cmd build"
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    }
+  ]
+}
