@@ -1,137 +1,523 @@
-import { Code2, Layers, FileText, Zap, Bot, Globe } from "lucide-react";
+import Link from "next/link";
+import {
+  Briefcase,
+  Award,
+  CheckCircle2,
+  Calendar,
+  MapPin,
+  Linkedin,
+  Mail,
+  Rocket,
+  Shield,
+  Layers,
+  Heart,
+  Server,
+  Network,
+  Users,
+  Compass,
+  ArrowUpRight,
+  Sparkles,
+  BookOpen,
+} from "lucide-react";
+
+export const metadata = {
+  title: "About Me & CV — Martin Lužák",
+  description:
+    "Professional background, work experience, certifications, and philosophy of Martin Lužák — combining technical precision with human empathy.",
+};
+
+const stats = [
+  { label: "Experience in IT & Mentoring", value: "7+ Years" },
+  { label: "Systems & Network Focus", value: "Enterprise & Maritime" },
+  { label: "Core Competency", value: "Logic + Empathy" },
+  { label: "Verified Credentials", value: "5+ Global Certifications" },
+];
+
+const experiences = [
+  {
+    title: "Nonprofit Assistant — Humans & IT",
+    company: "Zväz diabetikov Slovenska - DIATYRNAVIA",
+    period: "Feb 2019 — Present",
+    type: "Long-term Community & IT Support",
+    description:
+      "Assistant to the chairman. Driving organizational growth and human support at events, teaching practical digital & PC skills, administrating Windows & Microsoft 365 environments, and producing educational video content.",
+    highlights: [
+      "Mentored individuals in everyday digital literacy and software confidence.",
+      "Managed Office 365, internal workflows, and event technology setup.",
+      "Produced multimedia content and promotional video editing.",
+    ],
+    tags: ["Mentorship", "M365", "Windows Admin", "Video Production", "Community Leadership"],
+  },
+  {
+    title: "Technical Network Support Engineer",
+    company: "Marlink s.r.o.",
+    period: "Jun 2025 — Dec 2025",
+    type: "Maritime Satellite & Enterprise Networks",
+    description:
+      "Provided critical Tier 2 network and communications technical support for global maritime customers (vessel captains, onboard field engineers) via ticketing and live phone assistance.",
+    highlights: [
+      "Troubleshot complex maritime satellite networks, VSAT systems, and onboard routers.",
+      "Monitored live network infrastructure and maintained high communication security.",
+      "Delivered calm, precise technical solutions under mission-critical time pressure.",
+    ],
+    tags: ["Network Troubleshooting", "Maritime IT", "Zabbix", "SQL", "Security", "Tier 2 Support"],
+  },
+  {
+    title: "System Health Engineer & Tester",
+    company: "ForesServices, s. r. o.",
+    period: "Sep 2024 — Apr 2025",
+    type: "Logistics Infrastructure & API Testing",
+    description:
+      "Monitored high-volume system health and applications for DPD courier infrastructure across multiple European countries (NL, CH, BE, SK). Conducted systematic API validation and regression testing.",
+    highlights: [
+      "Monitored server health, service availability, and alerts via Zabbix.",
+      "Executed API endpoint testing and payload inspection using Insomnia.",
+      "Ensured maximum uptime and swift incident escalation for logistics pipelines.",
+    ],
+    tags: ["Zabbix Monitoring", "API Testing", "Insomnia", "DPD Logistics", "System Health", "Incident Tracking"],
+  },
+  {
+    title: "Banking Implementation Specialist",
+    company: "Regional Card Processing Centre, s. r. o.",
+    period: "Mar 2021 — Mar 2023",
+    type: "Financial Technology & High Availability",
+    description:
+      "Executed end-to-end implementation of banking products and application parameter changes. Maintained zero-downtime reliability according to strict financial and security installation criteria.",
+    highlights: [
+      "Configured sensitive technical parameters for banking terminals and card processing apps.",
+      "Collaborated with compliance and banking engineers to guarantee operational integrity.",
+      "Managed Oracle and MS SQL Server database configurations.",
+    ],
+    tags: ["Banking Systems", "Oracle SQL", "MS SQL Server", "High Availability", "Strict Compliance"],
+  },
+  {
+    title: "Customers Network Support Specialist",
+    company: "SWAN, a.s.",
+    period: "Mar 2020 — Feb 2021",
+    type: "Telecommunications & Tier 2 Support",
+    description:
+      "Delivered Tier 2 network troubleshooting and customer support via phone, email, and written requests for customers experiencing complex internet, IPTV, and telephony issues.",
+    highlights: [
+      "Diagnosed routing, DNS, optical line, and modem configuration issues.",
+      "Bridged complex ISP network diagnostics into plain, reassuring customer guidance.",
+    ],
+    tags: ["Telecommunications", "Tier 2 Support", "Routing & Switching", "IPTV", "Customer Satisfaction"],
+  },
+  {
+    title: "Manual Tester & Client Trainer",
+    company: "KASO TECHNOLOGIES, s. r. o.",
+    period: "Dec 2018 — May 2019",
+    type: "POS & ERP Systems",
+    description:
+      "Tested integrated software and hardware products, specifically self-service checkouts and ERP software suites. Conducted customized, hands-on technical training sessions for retail clients.",
+    highlights: [
+      "Executed comprehensive test cases on self-service POS checkout hardware and software.",
+      "Trained non-technical retail staff on point-of-sale workflows and troubleshooting.",
+    ],
+    tags: ["Manual Testing", "ERP Systems", "Self-Service POS", "Client Training", "QA"],
+  },
+];
+
+const certifications = [
+  {
+    title: "Atlassian Agile Project Management",
+    issuer: "Atlassian Professional Certificate",
+    badge: "Agile Leadership",
+    description:
+      "Validated competencies in modern Agile methodologies, sprint planning, Jira project architecture, and cross-functional team delivery.",
+    icon: Compass,
+    status: "Verified",
+  },
+  {
+    title: "Negotiation Professional Certificate (ANI)",
+    issuer: "American Negotiation Institute",
+    badge: "Strategic Communication",
+    description:
+      "Advanced mastery in de-escalation, conflict resolution, active listening, and achieving win-win outcomes in high-stakes environments.",
+    icon: Users,
+    status: "Verified",
+  },
+  {
+    title: "ITIL® Foundation 4",
+    issuer: "AXELOS / IT Service Management",
+    badge: "Service Management",
+    description:
+      "End-to-end framework for modern IT service management (ITSM), continuous improvement, incident resolution, and value co-creation.",
+    icon: Layers,
+    status: "Verified",
+  },
+  {
+    title: "Lean Six Sigma Foundations",
+    issuer: "Process Excellence",
+    badge: "Operational Efficiency",
+    description:
+      "Techniques for identifying process waste, streamlining digital workflows, and enforcing quantitative quality standards.",
+    icon: CheckCircle2,
+    status: "Verified",
+  },
+  {
+    title: "Scrum Master & Agile Expansion",
+    issuer: "Continuous Professional Learning",
+    badge: "In Progress",
+    description:
+      "Deepening facilitation techniques, backlog grooming strategies, and servant-leadership principles for high-velocity teams.",
+    icon: Sparkles,
+    status: "In Progress",
+  },
+  {
+    title: "Cybersecurity (CCST)",
+    issuer: "Cisco Certified Support Technician",
+    badge: "In Progress",
+    description:
+      "Merging hands-on network administration with enterprise security fundamentals, vulnerability analysis, and digital defense.",
+    icon: Shield,
+    status: "In Progress",
+  },
+];
+
+const skillCategories = [
+  {
+    title: "Technical & Systems",
+    icon: Server,
+    skills: [
+      "Computer Networks & Routing",
+      "System Monitoring (Zabbix)",
+      "Databases (Oracle, MS SQL, SQL)",
+      "API Testing (Insomnia)",
+      "Software & Hardware Testing",
+      "Windows & Linux Systems",
+      "Microsoft 365 Administration",
+    ],
+  },
+  {
+    title: "Methodologies & Operations",
+    icon: Layers,
+    skills: [
+      "ITIL® 4 Service Management",
+      "Agile & Scrum Practices",
+      "Atlassian Jira & Confluence",
+      "Lean Six Sigma Process Flow",
+      "Incident & Problem Resolution",
+      "Quality Assurance & QA Testing",
+    ],
+  },
+  {
+    title: "Human Connection & Leadership",
+    icon: Heart,
+    skills: [
+      "Customer Focus & Empathy",
+      "High Emotional Intelligence (EQ)",
+      "Technical Mentoring & Training",
+      "Strategic Negotiation (ANI)",
+      "Crisis De-escalation",
+      "Clear Stakeholder Communication",
+    ],
+  },
+];
 
 export default function IntroductionPage() {
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative min-h-[60vh] px-4 sm:px-6 pt-28 sm:pt-32 pb-16 sm:pb-20">
-        <div className="mx-auto max-w-4xl">
-          <div className="space-y-6 sm:space-y-8">
-            <div className="space-y-2">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-muted-foreground">
-                Welcome to Martin Lužák&apos;s Lab
-              </p>
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-balance">
-                Where Code Meets{" "}
-                <span className="bg-gradient-to-l from-primary/50 to-accent text-transparent bg-clip-text">
-                  Creativity
-                </span>
-              </h1>
+    <div className="pt-24 sm:pt-28 pb-20">
+      {/* Hero Header */}
+      <section className="relative px-4 sm:px-6 pt-8 pb-16 sm:pb-20">
+        <div className="mx-auto max-w-5xl space-y-8">
+          <div className="space-y-4 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3.5 py-1 text-xs font-mono text-primary">
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>About Me & Interactive CV</span>
             </div>
+            
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-balance">
+              Where Technical Logic Meets{" "}
+              <span className="bg-gradient-to-l from-primary/50 to-accent text-transparent bg-clip-text">
+                Human Empathy
+              </span>
+            </h1>
 
-            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground max-w-3xl">
-              This is a digital workshop and portfolio platform designed for developers who
-              believe in building in public. It&apos;s a space where ideas take shape, experiments
-              unfold, and open-source projects come to life.
+            <p className="max-w-3xl text-lg sm:text-xl text-muted-foreground leading-relaxed">
+              Since 2017, I have built a career defined by technical precision and human connection. From troubleshooting mission-critical networks and banking systems to mentoring individuals in everyday digital literacy, I ensure technology works reliably for the people who depend on it.
             </p>
+          </div>
+
+          {/* Quick Action Buttons */}
+          <div className="flex flex-wrap items-center gap-3 pt-2 animate-fade-in-up stagger-2">
+            <a
+              href="https://linkedin.com/in/martinluzak"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2.5 rounded-xl border border-primary bg-primary px-6 py-3.5 font-mono text-xs sm:text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <Linkedin className="h-4 w-4" />
+              <span>Connect on LinkedIn</span>
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+
+            <a
+              href="mailto:hello@martinluzak.sk"
+              className="group inline-flex items-center justify-center gap-2.5 rounded-xl border border-border/80 bg-card/60 glass px-6 py-3.5 font-mono text-xs sm:text-sm text-foreground transition-all duration-300 hover:border-primary/50 hover:bg-secondary/60 hover:text-primary active:scale-[0.98]"
+            >
+              <Mail className="h-4 w-4" />
+              <span>hello@martinluzak.sk</span>
+            </a>
+
+            <Link
+              href="/projects"
+              className="group inline-flex items-center justify-center gap-2.5 rounded-xl border border-border/80 bg-card/60 glass px-6 py-3.5 font-mono text-xs sm:text-sm text-foreground transition-all duration-300 hover:border-primary/50 hover:bg-secondary/60 hover:text-primary active:scale-[0.98]"
+            >
+              <Rocket className="h-4 w-4" />
+              <span>My side projects →</span>
+            </Link>
+          </div>
+
+          {/* Stats Bar */}
+          <div className="grid grid-cols-2 gap-4 pt-6 sm:grid-cols-4 animate-fade-in-up stagger-3">
+            {stats.map((stat, i) => (
+              <div
+                key={i}
+                className="rounded-xl border border-border/60 bg-card/40 p-4 sm:p-5 backdrop-blur-sm transition-all duration-300 hover:border-primary/40"
+              >
+                <div className="font-mono text-xl sm:text-2xl font-bold text-foreground">
+                  {stat.value}
+                </div>
+                <div className="mt-1 font-mono text-xs text-muted-foreground">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="relative px-4 sm:px-6 py-16 sm:py-20">
-        <div className="mx-auto max-w-4xl">
-          <div className="rounded border border-border/50 bg-card/50 p-6 sm:p-10 backdrop-blur-sm space-y-8">
+      {/* Core Philosophy Section */}
+      <section className="relative px-4 sm:px-6 py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl">
+          <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-card/80 via-card/50 to-primary/10 p-6 sm:p-10 backdrop-blur-md shadow-2xl">
+            <div className="absolute top-0 right-0 -mt-8 -mr-8 h-48 w-48 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+            
             <div className="space-y-4">
-              <p className="font-mono text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-primary">
-                About the Platform
-              </p>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                A Developer&apos;s Digital Workshop
+              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
+                <Heart className="h-4 w-4" />
+                <span>The Core Philosophy</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+                &ldquo;I don&apos;t just manage systems; I create meaningful impact.&rdquo;
               </h2>
-            </div>
-
-            <div className="space-y-6 text-base sm:text-lg leading-relaxed text-muted-foreground">
-              <p>
-                This lab isn&apos;t just another portfolio website—it&apos;s a living, breathing
-                showcase of continuous learning and experimentation. Built by developers, for
-                developers, it represents the philosophy that the best way to learn is to build,
-                share, and iterate.
-              </p>
-
-              <p>
-                Whether you&apos;re exploring cutting-edge AI integrations, diving into systems
-                programming, or looking for modern web development patterns, this lab offers a window
-                into real-world projects at various stages of development—from initial experiments
-                to production-ready solutions.
-              </p>
-
-              <p>
-                The platform is fully open-source, encouraging collaboration and knowledge sharing
-                within the developer community. Every project, every lab note, and every line of
-                code is designed to inspire and educate.
+              <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
+                Technical problems rarely exist in isolation—they almost always impact real human workflows, stress levels, and operational rhythm. Combining technical rigor (databases, networking, health monitoring) with high emotional intelligence allows me to bridge the gap between complex machines and the people who rely on them.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="relative px-4 sm:px-6 py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-12 space-y-4 text-center">
-            <p className="font-mono text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-primary">
-              Platform Features
-            </p>
+      {/* Work Experience Section */}
+      <section className="relative px-4 sm:px-6 py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl space-y-10">
+          <div className="space-y-3">
+            <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
+              <Briefcase className="h-4 w-4" />
+              <span>Career Journey</span>
+            </div>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Built for Modern Development
+              Work Experience
             </h2>
+            <p className="text-muted-foreground text-sm sm:text-base max-w-2xl">
+              Proven track record across mission-critical maritime IT, high-availability banking integrations, multi-country logistics monitoring, and community digital mentoring.
+            </p>
+          </div>
+
+          <div className="relative space-y-8 before:absolute before:inset-0 before:left-4 sm:before:left-6 before:h-full before:w-0.5 before:bg-border/60">
+            {experiences.map((exp, index) => (
+              <div
+                key={index}
+                className="relative flex gap-6 sm:gap-8 group animate-fade-in-up"
+                style={{ animationDelay: `${index * 80}ms` }}
+              >
+                {/* Timeline node */}
+                <div className="relative z-10 flex h-9 w-9 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl border border-border/80 bg-card shadow-md transition-all duration-300 group-hover:border-primary group-hover:scale-110">
+                  <Briefcase className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground transition-colors group-hover:text-primary" />
+                </div>
+
+                {/* Content Card */}
+                <div className="flex-1 rounded-2xl border border-border/60 bg-card/60 p-6 sm:p-7 backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-card/80 hover:shadow-xl">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border/40 pb-4 mb-4">
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        {exp.title}
+                      </h3>
+                      <div className="font-mono text-sm font-medium text-primary">
+                        {exp.company}
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2 sm:text-right">
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-secondary/50 px-3 py-1 font-mono text-xs text-muted-foreground">
+                        <Calendar className="h-3 w-3" />
+                        {exp.period}
+                      </span>
+                    </div>
+                  </div>
+
+                  <p className="text-sm sm:text-base leading-relaxed text-muted-foreground mb-4">
+                    {exp.description}
+                  </p>
+
+                  <div className="space-y-2 mb-5">
+                    {exp.highlights.map((highlight, hIdx) => (
+                      <div key={hIdx} className="flex items-start gap-2 text-xs sm:text-sm text-foreground/90">
+                        <span className="text-primary mt-0.5">▹</span>
+                        <span>{highlight}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 pt-2 border-t border-border/40">
+                    {exp.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-md border border-border/60 bg-secondary/40 px-2.5 py-1 font-mono text-[11px] text-muted-foreground transition-colors hover:text-foreground hover:border-border"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications & Continuous Learning Section */}
+      <section className="relative px-4 sm:px-6 py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl space-y-10">
+          <div className="space-y-3">
+            <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
+              <Award className="h-4 w-4" />
+              <span>Continuous Growth</span>
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Certifications & Credentials
+            </h2>
+            <p className="text-muted-foreground text-sm sm:text-base max-w-2xl">
+              A firm believer in perpetual skill expansion. My credentials validate international standards in Agile execution, strategic negotiation, and IT service management.
+            </p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                icon: Code2,
-                title: "Open Source Projects",
-                description:
-                  "Every project is available on GitHub for learning and collaboration. Transparent development process from start to finish.",
-              },
-              {
-                icon: Layers,
-                title: "Developer Workbench",
-                description:
-                  "A dedicated space for ongoing experiments and prototypes. Watch ideas evolve from concept to implementation.",
-              },
-              {
-                icon: FileText,
-                title: "Lab Notes",
-                description:
-                  "Detailed documentation of learning journeys, technical insights, and development patterns discovered along the way.",
-              },
-              {
-                icon: Zap,
-                title: "Modern Tech Stack",
-                description:
-                  "Built with cutting-edge technologies including Next.js, React, TypeScript, and Tailwind CSS for optimal performance.",
-              },
-              {
-                icon: Bot,
-                title: "AI Integration",
-                description:
-                  "Exploring the intersection of AI and web development with practical implementations and real-world use cases.",
-              },
-              {
-                icon: Globe,
-                title: "Localization",
-                description:
-                  "Multi-language support with i18n integration, making projects accessible to a global developer community.",
-              },
-            ].map((feature, index) => (
+            {certifications.map((cert, index) => (
               <div
                 key={index}
-                className="group rounded border border-border/50 bg-card/50 p-6 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:bg-card/80"
+                className="group relative flex flex-col justify-between rounded-2xl border border-border/60 bg-card/60 p-6 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:bg-card/80 hover:shadow-lg"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded border border-primary/30 bg-primary/10 text-primary transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
-                  <feature.icon className="h-6 w-6" />
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-primary/30 bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground">
+                      <cert.icon className="h-5 w-5" />
+                    </div>
+                    <span
+                      className={`rounded-full px-2.5 py-0.5 font-mono text-[11px] font-medium border ${
+                        cert.status === "Verified"
+                          ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
+                          : "border-primary/40 bg-primary/10 text-primary"
+                      }`}
+                    >
+                      {cert.badge}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3 className="text-base font-bold text-foreground group-hover:text-primary transition-colors">
+                      {cert.title}
+                    </h3>
+                    <p className="font-mono text-xs text-muted-foreground mt-0.5">
+                      {cert.issuer}
+                    </p>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    {cert.description}
+                  </p>
                 </div>
-                <h3 className="mb-2 font-mono text-sm font-semibold uppercase tracking-wider text-foreground">
-                  {feature.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {feature.description}
-                </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Matrix Section */}
+      <section className="relative px-4 sm:px-6 py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl space-y-10">
+          <div className="space-y-3">
+            <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
+              <Layers className="h-4 w-4" />
+              <span>Capabilities</span>
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Skills & Core Competencies
+            </h2>
+            <p className="text-muted-foreground text-sm sm:text-base max-w-2xl">
+              The toolkit that enables stable operational architectures and transparent stakeholder collaboration.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {skillCategories.map((category, index) => (
+              <div
+                key={index}
+                className="rounded-2xl border border-border/60 bg-card/60 p-6 sm:p-7 backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:shadow-lg space-y-6"
+              >
+                <div className="flex items-center gap-3 border-b border-border/40 pb-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary">
+                    <category.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-mono text-sm font-bold uppercase tracking-wider text-foreground">
+                    {category.title}
+                  </h3>
+                </div>
+
+                <div className="space-y-2.5">
+                  {category.skills.map((skill, sIdx) => (
+                    <div
+                      key={sIdx}
+                      className="flex items-center gap-2.5 rounded-lg border border-border/40 bg-secondary/30 px-3 py-2 font-mono text-xs text-foreground transition-all duration-200 hover:border-primary/40 hover:bg-secondary/60"
+                    >
+                      <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
+                      <span>{skill}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA Banner */}
+      <section className="relative px-4 sm:px-6 pt-12">
+        <div className="mx-auto max-w-5xl">
+          <div className="rounded-2xl border border-border/60 bg-card/60 p-8 sm:p-12 text-center backdrop-blur-md space-y-6">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+              Interested in working together or discussing a technical puzzle?
+            </h2>
+            <p className="max-w-xl mx-auto text-sm sm:text-base text-muted-foreground">
+              Whether you need support engineering, systems guidance, or wish to explore a collaboration, I&apos;d love to connect.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+              <a
+                href="mailto:hello@martinluzak.sk"
+                className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-xl border border-primary bg-primary px-8 py-4 font-mono text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-500 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <span>Say hello at hello@martinluzak.sk</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </a>
+              <Link
+                href="/projects"
+                className="group inline-flex items-center justify-center gap-3 rounded-xl border border-border/80 bg-secondary/60 px-8 py-4 font-mono text-sm text-foreground transition-all duration-300 hover:border-primary/50 hover:text-primary active:scale-[0.98]"
+              >
+                <span>Explore my side projects</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
