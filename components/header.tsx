@@ -10,9 +10,8 @@ import Link from "next/link"
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Skills", href: "/#skills" },
   { label: "About me", href: "/introduction" },
-  { label: "Blog", href: "/blog" },
+  { label: "Projects", href: "/projects" },
 ]
 
 const socialLinks: {
