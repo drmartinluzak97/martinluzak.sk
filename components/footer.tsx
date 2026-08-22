@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Brain, Linkedin, Mail, ExternalLink, Heart } from "lucide-react"
+import { Rocket, Linkedin, Mail, ExternalLink, Heart } from "lucide-react"
 
 const socialLinks: {
   label: string
@@ -11,11 +11,11 @@ const socialLinks: {
   { label: "LinkedIn", href: "https://linkedin.com/in/martinluzak", handle: "/in/martinluzak", icon: Linkedin },
   { label: "Email", href: "mailto:hello@martinluzak.sk", handle: "hello@martinluzak.sk", icon: Mail },
   {
-    label: "Thoughts",
-    hoverLabel: "Thoughts are not a crime",
-    href: "https://thoughts.global",
-    handle: "thoughts.global",
-    icon: Brain,
+    label: "Projects",
+    hoverLabel: "My side projects",
+    href: "/projects",
+    handle: "/projects",
+    icon: Rocket,
   },
 ]
 
@@ -55,36 +55,39 @@ export function Footer() {
               Find me elsewhere
             </p>
             <div className="space-y-2">
-              {socialLinks.map((link, index) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.label !== "Email" ? "_blank" : undefined}
-                  rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
-                  title={link.hoverLabel ?? link.label}
-                  aria-label={link.hoverLabel ?? link.label}
-                  className="group flex items-center justify-between gap-4 rounded-xl border border-transparent p-4 transition-all duration-300 lg:flex-row-reverse active:bg-secondary/30 hover:border-border/50 hover:bg-card/50 glass animate-fade-in"
-                  style={{ animationDelay: `${index * 100 + 400}ms` }}
-                >
-                  <div className="flex items-center gap-3 lg:flex-row-reverse">
-                    <link.icon className="h-5 w-5 text-muted-foreground transition-all duration-300 group-hover:text-primary group-hover:scale-110" />
-                    <span className="font-mono text-sm font-medium transition-colors group-hover:text-gradient">
-                      {link.hoverLabel ? (
-                        <>
-                          <span className="group-hover:hidden">{link.label}</span>
-                          <span className="hidden group-hover:inline">{link.hoverLabel}</span>
-                        </>
-                      ) : (
-                        link.label
+              {socialLinks.map((link, index) => {
+                const isExternal = link.href.startsWith("http")
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    title={link.hoverLabel ?? link.label}
+                    aria-label={link.hoverLabel ?? link.label}
+                    className="group flex items-center justify-between gap-4 rounded-xl border border-transparent p-4 transition-all duration-300 lg:flex-row-reverse active:bg-secondary/30 hover:border-border/50 hover:bg-card/50 glass animate-fade-in"
+                    style={{ animationDelay: `${index * 100 + 400}ms` }}
+                  >
+                    <div className="flex items-center gap-3 lg:flex-row-reverse">
+                      <link.icon className="h-5 w-5 text-muted-foreground transition-all duration-300 group-hover:text-primary group-hover:scale-110" />
+                      <span className="font-mono text-sm font-medium transition-colors group-hover:text-gradient">
+                        {link.hoverLabel ? (
+                          <>
+                            <span className="group-hover:hidden">{link.label}</span>
+                            <span className="hidden group-hover:inline">{link.hoverLabel}</span>
+                          </>
+                        ) : (
+                          link.label
+                        )}
+                      </span>
+                      {isExternal && (
+                        <ExternalLink className="h-3 w-3 text-muted-foreground/50 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1" />
                       )}
-                    </span>
-                    {link.label !== "Email" && (
-                      <ExternalLink className="h-3 w-3 text-muted-foreground/50 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1" />
-                    )}
-                  </div>
-                  <span className="font-mono text-xs text-muted-foreground truncate">{link.handle}</span>
-                </a>
-              ))}
+                    </div>
+                    <span className="font-mono text-xs text-muted-foreground truncate">{link.handle}</span>
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -101,19 +104,22 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-4">
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.label !== "Email" ? "_blank" : undefined}
-                rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
-                aria-label={link.hoverLabel ?? link.label}
-                title={link.hoverLabel ?? link.label}
-                className="text-muted-foreground/50 transition-all duration-300 hover:text-primary hover:scale-110"
-              >
-                <link.icon className="h-5 w-5" />
-              </a>
-            ))}
+            {socialLinks.map((link) => {
+              const isExternal = link.href.startsWith("http")
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  aria-label={link.hoverLabel ?? link.label}
+                  title={link.hoverLabel ?? link.label}
+                  className="text-muted-foreground/50 transition-all duration-300 hover:text-primary hover:scale-110"
+                >
+                  <link.icon className="h-5 w-5" />
+                </Link>
+              )
+            })}
           </div>
 
           <p className="font-mono text-xs text-muted-foreground text-center sm:text-right">

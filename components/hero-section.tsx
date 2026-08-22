@@ -61,20 +61,20 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up stagger-3">
-              <a
-                href="#skills"
+              <Link
+                href="/introduction"
                 className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-lg border border-primary bg-primary/10 px-7 py-4 sm:py-3.5 font-mono text-sm text-primary transition-all duration-500 hover:bg-primary hover:text-primary-foreground active:scale-[0.98]"
               >
-                <span className="relative z-10">how I can help</span>
+                <span className="relative z-10">about me / CV</span>
                 <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">→</span>
                 {/* Animated background */}
                 <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-500 group-hover:translate-x-0" />
-              </a>
+              </Link>
               <Link
-                href="/introduction"
+                href="/projects"
                 className="group inline-flex items-center justify-center gap-3 rounded-lg border border-foreground/30 bg-foreground/10 px-7 py-4 sm:py-3.5 font-mono text-sm font-medium text-foreground transition-all duration-300 hover:border-foreground/60 hover:bg-foreground/20 hover:scale-[1.01] active:scale-[0.98]"
               >
-                <span>about me / CV</span>
+                <span>my side projects</span>
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>

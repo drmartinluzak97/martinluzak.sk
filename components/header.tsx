@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Github, Brain, Linkedin } from "lucide-react"
+import { Rocket, Linkedin, Mail } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 import { ThemeChanger } from "./theme-changer"
 import Link from "next/link"
@@ -19,11 +19,11 @@ const socialLinks: {
   label: string
   hoverLabel?: string
   href: string
-  icon: typeof Github
+  icon: typeof Linkedin
 }[] = [
-  { label: "GitHub", href: "https://github.com/martinluzak", icon: Github },
-  { label: "Thoughts", hoverLabel: "Thoughts are not a crime", href: "https://thoughts.global", icon: Brain },
   { label: "LinkedIn", href: "https://linkedin.com/in/martinluzak", icon: Linkedin },
+  { label: "Email", href: "mailto:hello@martinluzak.sk", icon: Mail },
+  { label: "Projects", hoverLabel: "My side projects", href: "/projects", icon: Rocket },
 ]
 
 export function Header() {
@@ -118,21 +118,24 @@ export function Header() {
 
           <div className="flex items-center gap-4">
             <div className="hidden items-center gap-1 sm:flex">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.hoverLabel ?? link.label}
-                  className="group relative flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-all duration-300 hover:text-primary hover:bg-primary/10"
-                >
-                  <link.icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
-                  <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-card border border-border px-2.5 py-1 font-mono text-[10px] text-muted-foreground opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:-bottom-9 pointer-events-none shadow-lg">
-                    {link.hoverLabel ?? link.label}
-                  </span>
-                </a>
-              ))}
+              {socialLinks.map((link) => {
+                const isExternal = link.href.startsWith("http")
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    aria-label={link.hoverLabel ?? link.label}
+                    className="group relative flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-all duration-300 hover:text-primary hover:bg-primary/10"
+                  >
+                    <link.icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
+                    <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-card border border-border px-2.5 py-1 font-mono text-[10px] text-muted-foreground opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:-bottom-9 pointer-events-none shadow-lg">
+                      {link.hoverLabel ?? link.label}
+                    </span>
+                  </Link>
+                )
+              })}
             </div>
 
             <div className="hidden h-5 w-px bg-border sm:block" />
@@ -196,19 +199,23 @@ export function Header() {
             ))}
 
             <div className="mt-4 flex items-center gap-2 border-t border-border/50 pt-4 px-4">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={link.hoverLabel ?? link.label}
-                  title={link.hoverLabel ?? link.label}
-                  className="flex h-11 w-11 items-center justify-center rounded-lg border border-border/50 text-muted-foreground transition-colors active:bg-secondary hover:border-primary/50 hover:text-primary hover:bg-primary/10"
-                >
-                  <link.icon className="h-4 w-4" />
-                </a>
-              ))}
+              {socialLinks.map((link) => {
+                const isExternal = link.href.startsWith("http")
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    aria-label={link.hoverLabel ?? link.label}
+                    title={link.hoverLabel ?? link.label}
+                    className="flex h-11 w-11 items-center justify-center rounded-lg border border-border/50 text-muted-foreground transition-colors active:bg-secondary hover:border-primary/50 hover:text-primary hover:bg-primary/10"
+                  >
+                    <link.icon className="h-4 w-4" />
+                  </Link>
+                )
+              })}
               <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-border/50">
                 <ThemeChanger />
               </div>
