@@ -7,6 +7,7 @@ import { Rocket, Linkedin, Mail } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 import { ThemeChanger } from "./theme-changer"
 import Link from "next/link"
+import Image from "next/image"
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -53,11 +54,18 @@ export function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4">
         <nav className="flex items-center justify-between">
-          <Link href="/" className="group flex items-center gap-3">
-            <div className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-primary/50 bg-primary/10 font-mono text-sm text-primary transition-all duration-400 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-primary/25">
-              <span className="glitch">{"⚡"}</span>
+          <Link href="/" className="group/brand relative flex items-center gap-3">
+            <div className="relative z-20 flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg border border-primary/50 bg-primary/10 transition-all duration-300 ease-out group-hover/brand:border-primary group-hover/brand:scale-[1.6] group-hover/brand:shadow-xl group-hover/brand:shadow-primary/30 origin-left">
+              <Image
+                src="/pictures/my_face.jpg"
+                alt="Martin Lužák"
+                width={36}
+                height={36}
+                className="h-full w-full object-cover object-center transition-transform duration-300"
+                priority
+              />
             </div>
-            <span className="font-mono text-sm tracking-tight">
+            <span className="font-mono text-sm tracking-tight transition-transform duration-300 ease-out group-hover/brand:translate-x-4">
               {"Martin "}
               <span className="bg-gradient-to-l from-primary/50 to-accent bg-clip-text text-transparent font-semibold">
                 Lužák

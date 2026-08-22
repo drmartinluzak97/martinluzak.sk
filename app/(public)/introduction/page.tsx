@@ -43,13 +43,20 @@ const experiences = [
     period: "Feb 2019 — Present",
     type: "Long-term Community & IT Support",
     description:
-      "Assistant to the chairman. Driving organizational growth and human support at events, teaching practical digital & PC skills, administrating Windows & Microsoft 365 environments, and producing educational video content.",
+      "Direct executive and technical assistant to the chairwoman. Providing continuous IT education and administrative support to leadership, co-organizing community events with heavy senior participation, managing M365 systems, and producing promotional video materials.",
     highlights: [
-      "Mentored individuals in everyday digital literacy and software confidence.",
-      "Managed Office 365, internal workflows, and event technology setup.",
-      "Produced multimedia content and promotional video editing.",
+      "Provided comprehensive direct support and continuous digital upskilling to the chairwoman in daily leadership workflows.",
+      "Co-organized large community gatherings and health awareness events tailored predominantly for seniors.",
+      "Managed Microsoft 365 administration, event IT logistics, and video production.",
     ],
-    tags: ["Mentorship", "M365", "Windows Admin", "Video Production", "Community Leadership"],
+    milestone: {
+      badge: "🏆 Award Milestone",
+      text: "Contributed to achieving the national Senior Friendly 2023 award through dedicated executive assistance to the chairwoman and organizing community events supporting seniors.",
+      link: "https://www.seniorfriendly.sk/news/showNew/ocenenia-sf-2023",
+      linkText: "Senior Friendly 2023 Award",
+      lang: "🇸🇰 SVK",
+    },
+    tags: ["Leadership Support", "Senior Community", "M365", "Windows Admin", "Video Production"],
   },
   {
     title: "Technical Network Support Engineer",
@@ -57,13 +64,17 @@ const experiences = [
     period: "Jun 2025 — Dec 2025",
     type: "Maritime Satellite & Enterprise Networks",
     description:
-      "Provided critical Tier 2 network and communications technical support for global maritime customers (vessel captains, onboard field engineers) via ticketing and live phone assistance.",
+      "Provided critical Tier 2 network and communications technical support for global maritime customers (vessel captains, onboard field engineers) via ticketing and live phone assistance under mission-critical SLA.",
     highlights: [
       "Troubleshot complex maritime satellite networks, VSAT systems, and onboard routers.",
       "Monitored live network infrastructure and maintained high communication security.",
-      "Delivered calm, precise technical solutions under mission-critical time pressure.",
+      "Delivered calm, precise technical solutions under high-pressure maritime operational conditions.",
     ],
-    tags: ["Network Troubleshooting", "Maritime IT", "Zabbix", "SQL", "Security", "Tier 2 Support"],
+    milestone: {
+      badge: "🛰️ Hybrid VSAT & Starlink Support",
+      text: "Provided dedicated Tier 2 technical network support for global maritime fleets, addressing complex communication incidents across hybrid connectivity setups combining traditional VSAT with modern Starlink satellite solutions.",
+    },
+    tags: ["Technical Support", "Maritime VSAT", "Starlink Solutions", "Zabbix", "SQL Telemetry", "Network Security"],
   },
   {
     title: "System Health Engineer & Tester",
@@ -73,11 +84,18 @@ const experiences = [
     description:
       "Monitored high-volume system health and applications for DPD courier infrastructure across multiple European countries (NL, CH, BE, SK). Conducted systematic API validation and regression testing.",
     highlights: [
-      "Monitored server health, service availability, and alerts via Zabbix.",
+      "Monitored server health, service availability, and alert queues via Zabbix.",
       "Executed API endpoint testing and payload inspection using Insomnia.",
       "Ensured maximum uptime and swift incident escalation for logistics pipelines.",
     ],
-    tags: ["Zabbix Monitoring", "API Testing", "Insomnia", "DPD Logistics", "System Health", "Incident Tracking"],
+    milestone: {
+      badge: "📦 Multi-Country Logistics Monitoring",
+      text: "Maintained proactive Zabbix system health monitoring (operating 07:00 – 23:00, 7 days a week) and Insomnia API regression testing for DPD courier infrastructure across the Netherlands, Switzerland, Belgium, and Slovakia.",
+      link: "https://www.fores.group/case-studies-logistics-dpd/",
+      linkText: "Fores & DPD Case Study",
+      lang: "🌐 EN",
+    },
+    tags: ["Zabbix Monitoring", "API Testing", "Insomnia", "DPD Logistics", "Shift Operations (7-23)", "System Health"],
   },
   {
     title: "Banking Implementation Specialist",
@@ -91,7 +109,14 @@ const experiences = [
       "Collaborated with compliance and banking engineers to guarantee operational integrity.",
       "Managed Oracle and MS SQL Server database configurations.",
     ],
-    tags: ["Banking Systems", "Oracle SQL", "MS SQL Server", "High Availability", "Strict Compliance"],
+    milestone: {
+      badge: "🏦 Selected Project Milestones",
+      text: "Delivered technical parameter configurations across a variety of banking projects, including notable examples such as Croatia's currency transition (Kuna → Euro) and technical transaction continuity during the Raiffeisen Bank to KBC Group acquisition.",
+      link: "https://newsroom.kbc.com/kbc-completes-acquisition-of-raiffeisen-bank-internationals-bulgarian-operations",
+      linkText: "KBC Raiffeisen Acquisition",
+      lang: "🌐 Global",
+    },
+    tags: ["Banking Systems", "Euro Transition", "Oracle SQL", "MS SQL Server", "High Availability", "Strict Compliance"],
   },
   {
     title: "Customers Network Support Specialist",
@@ -104,7 +129,14 @@ const experiences = [
       "Diagnosed routing, DNS, optical line, and modem configuration issues.",
       "Bridged complex ISP network diagnostics into plain, reassuring customer guidance.",
     ],
-    tags: ["Telecommunications", "Tier 2 Support", "Routing & Switching", "IPTV", "Customer Satisfaction"],
+    milestone: {
+      badge: "🛡️ COVID-19 Critical Infrastructure",
+      text: "Maintained vital network uptime during the onset of the pandemic when schools closed nationwide — within just 10 days of lockdown, primary, middle, and high schools as well as universities fully relied on home connectivity for mandatory distance education.",
+      link: "https://kafkadeskdotorg.wordpress.com/2020/05/29/lessons-learned-in-slovakias-education-lockdown/",
+      linkText: "Slovakia Lockdown Context",
+      lang: "🌐 EN",
+    },
+    tags: ["Telecommunications", "Tier 2 Support", "COVID-19 Continuity", "Routing & Switching", "IPTV"],
   },
   {
     title: "Manual Tester & Client Trainer",
@@ -117,7 +149,14 @@ const experiences = [
       "Executed comprehensive test cases on self-service POS checkout hardware and software.",
       "Trained non-technical retail staff on point-of-sale workflows and troubleshooting.",
     ],
-    tags: ["Manual Testing", "ERP Systems", "Self-Service POS", "Client Training", "QA"],
+    milestone: {
+      badge: "🛒 eKasa Reform & POS Testing",
+      text: "Alongside continuous ERP and POS testing, one of the key milestones was implementing and validating self-service checkout systems during the Slovak legislative reform from legacy fiscal printers to online eKasa.",
+      link: "https://marosavat.com/vat-news/slovakia-full-ekasa-obligation-january-2026",
+      linkText: "Slovakia eKasa Reform",
+      lang: "🌐 EN",
+    },
+    tags: ["Manual Testing", "eKasa Reform", "ERP Systems", "Self-Service POS", "Client Training"],
   },
 ];
 
@@ -378,6 +417,37 @@ export default function IntroductionPage() {
                       </div>
                     ))}
                   </div>
+
+                  {/* Key Milestone / Specific Impact Box */}
+                  {exp.milestone && (
+                    <div className="mb-5 rounded-xl border border-primary/30 bg-primary/5 p-3.5 sm:p-4 transition-all duration-300 hover:border-primary/50 hover:bg-primary/10">
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                        <span className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-primary">
+                          <Sparkles className="h-3.5 w-3.5 text-primary" />
+                          <span>{exp.milestone.badge}</span>
+                        </span>
+                        {exp.milestone.link && (
+                          <a
+                            href={exp.milestone.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 font-mono text-[11px] text-primary/90 hover:text-primary hover:underline"
+                          >
+                            <span>{exp.milestone.linkText}</span>
+                            {exp.milestone.lang && (
+                              <span className="rounded bg-secondary/80 px-1.5 py-0.2 text-[10px] text-muted-foreground">
+                                {exp.milestone.lang}
+                              </span>
+                            )}
+                            <ExternalLink className="h-3 w-3" />
+                          </a>
+                        )}
+                      </div>
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                        {exp.milestone.text}
+                      </p>
+                    </div>
+                  )}
 
                   <div className="flex flex-wrap gap-2 pt-2 border-t border-border/40">
                     {exp.tags.map((tag) => (
