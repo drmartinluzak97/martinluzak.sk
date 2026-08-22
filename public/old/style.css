@@ -1,0 +1,273 @@
+/* Základné nastavenia */
+:root {
+    --primary-color: #00e676; /* Jasná zelená - moderná, energická */
+    --secondary-color: #1a237e; /* Tmavo modrá - hĺbka, AI pocit */
+    --text-color: #e0e0e0;
+    --background-dark: #100f2a; /* Takmer čierna, hlboká */
+    --background-light: #1c1a40; /* Trochu svetlejší odtieň pre obsah */
+    --border-radius: 10px;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.3);
+    --shadow-dark: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-dark);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- HLAVIČKA A NAVIGÁCIA --- */
+header {
+    background-color: rgba(16, 15, 42, 0.9);
+    padding: 1.2rem 0;
+    box-shadow: var(--shadow-dark);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.logo a {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Na desktope sa zobrazí horizontálne */
+}
+
+.nav-links li {
+    margin-left: 35px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.15rem;
+    padding: 8px 0;
+    transition: color 0.3s ease, transform 0.2s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+    left: 0;
+    background: var(--primary-color);
+}
+
+
+/* --- PREPÍNAČ JAZYKOV --- */
+.language-switcher {
+    display: flex;
+    align-items: center;
+}
+
+.language-switcher button {
+    background-color: var(--primary-color);
+    color: var(--background-dark);
+    border: none;
+    padding: 10px 16px;
+    margin-left: 15px;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.language-switcher button:hover {
+    background-color: #00b359;
+    transform: translateY(-2px);
+}
+
+.language-switcher button.active {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+/* --- HAMBURGER MENU (NOVINKA) --- */
+.hamburger-menu {
+    display: none; /* Predvolene skryté na desktope */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 1010; 
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--primary-color); /* Farba čiarok */
+    border-radius: 1px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* --- OBSAH STRÁNKY --- */
+.content {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 30px 40px;
+    background-color: var(--background-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    position: relative;
+    z-index: 1;
+    text-align: left;
+}
+
+.hero-section {
+    text-align: left;
+    padding: 60px 0;
+}
+
+.main-heading {
+    color: var(--primary-color);
+    font-size: 3.2rem;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgba(0, 230, 118, 0.4);
+}
+
+p {
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+/* Špecifické štýly (kontakt, pätička...) */
+.contact-section .highlight-text {
+    color: var(--primary-color);
+}
+
+.contact-section p a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.contact-section p a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 80px;
+    background-color: rgba(16, 15, 42, 0.9);
+    color: #a0a0a0;
+    font-size: 0.95rem;
+    backdrop-filter: blur(5px);
+}
+
+
+/* ======================================================= */
+/* --- RESPONSIVE PRAVIDLÁ (OPRAVA PRE MOBILNÉ ZOBRAZENIE) --- */
+/* ======================================================= */
+@media (max-width: 768px) {
+    
+    /* 1. Zobraziť Hamburger a skryť normálne menu */
+    .hamburger-menu {
+        display: block; 
+    }
+    
+    .nav-links {
+        /* Skrytie menu na malých obrazovkách */
+        display: none; 
+        
+        /* Rozbalené menu po celej šírke */
+        flex-direction: column;
+        position: absolute;
+        top: 65px; /* Pod hlavičku */
+        left: 0;
+        width: 100%;
+        background-color: var(--background-dark); 
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        padding: 20px 0;
+        z-index: 999; 
+    }
+    
+    .nav-links li {
+        margin: 10px 0; /* Vertikálny rozostup */
+        text-align: center;
+    }
+    
+    .nav-links a {
+        font-size: 1.3rem;
+    }
+    
+    /* KĽÚČOVÁ ZMENA: Zobrazí menu po kliknutí (triedu pridá JS) */
+    .nav-links.active {
+        display: flex;
+    }
+
+    /* 2. Úprava navigácie (aby sa zmestili jazyky, logo a hamburger) */
+    nav {
+        padding: 15px 20px;
+        /* Nastaví sa viac miesta, aby sa zmestilo logo, jazyk a hamburger */
+        justify-content: space-between; 
+    }
+    
+    /* 3. Zmenšenie jazykového prepínača pre mobil (voliteľné) */
+    .language-switcher button {
+        padding: 6px 10px;
+        margin-left: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* 4. Úprava obsahu na mobile */
+    .main-heading {
+        font-size: 2.5rem;
+    }
+    .content {
+        padding: 20px 20px;
+        margin-top: 40px;
+    }
+    footer {
+        padding: 15px;
+        margin-top: 40px;
+    }
+}

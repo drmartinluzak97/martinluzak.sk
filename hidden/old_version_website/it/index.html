@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martin Lužák - IT & Zdravie</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">Martin Lužák IT</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="cv.html" class="nav-item" data-lang-sk="O mne" data-lang-en="About Me">O mne</a></li>
+                <li><a href="project.html" class="nav-item" data-lang-sk="Zaujímavé projekty" data-lang-en="Interesting Projects">Zaujímavé projekty</a></li>
+                <li><a href="contact.html" class="nav-item" data-lang-sk="Kontakt" data-lang-en="Contact">Kontakt</a></li>
+            </ul>
+            <div class="language-switcher">
+                <button id="sk-lang-btn" class="active">SK</button>
+                <button id="en-lang-btn">EN</button>
+            </div>
+
+            <button class="hamburger-menu" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="content">
+        <div class="hero-section">
+            <h1 class="main-heading" data-lang="sk">Vitajte na mojej webovej stránke!</h1>
+            <h1 class="main-heading" data-lang="en" style="display: none;">Welcome to my website!</h1>
+
+            <p data-lang="sk">Som Martin a som nadšenec do sveta informačných technológií s dlhoročnými skúsenosťami v oblasti IT podpory, administrácie a riadenia projektov. Preskúmajte moje projekty, certifikácie a zistite viac o mojej ceste v dynamickom svete IT. Rád sa učím nové veci a neustále sa vzdelávam, aby som bol v obraze s najnovšími trendmi a technológiami.</p>
+            <p data-lang="en" style="display: none;">I'm Martin, an IT enthusiast with extensive experience in IT support, administration, and project management. Explore my projects, certifications, and learn more about my journey in the dynamic world of IT. I love learning new things and continuously educate myself to stay up-to-date with the latest trends and technologies.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Martin Lužák. Všetky práva vyhradené.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

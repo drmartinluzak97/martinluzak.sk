@@ -4,6 +4,9 @@ Allow: /
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
+Disallow: /hidden/
+Disallow: /old/
+Disallow: /old
 
 # Sitemap
 Sitemap: https://martinluzak.dev/sitemap.xml

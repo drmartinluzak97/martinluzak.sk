@@ -6,6 +6,18 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  async rewrites() {
+    return [
+      {
+        source: "/old",
+        destination: "/old/index.html",
+      },
+      {
+        source: "/old/",
+        destination: "/old/index.html",
+      },
+    ]
+  },
   async redirects() {
     return [
       {
