@@ -18,6 +18,9 @@ import {
   ArrowUpRight,
   Sparkles,
   BookOpen,
+  Video,
+  ExternalLink,
+  FileText,
 } from "lucide-react";
 
 export const metadata = {
@@ -121,21 +124,23 @@ const experiences = [
 const certifications = [
   {
     title: "Atlassian Agile Project Management",
-    issuer: "Atlassian Professional Certificate",
-    badge: "Agile Leadership",
+    issuer: "Atlassian / LinkedIn Learning",
+    badge: "Professional Certificate",
     description:
       "Validated competencies in modern Agile methodologies, sprint planning, Jira project architecture, and cross-functional team delivery.",
     icon: Compass,
     status: "Verified",
+    file: "CertificateOfCompletion_Atlassian Agile Project Management Professional Certificate.pdf",
   },
   {
-    title: "Negotiation Professional Certificate (ANI)",
-    issuer: "American Negotiation Institute",
+    title: "Negotiation Professional Certificate",
+    issuer: "American Negotiation Institute (ANI)",
     badge: "Strategic Communication",
     description:
       "Advanced mastery in de-escalation, conflict resolution, active listening, and achieving win-win outcomes in high-stakes environments.",
     icon: Users,
     status: "Verified",
+    file: "CertificateOfCompletion_Negotiation Professional Certificate by American Negotiation Institute.pdf",
   },
   {
     title: "ITIL® Foundation 4",
@@ -145,33 +150,37 @@ const certifications = [
       "End-to-end framework for modern IT service management (ITSM), continuous improvement, incident resolution, and value co-creation.",
     icon: Layers,
     status: "Verified",
+    file: "CertificateOfCompletion_ITIL Foundation 4 First Look.pdf",
   },
   {
     title: "Lean Six Sigma Foundations",
-    issuer: "Process Excellence",
+    issuer: "Process Excellence Institute",
     badge: "Operational Efficiency",
     description:
       "Techniques for identifying process waste, streamlining digital workflows, and enforcing quantitative quality standards.",
     icon: CheckCircle2,
     status: "Verified",
+    file: "CertificateOfCompletion_Lean Six Sigma Foundations.pdf",
   },
   {
-    title: "Scrum Master & Agile Expansion",
-    issuer: "Continuous Professional Learning",
-    badge: "In Progress",
-    description:
-      "Deepening facilitation techniques, backlog grooming strategies, and servant-leadership principles for high-velocity teams.",
-    icon: Sparkles,
-    status: "In Progress",
-  },
-  {
-    title: "Cybersecurity (CCST)",
-    issuer: "Cisco Certified Support Technician",
-    badge: "In Progress",
+    title: "Cisco Certified Support Technician (CCST) Cybersecurity",
+    issuer: "Cisco Certification Preparation",
+    badge: "Cybersecurity",
     description:
       "Merging hands-on network administration with enterprise security fundamentals, vulnerability analysis, and digital defense.",
     icon: Shield,
-    status: "In Progress",
+    status: "Verified",
+    file: "CertificateOfCompletion_Cisco Certified Support Technician CCST Cybersecurity 100160 Cert Prep.pdf",
+  },
+  {
+    title: "Essential Skills in Adobe Premiere Pro 2025",
+    issuer: "Adobe / Creative Media",
+    badge: "Professional Certificate",
+    description:
+      "Video editing, color grading, audio synchronization, and multimedia storytelling applied to educational and promotional content.",
+    icon: Video,
+    status: "Verified",
+    file: "CertificateOfCompletion_Essential Skills in Adobe Premiere Pro 2025 Professional Certificate.pdf",
   },
 ];
 
@@ -438,8 +447,45 @@ export default function IntroductionPage() {
                     {cert.description}
                   </p>
                 </div>
+
+                <div className="pt-4 mt-4 border-t border-border/40">
+                  <a
+                    href={`/certificates/${encodeURIComponent(cert.file)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/btn inline-flex w-full items-center justify-center gap-2 rounded-xl border border-primary/30 bg-primary/10 px-3.5 py-2 font-mono text-xs text-primary transition-all duration-300 hover:border-primary hover:bg-primary hover:text-primary-foreground active:scale-[0.98]"
+                  >
+                    <FileText className="h-3.5 w-3.5" />
+                    <span>View Official PDF</span>
+                    <ExternalLink className="h-3 w-3 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                  </a>
+                </div>
               </div>
             ))}
+          </div>
+
+          {/* Explore all certificates CTA banner */}
+          <div className="rounded-2xl border border-border/80 bg-card/60 glass p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-lg animate-fade-in-up">
+            <div className="space-y-1.5 text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-2 font-mono text-xs text-primary">
+                <Sparkles className="h-3.5 w-3.5" />
+                <span>Credentials Hub</span>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground">
+                Looking for all 29 verified certificates & courses?
+              </h3>
+              <p className="text-xs sm:text-sm text-muted-foreground max-w-xl">
+                Explore the complete collection with live search and category filters across Agile, Networking, Satellite IT, Cybersecurity, AI Management, and Communication.
+              </p>
+            </div>
+
+            <Link
+              href="/certificates"
+              className="group inline-flex shrink-0 items-center justify-center gap-2.5 rounded-xl border border-primary bg-primary px-6 py-3.5 font-mono text-xs sm:text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <span>Explore all 29 certificates</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </Link>
           </div>
         </div>
       </section>
