@@ -1,13 +1,15 @@
-import { Github, Brain, Linkedin, Mail, ExternalLink, Heart } from "lucide-react"
+import Link from "next/link"
+import { Brain, Linkedin, Mail, ExternalLink, Heart } from "lucide-react"
 
 const socialLinks: {
   label: string
   hoverLabel?: string
   href: string
   handle: string
-  icon: typeof Github
+  icon: typeof Linkedin
 }[] = [
-  { label: "GitHub", href: "https://github.com/martinluzak", handle: "@martinluzak", icon: Github },
+  { label: "LinkedIn", href: "https://linkedin.com/in/martinluzak", handle: "/in/martinluzak", icon: Linkedin },
+  { label: "Email", href: "mailto:hello@martinluzak.sk", handle: "hello@martinluzak.sk", icon: Mail },
   {
     label: "Thoughts",
     hoverLabel: "Thoughts are not a crime",
@@ -15,8 +17,6 @@ const socialLinks: {
     handle: "thoughts.global",
     icon: Brain,
   },
-  { label: "LinkedIn", href: "https://linkedin.com/in/martinluzak", handle: "/in/martinluzak", icon: Linkedin },
-  { label: "Email", href: "mailto:hello@martinluzak.sk", handle: "hello@martinluzak.sk", icon: Mail },
 ]
 
 export function Footer() {
@@ -27,26 +27,25 @@ export function Footer() {
           {/* Left column */}
           <div className="space-y-6 sm:space-y-8 animate-fade-in-up">
             <div className="space-y-3">
-              <p className="font-mono text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-primary">Connect</p>
+              <p className="font-mono text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-primary">Let's Talk</p>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-balance">
-                {"Let's build something "}
-                <span className="bg-gradient-to-l from-primary/50 to-accent text-transparent bg-clip-text ">together</span>
+                {"Let's create something "}
+                <span className="bg-gradient-to-l from-primary/50 to-accent text-transparent bg-clip-text ">meaningful</span>
               </h2>
             </div>
             <p className="max-w-md text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Always interested in collaborations, interesting problems, and conversations about code, design, and
-              everything in between.
+              Technology is at its best when it serves people. Whether you&apos;re looking for guidance, collaboration, or a fresh perspective, let&apos;s start a conversation.
             </p>
 
             <div className="pt-2">
-              <a
-                href="mailto:hello@martinluzak.sk"
+              <Link
+                href="/introduction"
                 className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-xl border border-primary bg-primary/10 px-8 py-4 sm:py-4 font-mono text-sm text-primary transition-all duration-500 hover:text-primary-foreground active:scale-[0.98] w-full sm:w-auto"
               >
-                <span className="relative z-10">send a signal</span>
+                <span className="relative z-10">more information about me</span>
                 <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">→</span>
                 <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-500 group-hover:translate-x-0" />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -102,12 +101,12 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-4">
-            {socialLinks.slice(0, 3).map((link) => (
+            {socialLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={link.label !== "Email" ? "_blank" : undefined}
+                rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
                 aria-label={link.hoverLabel ?? link.label}
                 title={link.hoverLabel ?? link.label}
                 className="text-muted-foreground/50 transition-all duration-300 hover:text-primary hover:scale-110"
