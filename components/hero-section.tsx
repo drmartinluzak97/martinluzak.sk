@@ -4,7 +4,13 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { MapPin, Briefcase, Sparkles, CheckCircle2, Globe, ArrowUpRight } from "lucide-react"
 
-const roles = ["technical support", "IT training", "human connection"]
+const roles = [
+  "technical support",
+  "human connection",
+  "video production",
+  "IT training",
+  "web development",
+]
 
 export function HeroSection() {
   const [currentRole, setCurrentRole] = useState(0)
