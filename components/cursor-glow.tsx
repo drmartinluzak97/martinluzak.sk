@@ -39,10 +39,10 @@ export function CursorGlow() {
   return (
     <>
       <div
-        className="cursor-glow hidden lg:block pointer-events-none"
+        className="cursor-glow hidden lg:block pointer-events-none fixed top-0 left-0"
         style={{
-          left: position.x,
-          top: position.y,
+          transform: `translate3d(calc(${position.x}px - 50%), calc(${position.y}px - 50%), 0)`,
+          willChange: "transform",
           opacity: isVisible ? 1 : 0,
           width: isHovering ? "500px" : "400px",
           height: isHovering ? "500px" : "400px",
@@ -50,11 +50,10 @@ export function CursorGlow() {
         }}
       />
       <div
-        className="hidden lg:block pointer-events-none fixed w-8 h-8 rounded-full mix-blend-screen"
+        className="hidden lg:block pointer-events-none fixed top-0 left-0 w-8 h-8 rounded-full mix-blend-screen"
         style={{
-          left: position.x,
-          top: position.y,
-          transform: "translate(-50%, -50%)",
+          transform: `translate3d(calc(${position.x}px - 50%), calc(${position.y}px - 50%), 0)`,
+          willChange: "transform",
           background: "radial-gradient(circle, var(--primary) 0%, transparent 70%)",
           opacity: isVisible ? 0.15 : 0,
           transition: "opacity 0.2s ease",
