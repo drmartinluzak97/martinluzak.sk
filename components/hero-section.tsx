@@ -14,7 +14,7 @@ const roles = [
 
 export function HeroSection() {
   const [currentRole, setCurrentRole] = useState(0)
-  const [displayText, setDisplayText] = useState("")
+  const [displayText, setDisplayText] = useState(roles[0])
   const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {

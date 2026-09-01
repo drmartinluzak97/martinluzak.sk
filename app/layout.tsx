@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google"
+import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
@@ -14,11 +14,6 @@ const geist = Geist({
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: '--font-geist-mono',
-  display: 'swap',
-})
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: '--font-space-grotesk',
   display: 'swap',
 })
 
@@ -95,7 +90,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable}`}>
       <body className="font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true} storageKey="theme-mode">
           {children}
