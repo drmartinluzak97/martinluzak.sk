@@ -18,7 +18,10 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://martinluzak.dev'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://martinluzak.sk'),
+  alternates: {
+    canonical: './',
+  },
   title: {
     default: "Martin Lužák — Where Logic Meets Humanity",
     template: "%s | Martin Lužák",

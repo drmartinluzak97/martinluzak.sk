@@ -29,6 +29,9 @@ export const metadata = {
   title: "About Me & CV — Martin Lužák",
   description:
     "Professional background, work experience, certifications, and philosophy of Martin Lužák — combining technical precision with human empathy.",
+  alternates: {
+    canonical: "/introduction",
+  },
 };
 
 const stats = [
