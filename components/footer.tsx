@@ -1,5 +1,9 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
-import { Rocket, Linkedin, Mail, ExternalLink, Heart } from "lucide-react"
+import { Rocket, Linkedin, Mail, ExternalLink, Heart, MessageSquare, Bug } from "lucide-react"
+import { ContactModal } from "@/components/contact-modal"
 
 const socialLinks: {
   label: string
@@ -20,6 +24,18 @@ const socialLinks: {
 ]
 
 export function Footer() {
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalType, setModalType] = useState<"contact" | "bug">("contact")
+
+  const openContact = () => {
+    setModalType("contact")
+    setModalOpen(true)
+  }
+
+  const openBugReport = () => {
+    setModalType("bug")
+    setModalOpen(true)
+  }
   return (
     <footer id="connect" className="border-t border-border/30 px-4 sm:px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl">
@@ -37,15 +53,24 @@ export function Footer() {
               Technology is at its best when it serves people. Whether you&apos;re looking for guidance, collaboration, or a fresh perspective, let&apos;s start a conversation.
             </p>
 
-            <div className="pt-2">
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
                 href="/introduction"
-                className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-xl border border-primary bg-primary/10 px-8 py-4 sm:py-4 font-mono text-sm text-primary transition-all duration-500 hover:text-primary-foreground active:scale-[0.98] w-full sm:w-auto"
+                className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-xl border border-primary bg-primary/10 px-6 py-3.5 font-mono text-xs sm:text-sm text-primary transition-all duration-500 hover:text-primary-foreground active:scale-[0.98] w-full sm:w-auto"
               >
                 <span className="relative z-10">more information about me</span>
                 <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">→</span>
                 <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-500 group-hover:translate-x-0" />
               </Link>
+
+              <button
+                type="button"
+                onClick={openContact}
+                className="group inline-flex items-center justify-center gap-3 rounded-xl border border-foreground/30 bg-foreground/10 px-6 py-3.5 font-mono text-xs sm:text-sm font-medium text-foreground transition-all duration-300 hover:border-foreground/60 hover:bg-foreground/20 hover:scale-[1.01] active:scale-[0.98] w-full sm:w-auto"
+              >
+                <MessageSquare className="h-4 w-4 text-foreground/80 transition-transform duration-300 group-hover:scale-110" />
+                <span>Quick contact</span>
+              </button>
             </div>
           </div>
 
@@ -122,11 +147,28 @@ export function Footer() {
             })}
           </div>
 
-          <p className="font-mono text-xs text-muted-foreground text-center sm:text-right">
-            © {new Date().getFullYear()} Martin Lužák — Human heart. Technical logic. AI assisted.
-          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 font-mono text-xs text-muted-foreground">
+            <button
+              type="button"
+              onClick={openBugReport}
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-primary"
+            >
+              <Bug className="h-3.5 w-3.5" />
+              <span>Report an issue</span>
+            </button>
+            <span className="hidden sm:inline opacity-30">•</span>
+            <p className="text-center sm:text-right">
+              © {new Date().getFullYear()} Martin Lužák — Human heart. Technical logic. AI assisted.
+            </p>
+          </div>
         </div>
       </div>
+
+      <ContactModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        initialType={modalType}
+      />
     </footer>
   )
 }
