@@ -35,10 +35,10 @@ export const metadata = {
 };
 
 const stats = [
-  { label: "Experience in IT & Mentoring", value: "7+ Years" },
-  { label: "Systems & Network Focus", value: "Enterprise & Maritime" },
-  { label: "Core Competency", value: "Logic + Empathy" },
-  { label: "Verified Credentials", value: "5+ Global Certifications" },
+  { label: "Experience in IT & Mentoring", value: "7+ Years", href: "#experience" },
+  { label: "Systems & Network Focus", value: "Enterprise & Maritime", href: "#experience" },
+  { label: "Core Competency", value: "Logic + Empathy", href: "#philosophy" },
+  { label: "Verified Credentials", value: "5+ Global Certifications", href: "/certificates" },
 ];
 
 const certifications = [
@@ -200,25 +200,46 @@ export default function IntroductionPage() {
 
           {/* Stats Bar */}
           <div className="grid grid-cols-2 gap-4 pt-6 sm:grid-cols-4 animate-fade-in-up stagger-3">
-            {stats.map((stat, i) => (
-              <div
-                key={i}
-                className="rounded-xl border border-border/60 bg-card/40 p-4 sm:p-5 backdrop-blur-sm transition-all duration-300 hover:border-primary/40"
-              >
-                <div className="font-mono text-xl sm:text-2xl font-bold text-foreground">
-                  {stat.value}
+            {stats.map((stat, i) => {
+              const content = (
+                <>
+                  <div className="flex items-center justify-between">
+                    <div className="font-mono text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                      {stat.value}
+                    </div>
+                    {stat.href && (
+                      <ArrowUpRight className="h-4 w-4 text-muted-foreground/40 transition-all duration-300 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    )}
+                  </div>
+                  <div className="mt-1 font-mono text-xs text-muted-foreground">
+                    {stat.label}
+                  </div>
+                </>
+              );
+
+              return stat.href ? (
+                <Link
+                  key={i}
+                  href={stat.href}
+                  className="group block rounded-xl border border-border/60 bg-card/40 p-4 sm:p-5 backdrop-blur-sm transition-all duration-300 hover:border-primary/60 hover:bg-card/70 hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  {content}
+                </Link>
+              ) : (
+                <div
+                  key={i}
+                  className="rounded-xl border border-border/60 bg-card/40 p-4 sm:p-5 backdrop-blur-sm transition-all duration-300 hover:border-primary/40"
+                >
+                  {content}
                 </div>
-                <div className="mt-1 font-mono text-xs text-muted-foreground">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Core Philosophy Section */}
-      <section className="relative px-4 sm:px-6 py-12 sm:py-16">
+      <section id="philosophy" className="relative px-4 sm:px-6 py-12 sm:py-16 scroll-mt-24">
         <div className="mx-auto max-w-5xl">
           <div className="relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-card/80 via-card/50 to-primary/10 p-6 sm:p-10 backdrop-blur-md shadow-2xl">
             <div className="absolute top-0 right-0 -mt-8 -mr-8 h-48 w-48 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
@@ -240,7 +261,7 @@ export default function IntroductionPage() {
       </section>
 
       {/* Work Experience Section */}
-      <section className="relative px-4 sm:px-6 py-12 sm:py-16">
+      <section id="experience" className="relative px-4 sm:px-6 py-12 sm:py-16 scroll-mt-24">
         <div className="mx-auto max-w-5xl space-y-8">
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
