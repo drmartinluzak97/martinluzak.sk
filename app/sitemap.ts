@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { blogPosts } from '@/lib/blog-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.martinluzak.sk'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://martinluzak.sk'
 
   // Static routes
   const staticRoutes = [

@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.martinluzak.sk';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://martinluzak.sk';
   const postUrl = `${baseUrl}/blog/${post.slug}`;
   const ogImageUrl = `${baseUrl}/og-images/${post.slug}.png`;
 
@@ -71,7 +71,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.martinluzak.sk';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://martinluzak.sk';
   const structuredData = generateBlogPostStructuredData(post, baseUrl);
 
   return (

@@ -54,8 +54,43 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/index",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/cv",
         destination: "/introduction",
+        permanent: true,
+      },
+      {
+        source: "/it/contact",
+        destination: "/introduction",
+        permanent: true,
+      },
+      {
+        source: "/it/project",
+        destination: "/projects",
+        permanent: true,
+      },
+      {
+        source: "/it/projects",
+        destination: "/projects",
+        permanent: true,
+      },
+      {
+        source: "/it/cv",
+        destination: "/introduction",
+        permanent: true,
+      },
+      {
+        source: "/it/certificates",
+        destination: "/certificates",
+        permanent: true,
+      },
+      {
+        source: "/it",
+        destination: "/",
         permanent: true,
       },
     ]
