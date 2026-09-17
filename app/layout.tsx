@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
+import { AIAssistantWidget } from "@/components/ai-assistant-widget"
 import "./globals.css"
 
 // Configure fonts with proper options
@@ -97,6 +98,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true} storageKey="theme-mode">
           {children}
+          <AIAssistantWidget />
         </ThemeProvider>
         <Analytics />
       </body>
