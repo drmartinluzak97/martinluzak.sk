@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Rocket, Linkedin, Mail } from "lucide-react"
+import { Rocket, Linkedin, Mail, Search } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 import { ThemeChanger } from "./theme-changer"
+import { SearchDialog } from "./search-dialog"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -30,6 +31,8 @@ export function Header() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isMac, setIsMac] = useState(true)
   const pathname = usePathname()
 
   const isActive = (href: string) => {
@@ -38,11 +41,28 @@ export function Header() {
   }
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsMac(/(Mac|iPhone|iPod|iPad)/i.test(navigator.platform || navigator.userAgent))
+    }
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
     }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Cmd + K (Mac) or Ctrl + K (Windows)
+      if ((e.metaKey || e.ctrlKey) && (e.key === "k" || e.key === "K")) {
+        e.preventDefault()
+        setIsSearchOpen((prev) => !prev)
+      }
+    }
+
     window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("keydown", handleKeyDown)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      window.removeEventListener("keydown", handleKeyDown)
+    }
   }, [])
 
   return (
@@ -123,7 +143,21 @@ export function Header() {
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Clean icon-only search button (desktop & mobile) */}
+            <button
+              type="button"
+              onClick={() => setIsSearchOpen(true)}
+              aria-label="Search website"
+              title={`Search (${isMac ? "⌘K" : "Ctrl+K"})`}
+              className="group relative flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-all duration-300 hover:text-primary hover:bg-primary/10 active:scale-95"
+            >
+              <Search className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
+              <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-card border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:-bottom-9 pointer-events-none shadow-lg">
+                Search {isMac ? "⌘K" : "Ctrl+K"}
+              </span>
+            </button>
+
             <div className="hidden items-center gap-1 sm:flex">
               {socialLinks.map((link) => {
                 const isExternal = link.href.startsWith("http")
@@ -241,6 +275,11 @@ export function Header() {
           </div>
         </div>
       </div>
+
+      <SearchDialog
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
     </header>
   )
 }

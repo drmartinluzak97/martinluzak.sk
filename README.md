@@ -25,6 +25,12 @@ Direct serverless communication bridge between visitors and Martin's inbox using
 - Anti-spam honeypot protection & client-side validation.
 - Direct `reply_to` routing so replies go straight from Martin's inbox to the visitor.
 
+### 🔍 Command Palette & Instant Search (`Cmd + K` / `Ctrl + K`)
+Instant sub-millisecond search across the entire portfolio:
+- **Global Shortcut**: `Cmd + K` on macOS / `Ctrl + K` on Windows/Linux, plus header magnifying glass trigger.
+- **Deep Content Index**: Pages, blog articles, enterprise project milestones (Starlink, VSAT, Zabbix, DPD), and verified credentials.
+- **Keyboard-First UX**: Full arrow key navigation (`↑` / `↓`), `Enter` to select, and `ESC` to dismiss.
+
 ---
 
 ## 🛠️ Tech Stack & Architecture
