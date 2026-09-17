@@ -59,6 +59,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/index.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/cv",
         destination: "/introduction",
         permanent: true,
@@ -89,7 +94,82 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/it/index",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/it/index.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/it",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/thoughts/:path*",
+        destination: "https://why-you-matter.org/",
+        permanent: true,
+      },
+      {
+        source: "/thoughts",
+        destination: "https://why-you-matter.org/",
+        permanent: true,
+      },
+      {
+        source: "/zdravie/:path*",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/zdravie",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/de/:path*",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/de",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/en/:path*",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/en",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/fr/:path*",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/fr",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/jp/:path*",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/jp",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/prepinac",
         destination: "/",
         permanent: true,
       },
