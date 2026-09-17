@@ -17,7 +17,7 @@ export function generateBlogPostStructuredData(post: BlogPost, url: string) {
     publisher: {
       '@type': 'Person',
       name: 'Martin Lužák',
-      url: 'https://martinluzak.sk',
+      url: 'https://www.martinluzak.sk',
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -57,8 +57,8 @@ export function generatePersonStructuredData() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Martin Lužák',
-    url: 'https://martinluzak.sk',
-    image: 'https://martinluzak.sk/developer-portrait.png',
+    url: 'https://www.martinluzak.sk',
+    image: 'https://www.martinluzak.sk/developer-portrait.png',
     sameAs: [
       'https://github.com/martinluzak',
       'https://thoughts.global',

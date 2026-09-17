@@ -1,7 +1,7 @@
 import { CertificatesPageContent } from "@/components/public/certificates/certificates-page-content";
 import type { Metadata } from "next";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://martinluzak.sk";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.martinluzak.sk";
 
 export const metadata: Metadata = {
   title: "Verified Certificates & Credentials — Martin Lužák",
