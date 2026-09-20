@@ -98,7 +98,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true} storageKey="theme-mode">
           {children}
-          <AIAssistantWidget />
+          {/* <AIAssistantWidget /> */}
         </ThemeProvider>
         <Analytics />
       </body>
