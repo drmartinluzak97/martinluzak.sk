@@ -70,41 +70,44 @@ export default function SentryExamplePage() {
           </p>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-1">
+        <div className="grid gap-3 sm:grid-cols-1 relative z-20">
           {/* Button 1: Handled Exception */}
           <button
+            type="button"
             onClick={triggerHandledException}
             disabled={isSending}
-            className="flex items-center justify-between px-4 py-3 rounded-xl bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/40 text-purple-200 font-mono text-xs transition-all active:scale-[0.99] text-left"
+            className="flex items-center justify-between px-4 py-3.5 rounded-xl bg-purple-600/30 hover:bg-purple-600/50 border border-purple-500/50 text-purple-200 font-mono text-xs transition-all active:scale-[0.98] cursor-pointer shadow-lg hover:shadow-purple-500/20"
           >
             <div className="flex items-center gap-2.5">
               <Bug className="h-4 w-4 text-purple-400" />
-              <span>1. Trigger Handled Exception (Safe)</span>
+              <span className="font-semibold">1. Trigger Handled Exception (Safe)</span>
             </div>
             <Send className="h-3.5 w-3.5 text-purple-400" />
           </button>
 
           {/* Button 2: Capture Message */}
           <button
+            type="button"
             onClick={triggerCaptureMessage}
             disabled={isSending}
-            className="flex items-center justify-between px-4 py-3 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-200 font-mono text-xs transition-all active:scale-[0.99] text-left"
+            className="flex items-center justify-between px-4 py-3.5 rounded-xl bg-emerald-600/30 hover:bg-emerald-600/50 border border-emerald-500/50 text-emerald-200 font-mono text-xs transition-all active:scale-[0.98] cursor-pointer shadow-lg hover:shadow-emerald-500/20"
           >
             <div className="flex items-center gap-2.5">
               <ShieldCheck className="h-4 w-4 text-emerald-400" />
-              <span>2. Send Info Message (Event Ping)</span>
+              <span className="font-semibold">2. Send Info Message (Event Ping)</span>
             </div>
             <Send className="h-3.5 w-3.5 text-emerald-400" />
           </button>
 
           {/* Button 3: Unhandled Crash */}
           <button
+            type="button"
             onClick={triggerClientError}
-            className="flex items-center justify-between px-4 py-3 rounded-xl bg-red-600/20 hover:bg-red-600/30 border border-red-500/40 text-red-200 font-mono text-xs transition-all active:scale-[0.99] text-left"
+            className="flex items-center justify-between px-4 py-3.5 rounded-xl bg-red-600/30 hover:bg-red-600/50 border border-red-500/50 text-red-200 font-mono text-xs transition-all active:scale-[0.98] cursor-pointer shadow-lg hover:shadow-red-500/20"
           >
             <div className="flex items-center gap-2.5">
               <AlertTriangle className="h-4 w-4 text-red-400" />
-              <span>3. Trigger Unhandled Crash (Global Error Boundary)</span>
+              <span className="font-semibold">3. Trigger Unhandled Crash (Global Error Boundary)</span>
             </div>
             <RefreshCw className="h-3.5 w-3.5 text-red-400" />
           </button>
