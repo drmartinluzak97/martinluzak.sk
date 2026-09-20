@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { AIAssistantWidget } from "@/components/ai-assistant-widget"
 import { LinuxTerminal } from "@/components/linux-terminal"
+import { UmamiAnalytics } from "@/components/umami-analytics"
 import "./globals.css"
 
 // Configure fonts with proper options
@@ -103,6 +104,7 @@ export default function RootLayout({
           <LinuxTerminal />
         </ThemeProvider>
         <Analytics />
+        <UmamiAnalytics />
       </body>
     </html>
   )
