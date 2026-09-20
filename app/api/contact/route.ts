@@ -5,7 +5,7 @@ const resendApiKey = process.env.RESEND_API_KEY
 const resend = resendApiKey ? new Resend(resendApiKey) : null
 
 // Default destination email
-const RECEIVER_EMAIL = process.env.CONTACT_RECEIVER_EMAIL || "drmartinluzak97@gmail.com"
+const RECEIVER_EMAIL = process.env.CONTACT_RECEIVER_EMAIL || "hello@martinluzak.sk"
 // Verified domain sender email
 const SENDER_EMAIL = process.env.CONTACT_SENDER_EMAIL || "Martin Lužák <hello@martinluzak.sk>"
 

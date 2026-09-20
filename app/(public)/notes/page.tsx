@@ -3,6 +3,9 @@ import { NotesPageContent } from "@/components/public/notes/notes-page-content";
 export const metadata = {
   title: "Lab Notes | Martin Lužák",
   description: "Technical findings, observations, and thoughts from the workbench.",
+  alternates: {
+    canonical: "/notes",
+  },
 };
 
 export default function NotesPage() {

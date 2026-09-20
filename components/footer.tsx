@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Rocket, Linkedin, Mail, ExternalLink, Heart, MessageSquare, Bug } from "lucide-react"
+import { Rocket, Linkedin, Mail, ExternalLink, Heart, MessageSquare, Bug, Terminal } from "lucide-react"
 import { ContactModal } from "@/components/contact-modal"
 
 const socialLinks: {
@@ -148,6 +148,20 @@ export function Footer() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 font-mono text-xs text-muted-foreground">
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new CustomEvent("open-linux-terminal"))
+                }
+              }}
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-emerald-400 group"
+              title="Open Linux Terminal Easter Egg (or press ~ / Ctrl+Alt+T)"
+            >
+              <Terminal className="h-3.5 w-3.5 text-emerald-400/80 group-hover:text-emerald-400" />
+              <span>Terminal <kbd className="px-1 py-0.2 rounded bg-white/10 text-[10px] text-emerald-300">~</kbd></span>
+            </button>
+            <span className="hidden sm:inline opacity-30">•</span>
             <button
               type="button"
               onClick={openBugReport}

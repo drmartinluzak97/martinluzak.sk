@@ -70,7 +70,7 @@ Fill in your API keys in `.env.local`:
 \`\`\`env
 # Resend Email Integration
 RESEND_API_KEY=re_your_api_key
-CONTACT_RECEIVER_EMAIL=drmartinluzak97@gmail.com
+CONTACT_RECEIVER_EMAIL=hello@martinluzak.sk
 CONTACT_SENDER_EMAIL=Martin Lužák <hello@martinluzak.sk>
 
 # AI Assistant Provider (at least one)

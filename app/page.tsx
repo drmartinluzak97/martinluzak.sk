@@ -1,9 +1,19 @@
+import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { Workbench } from "@/components/workbench"
 import { Footer } from "@/components/footer"
 import { CursorGlow } from "@/components/cursor-glow"
 import { generateWebsiteStructuredData, generatePersonStructuredData } from "@/lib/structured-data"
+
+export const metadata: Metadata = {
+  title: "Martin Lužák — Where Logic Meets Humanity",
+  description:
+    "A digital workshop where logic meets humanity. Experiments, prototypes, and open-source artifacts by Martin Lužák.",
+  alternates: {
+    canonical: "/",
+  },
+}
 
 export default function Home() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://martinluzak.sk'

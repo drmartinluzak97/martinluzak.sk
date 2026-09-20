@@ -92,6 +92,7 @@ export function HeroSection() {
           <div className="relative animate-scale-in stagger-4">
             <Link
               href="/introduction"
+              aria-label="Martin Lužák Professional Overview and CV"
               className="group block relative rounded-2xl border border-border/80 bg-card/75 backdrop-blur-md glass p-6 sm:p-7 shadow-2xl hover-lift space-y-5 transition-all duration-300 hover:border-primary/50 hover:shadow-primary/10 cursor-pointer"
             >
               {/* Header: Status pill + domain / view profile hint */}

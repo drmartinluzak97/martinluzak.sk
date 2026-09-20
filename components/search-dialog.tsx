@@ -80,7 +80,15 @@ export function SearchDialog({ isOpen, onClose }: SearchDialogProps) {
 
   const handleSelect = (item: SearchItem) => {
     onClose()
-    router.push(item.href)
+    if (item.href === "#terminal") {
+      setTimeout(() => {
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new CustomEvent("open-linux-terminal"))
+        }
+      }, 100)
+    } else {
+      router.push(item.href)
+    }
   }
 
   if (!isOpen) return null

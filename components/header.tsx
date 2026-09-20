@@ -74,7 +74,7 @@ export function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4">
         <nav className="flex items-center justify-between">
-          <Link href="/" className="group/brand relative flex items-center gap-3">
+          <Link href="/" aria-label="Martin Lužák Homepage" className="group/brand relative flex items-center gap-3">
             <div className="relative z-20 flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg border border-primary/50 bg-primary/10 transition-all duration-300 ease-out group-hover/brand:border-primary group-hover/brand:scale-[1.6] group-hover/brand:shadow-xl group-hover/brand:shadow-primary/30 origin-left">
               <Image
                 src="/pictures/my_face.jpg"

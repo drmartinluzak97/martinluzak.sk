@@ -59,6 +59,14 @@ export const SEARCH_ITEMS: SearchItem[] = [
     href: "/workbench",
     keywords: ["lab", "tools", "playground", "experiments"],
   },
+  {
+    id: "nav-terminal",
+    title: "Interactive Linux Terminal (Easter Egg)",
+    description: "Full-blown browser bash terminal with neofetch, matrix, cowsay, sl, cat, themes and easter eggs",
+    category: "Navigation",
+    href: "#terminal",
+    keywords: ["terminal", "linux", "bash", "cli", "shell", "matrix", "cmatrix", "neofetch", "cowsay", "easter egg", "command prompt", "arch"],
+  },
 
   // Career Milestones & Experience
   {
