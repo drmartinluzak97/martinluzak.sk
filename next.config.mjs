@@ -209,7 +209,7 @@ const nextConfig = {
 // Sentry configuration options
 const sentryWebpackPluginOptions = {
   org: "martin-luzak",
-  project: "martinluzak-sk",
+  project: process.env.SENTRY_PROJECT || "javascript-nextjs",
   silent: !process.env.CI,
   widenClientFileUpload: true,
   hideSourceMaps: true,
