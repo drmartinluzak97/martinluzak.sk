@@ -1,3 +1,5 @@
+import { withSentryConfig } from "@sentry/nextjs/config";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -46,7 +48,8 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "img-src 'self' data: blob: https://*",
               "font-src 'self' data: https://fonts.gstatic.com",
-              "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.vercel-analytics.com",
+              "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.vercel-analytics.com https://*.ingest.sentry.io https://*.sentry.io",
+              "worker-src 'self' blob:",
               "frame-ancestors 'none'",
               "form-action 'self'",
               "base-uri 'self'",
@@ -203,4 +206,14 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+// Sentry configuration options
+const sentryWebpackPluginOptions = {
+  org: "martin-luzak",
+  project: "martinluzak-sk",
+  silent: !process.env.CI,
+  widenClientFileUpload: true,
+  hideSourceMaps: true,
+};
+
+export default withSentryConfig(nextConfig, sentryWebpackPluginOptions);
+

@@ -6,7 +6,7 @@
   "author": "Martin Lužák",
   "scripts": {
     "analyze": "next experimental-analyze",
-    "build": "next build",
+    "build": "next build --webpack",
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start"
@@ -14,6 +14,7 @@
   "dependencies": {
     "@radix-ui/react-avatar": "1.1.2",
     "@radix-ui/react-slot": "1.1.1",
+    "@sentry/nextjs": "^10.75.0",
     "@vercel/analytics": "latest",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react"
 import { Terminal, X, Maximize2, Minimize2, Sparkles, Monitor, ArrowRight, CornerDownLeft } from "lucide-react"
 import { themes, type ThemeColor } from "@/lib/themes"
 import { useTheme } from "next-themes"
+import * as Sentry from "@sentry/nextjs"
 
 interface HistoryEntry {
   command: string
@@ -514,6 +515,15 @@ export function LinuxTerminal() {
               </pre>
             )
           }
+        }
+        break
+
+      case "sentry-test":
+        try {
+          Sentry.captureMessage("Test message from Martin Lužák Interactive Terminal");
+          output = <p className="text-emerald-400">📡 Sentry test event successfully captured and dispatched! Check your Sentry dashboard.</p>
+        } catch (err) {
+          output = <p className="text-red-400">Failed to capture Sentry event: {String(err)}</p>
         }
         break
 
