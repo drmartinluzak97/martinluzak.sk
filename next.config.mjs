@@ -44,11 +44,11 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.umami.is https://cloud.umami.is https://*.supabase.co",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.vercel.app https://*.umami.is https://cloud.umami.is https://*.supabase.co",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "img-src 'self' data: blob: https://*",
               "font-src 'self' data: https://fonts.gstatic.com",
-              "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.vercel-analytics.com https://*.ingest.sentry.io https://*.sentry.io https://*.umami.is https://cloud.umami.is https://*.supabase.co",
+              "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.vercel-analytics.com https://*.vercel.app https://*.ingest.sentry.io https://*.sentry.io https://*.umami.is https://cloud.umami.is https://*.supabase.co",
               "worker-src 'self' blob:",
               "frame-ancestors 'none'",
               "form-action 'self'",
