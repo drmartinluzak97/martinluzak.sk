@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import * as Sentry from "@sentry/nextjs"
 
 const resendApiKey = process.env.RESEND_API_KEY
 const resend = resendApiKey ? new Resend(resendApiKey) : null
@@ -22,21 +23,21 @@ export async function POST(request: Request) {
     // Basic validation
     if (!name || typeof name !== "string" || name.trim().length === 0) {
       return NextResponse.json(
-        { error: "Please enter your name." },
+        { success: false, error: "Please enter your name." },
         { status: 400 }
       )
     }
 
     if (!email || typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
-        { error: "Please enter a valid email address." },
+        { success: false, error: "Please enter a valid email address." },
         { status: 400 }
       )
     }
 
     if (!message || typeof message !== "string" || message.trim().length < 5) {
       return NextResponse.json(
-        { error: "Message must be at least 5 characters long." },
+        { success: false, error: "Message must be at least 5 characters long." },
         { status: 400 }
       )
     }
@@ -53,7 +54,7 @@ export async function POST(request: Request) {
         {
           success: true,
           mock: true,
-          message: "Message received (development mode without API key).",
+          message: "Thank you for your message! (Running in development mode).",
         },
         { status: 200 }
       )
@@ -98,17 +99,25 @@ ${message}
 
     if (error) {
       console.error("Resend API error:", error)
+      Sentry.captureException(new Error(`Resend API delivery error: ${error.message || JSON.stringify(error)}`))
       return NextResponse.json(
-        { error: `Send error: ${error.message}` },
+        {
+          success: false,
+          error: "Delivery service temporarily failed. Please try again or reach out directly to hello@martinluzak.sk.",
+        },
         { status: 500 }
       )
     }
 
-    return NextResponse.json({ success: true, id: data?.id })
+    return NextResponse.json({ success: true, id: data?.id, message: "Thank you for your message! It has been successfully sent." })
   } catch (err: unknown) {
     console.error("Contact API route exception:", err)
+    Sentry.captureException(err)
     return NextResponse.json(
-      { error: "An unexpected server error occurred. Please try again later." },
+      {
+        success: false,
+        error: "An unexpected error occurred while sending. Please try again or reach out directly to hello@martinluzak.sk.",
+      },
       { status: 500 }
     )
   }

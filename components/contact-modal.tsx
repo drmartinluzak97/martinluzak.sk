@@ -55,27 +55,48 @@ export function ContactModal({ isOpen, onClose, initialType = "contact" }: Conta
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
     setSubmitStatus("idle")
     setErrorMessage("")
+
+    // Client-side validation in English to override browser native locale messages
+    if (!name.trim()) {
+      setErrorMessage("Please enter your name.")
+      setSubmitStatus("error")
+      return
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!email.trim() || !emailRegex.test(email.trim())) {
+      setErrorMessage("Please enter a valid email address (e.g. name@example.com).")
+      setSubmitStatus("error")
+      return
+    }
+
+    if (!message.trim() || message.trim().length < 5) {
+      setErrorMessage("Please enter a message (at least 5 characters).")
+      setSubmitStatus("error")
+      return
+    }
+
+    setIsSubmitting(true)
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name,
-          email,
+          name: name.trim(),
+          email: email.trim(),
           type,
-          message,
+          message: message.trim(),
           honeypot,
         }),
       })
 
       const data = await res.json()
 
-      if (!res.ok) {
-        throw new Error(data.error || "Failed to send message.")
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Delivery failed. Please try again or try later.")
       }
 
       setSubmitStatus("success")
@@ -83,7 +104,7 @@ export function ContactModal({ isOpen, onClose, initialType = "contact" }: Conta
       setEmail("")
       setMessage("")
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "An error occurred while sending."
+      const msg = err instanceof Error ? err.message : "Unable to send message right now. Please try again or try later."
       setErrorMessage(msg)
       setSubmitStatus("error")
     } finally {
@@ -168,13 +189,13 @@ export function ContactModal({ isOpen, onClose, initialType = "contact" }: Conta
         {/* Form or Success State */}
         {submitStatus === "success" ? (
           <div className="space-y-4 py-8 text-center animate-fade-in">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <CheckCircle2 className="h-7 w-7" />
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+              <CheckCircle2 className="h-8 w-8" />
             </div>
-            <div className="space-y-1">
-              <h4 className="text-lg font-bold">Thank you for your message!</h4>
+            <div className="space-y-1.5">
+              <h4 className="text-xl font-bold text-foreground">Thank you for your message!</h4>
               <p className="text-sm text-muted-foreground max-w-sm mx-auto">
-                Your message has been delivered to my inbox. I will get back to you as soon as possible.
+                Your message has been verified and successfully delivered to my inbox (<strong>hello@martinluzak.sk</strong>). I will get back to you as soon as possible.
               </p>
             </div>
             <div className="pt-4">
@@ -188,7 +209,7 @@ export function ContactModal({ isOpen, onClose, initialType = "contact" }: Conta
             </div>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} noValidate className="space-y-4">
             {/* Spam bot honeypot (hidden) */}
             <input
               type="text"
@@ -202,9 +223,17 @@ export function ContactModal({ isOpen, onClose, initialType = "contact" }: Conta
 
             {/* Error banner */}
             {submitStatus === "error" && (
-              <div className="flex items-start gap-2.5 rounded-xl border border-destructive/40 bg-destructive/10 p-3 text-xs text-destructive animate-fade-in">
-                <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
-                <span>{errorMessage}</span>
+              <div className="space-y-1.5 rounded-xl border border-destructive/40 bg-destructive/10 p-3.5 text-xs text-destructive animate-fade-in">
+                <div className="flex items-start gap-2 font-semibold">
+                  <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
+                  <span>{errorMessage}</span>
+                </div>
+                <p className="pl-6 text-[11px] text-destructive/80">
+                  Please try again, or if the issue persists, feel free to contact me directly at{" "}
+                  <a href="mailto:hello@martinluzak.sk" className="underline font-medium hover:text-foreground">
+                    hello@martinluzak.sk
+                  </a>.
+                </p>
               </div>
             )}
 
