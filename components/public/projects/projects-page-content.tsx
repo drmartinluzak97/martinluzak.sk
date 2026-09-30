@@ -148,6 +148,18 @@ export function ProjectsPageContent() {
               All Pillars
             </button>
             <button
+              onClick={() => scrollToSection("web")}
+              className={cn(
+                "inline-flex items-center gap-2 rounded-xl border px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all duration-300 active:scale-[0.98]",
+                activeTab === "web"
+                  ? "border-primary bg-primary/15 text-primary shadow-sm shadow-primary/20"
+                  : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground hover:bg-secondary/40",
+              )}
+            >
+              <Globe className="h-3.5 w-3.5" />
+              <span>Web Platforms</span>
+            </button>
+            <button
               onClick={() => scrollToSection("work")}
               className={cn(
                 "inline-flex items-center gap-2 rounded-xl border px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all duration-300 active:scale-[0.98]",
@@ -171,23 +183,133 @@ export function ProjectsPageContent() {
               <Video className="h-3.5 w-3.5" />
               <span>Video Production</span>
             </button>
-            <button
-              onClick={() => scrollToSection("web")}
-              className={cn(
-                "inline-flex items-center gap-2 rounded-xl border px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all duration-300 active:scale-[0.98]",
-                activeTab === "web"
-                  ? "border-primary bg-primary/15 text-primary shadow-sm shadow-primary/20"
-                  : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground hover:bg-secondary/40",
-              )}
-            >
-              <Globe className="h-3.5 w-3.5" />
-              <span>Web Platforms</span>
-            </button>
           </div>
         </div>
 
         {/* ========================================================================= */}
-        {/* PILLAR 1: WORK & ENTERPRISE PROJECTS (Collapsible by default) */}
+        {/* PILLAR 1: WEB PLATFORMS & CIVIC INNOVATION (FLAGSHIP SPOTLIGHT)           */}
+        {/* ========================================================================= */}
+        {(activeTab === "all" || activeTab === "web") && (
+          <div ref={webRef} className="space-y-8 scroll-mt-24">
+            <div className="space-y-1 border-b border-border/50 pb-5">
+              <div className="inline-flex items-center gap-2 font-mono text-xs text-primary uppercase tracking-wider font-semibold">
+                <Globe className="h-4 w-4" />
+                <span>Pillar 01 • Flagship Web Platform</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Web Platforms &amp; Civic Innovation</h2>
+              <p className="text-sm text-muted-foreground max-w-xl">
+                Independent digital utilities and open-access software engineered for global scale, high reliability, and real human impact.
+              </p>
+            </div>
+
+            {/* SPOTLIGHT HERO CARD: Why You Matter */}
+            <div className="relative overflow-hidden rounded-3xl border border-primary/40 bg-gradient-to-br from-primary/10 via-card/70 to-card/90 p-7 sm:p-10 glass shadow-2xl space-y-6 group hover:border-primary/60 transition-all duration-300">
+              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-primary/20 pb-5">
+                <div className="flex items-center gap-3.5">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/40 bg-primary/20 text-primary shadow-md shadow-primary/20 text-2xl">
+                    💙
+                  </div>
+                  <div>
+                    <div className="inline-flex items-center gap-2 flex-wrap">
+                      <span className="font-mono text-xs uppercase tracking-wider text-primary font-bold">Featured Platform</span>
+                      <span className="rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-0.5 text-[10px] font-mono">
+                        🏆 WSA 2026 Nominee
+                      </span>
+                      <span className="rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 text-[10px] font-mono">
+                        101 Languages • 252 Regions
+                      </span>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground mt-0.5">
+                      Why You Matter: Open-Access Civic Health Utility
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="font-mono text-xs text-muted-foreground bg-secondary/50 px-3 py-1.5 rounded-xl border border-border/50">
+                  Founder, Architect &amp; Lead Engineer
+                </div>
+              </div>
+
+              <div className="grid gap-6 lg:grid-cols-12">
+                <div className="lg:col-span-7 space-y-4">
+                  <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
+                    Developed under the personal motto <strong className="text-foreground">„Where Logic Meets Humanity“</strong>. An open-access, zero-tracking digital lifeline engineered to deliver immediate psychological first aid, somatic de-escalation, and verified crisis helplines across 252 countries and territories in 101 languages. Fusing 7+ years of non-profit community leadership (DIATYRNAVIA / Senior Friendly 2023 award) and psychology studies with modern software engineering.
+                  </p>
+
+                  <div className="space-y-3">
+                    <h4 className="font-mono text-xs uppercase tracking-wider text-primary font-semibold">
+                      Key Technical &amp; Humanitarian Achievements:
+                    </h4>
+                    <ul className="space-y-2.5 text-xs sm:text-sm text-muted-foreground">
+                      <li className="flex items-start gap-2.5">
+                        <ShieldCheck className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                        <span>
+                          <strong className="text-foreground">100% Non-Profit &amp; Zero-Data Monetization:</strong> Strict privacy-first architecture with zero authentication, zero cookies, zero user tracking, and no paywalls.
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Globe className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                        <span>
+                          <strong className="text-foreground">101 Languages &amp; 252 Territories:</strong> The world's most extensive open crisis directory, bridging the linguistic and digital divide for refugees, migrants, and marginalized groups.
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Zap className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                        <span>
+                          <strong className="text-foreground">Safety by Design &amp; Disguise Mode:</strong> Instant 1-click screen camouflage protecting victims of domestic violence from exposure, paired with interactive 4-7-8 breathing and 5-4-3-2-1 grounding.
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <Users className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                        <span>
+                          <strong className="text-foreground">Franklian Logotherapy &amp; Resilience Hub:</strong> 15 historical figures and cognitive sublimation matrix transforming inner pain into enduring purpose.
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-border/70 bg-card/60 p-6 space-y-5">
+                  <div className="space-y-3">
+                    <div className="font-mono text-xs text-primary font-semibold uppercase tracking-wider">Architecture &amp; Tech Stack</div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {[
+                        "Next.js 15 (App Router)",
+                        "React 19",
+                        "TypeScript",
+                        "101-Locale Custom i18n",
+                        "252 Regions ISO 3166-1",
+                        "Edge CDN Caching",
+                        "Zero-Tracking Privacy",
+                        "WCAG 2.1 AA",
+                        "UN SDG 3.4 & SDG 10",
+                      ].map((t) => (
+                        <span key={t} className="rounded-md border border-primary/30 bg-primary/10 px-2.5 py-1 font-mono text-[11px] text-primary">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-border/40 flex flex-wrap items-center gap-3">
+                    <a
+                      href="https://why-you-matter.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-xl border border-primary bg-primary px-5 py-2.5 font-mono text-xs font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                      <span>Visit Why-You-Matter.org</span>
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================================= */}
+        {/* PILLAR 2: WORK & ENTERPRISE PROJECTS (Collapsible by default) */}
         {/* ========================================================================= */}
         {(activeTab === "all" || activeTab === "work") && (
           <div ref={workRef} className="space-y-6 scroll-mt-24">
@@ -197,7 +319,7 @@ export function ProjectsPageContent() {
                 <div className="space-y-1">
                   <div className="inline-flex items-center gap-2 font-mono text-xs text-primary uppercase tracking-wider font-semibold">
                     <Briefcase className="h-4 w-4" />
-                    <span>Pillar 01 • Enterprise &amp; Work History</span>
+                    <span>Pillar 02 • Enterprise &amp; Work History</span>
                   </div>
                   <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
                     Work &amp; Enterprise Milestones
@@ -334,14 +456,14 @@ export function ProjectsPageContent() {
         )}
 
         {/* ========================================================================= */}
-        {/* PILLAR 2: VIDEO PRODUCTION & EDUCATION */}
+        {/* PILLAR 3: VIDEO PRODUCTION & EDUCATION */}
         {/* ========================================================================= */}
         {(activeTab === "all" || activeTab === "video") && (
           <div ref={videoRef} className="space-y-8 scroll-mt-24">
             <div className="space-y-1 border-b border-border/50 pb-5">
               <div className="inline-flex items-center gap-2 font-mono text-xs text-primary uppercase tracking-wider font-semibold">
                 <Video className="h-4 w-4" />
-                <span>Pillar 02</span>
+                <span>Pillar 03 • Media &amp; Storytelling</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Video Production &amp; Education</h2>
               <p className="text-sm text-muted-foreground max-w-xl">
@@ -405,107 +527,6 @@ export function ProjectsPageContent() {
                     <p className="text-xs text-muted-foreground">
                       Crisp pacing, audio balancing, motion callouts, and clean subtitles for maximum accessibility.
                     </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================================= */}
-        {/* PILLAR 3: WEB PLATFORMS */}
-        {/* ========================================================================= */}
-        {(activeTab === "all" || activeTab === "web") && (
-          <div ref={webRef} className="space-y-8 scroll-mt-24">
-            <div className="space-y-1 border-b border-border/50 pb-5">
-              <div className="inline-flex items-center gap-2 font-mono text-xs text-primary uppercase tracking-wider font-semibold">
-                <Globe className="h-4 w-4" />
-                <span>Pillar 03</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Web Platforms</h2>
-              <p className="text-sm text-muted-foreground max-w-xl">
-                Independent platforms and open-source software built for global access, high reliability, and human impact.
-              </p>
-            </div>
-
-            {/* SPOTLIGHT HERO CARD: Thoughts.global */}
-            <div className="relative overflow-hidden rounded-3xl border border-primary/40 bg-gradient-to-br from-primary/10 via-card/70 to-card/90 p-7 sm:p-10 glass shadow-2xl space-y-6 group hover:border-primary/60 transition-all duration-300">
-              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-primary/20 pb-5">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-primary/40 bg-primary/20 text-primary shadow-md shadow-primary/20">
-                    <Globe className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <div className="inline-flex items-center gap-2">
-                      <span className="font-mono text-xs uppercase tracking-wider text-primary font-bold">Featured Platform</span>
-                      <span className="rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 text-[10px] font-mono">
-                        Active &amp; Global
-                      </span>
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-                      Thoughts.global: Global Mental Health Platform
-                    </h3>
-                  </div>
-                </div>
-
-                <div className="font-mono text-xs text-muted-foreground">Founder &amp; Lead Developer</div>
-              </div>
-
-              <div className="grid gap-6 lg:grid-cols-12">
-                <div className="lg:col-span-7 space-y-4">
-                  <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
-                    An independent, non-profit digital platform designed, coded, and launched to provide immediate psychological first aid and mental health guidance to people in crisis worldwide.
-                  </p>
-
-                  <div className="space-y-3">
-                    <h4 className="font-mono text-xs uppercase tracking-wider text-primary font-semibold">
-                      Key Technical &amp; Humanitarian Achievements:
-                    </h4>
-                    <ul className="space-y-2.5 text-xs sm:text-sm text-muted-foreground">
-                      <li className="flex items-start gap-2.5">
-                        <ShieldCheck className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                        <span>
-                          <strong className="text-foreground">50+ Language Mutations:</strong> Full localization including tailored mirrors for regions under severe internet censorship (Iran, China, Russia).
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2.5">
-                        <Zap className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                        <span>
-                          <strong className="text-foreground">Edge Speed &amp; Accessibility:</strong> Built on a static architecture and distributed CDN for zero latency and guaranteed uptime even on slow mobile networks.
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2.5">
-                        <Users className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                        <span>
-                          <strong className="text-foreground">Human-First &amp; Anonymous:</strong> Zero telemetry tracking, zero cookies, and frictionless access to crisis support numbers and coping mechanisms.
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-border/70 bg-card/60 p-6 space-y-5">
-                  <div className="space-y-3">
-                    <div className="font-mono text-xs text-primary font-semibold uppercase tracking-wider">Architecture Stack</div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {["Static Web", "Multi-Language (50+)", "CDN Edge", "Anti-Censorship Routing", "Accessibility WCAG AAA"].map((t) => (
-                        <span key={t} className="rounded-md border border-primary/30 bg-primary/10 px-2.5 py-1 font-mono text-[11px] text-primary">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-border/40 flex flex-wrap items-center gap-3">
-                    <a
-                      href="https://thoughts.global"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl border border-primary bg-primary px-5 py-2.5 font-mono text-xs font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-                    >
-                      <span>Visit Thoughts.global</span>
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
                   </div>
                 </div>
               </div>
