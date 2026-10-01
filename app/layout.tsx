@@ -90,6 +90,8 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 }
 
+import { LanguageProvider } from "@/components/language-context"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -98,11 +100,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable}`}>
       <body className="font-sans antialiased">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true} storageKey="theme-mode">
-          {children}
-          {/* <AIAssistantWidget /> */}
-          <LinuxTerminal />
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true} storageKey="theme-mode">
+            {children}
+            {/* <AIAssistantWidget /> */}
+            <LinuxTerminal />
+          </ThemeProvider>
+        </LanguageProvider>
         <Analytics />
         <UmamiAnalytics />
       </body>

@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Rocket, Linkedin, Mail, ExternalLink, Heart, MessageSquare, Bug, Terminal } from "lucide-react"
 import { ContactModal } from "@/components/contact-modal"
+import { useLanguage } from "@/components/language-context"
 
 const socialLinks: {
   label: string
@@ -24,6 +25,7 @@ const socialLinks: {
 ]
 
 export function Footer() {
+  const { t } = useLanguage()
   const [modalOpen, setModalOpen] = useState(false)
   const [modalType, setModalType] = useState<"contact" | "bug">("contact")
 
@@ -36,6 +38,7 @@ export function Footer() {
     setModalType("bug")
     setModalOpen(true)
   }
+
   return (
     <footer id="connect" className="border-t border-border/30 px-4 sm:px-6 py-20 sm:py-28">
       <div className="mx-auto max-w-7xl">
@@ -43,14 +46,18 @@ export function Footer() {
           {/* Left column */}
           <div className="space-y-6 sm:space-y-8 animate-fade-in-up">
             <div className="space-y-3">
-              <p className="font-mono text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-primary">Let's Talk</p>
+              <p className="font-mono text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-primary">
+                {t.footer.talkBadge}
+              </p>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-balance">
-                {"Let's create something "}
-                <span className="bg-gradient-to-l from-primary/50 to-accent text-transparent bg-clip-text ">meaningful</span>
+                {t.footer.talkHeadingPrefix}
+                <span className="bg-gradient-to-l from-primary/50 to-accent text-transparent bg-clip-text">
+                  {t.footer.talkHeadingHighlight}
+                </span>
               </h2>
             </div>
             <p className="max-w-md text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Technology is at its best when it serves people. Whether you&apos;re looking for guidance, collaboration, or a fresh perspective, let&apos;s start a conversation.
+              {t.footer.conversation}
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -58,7 +65,7 @@ export function Footer() {
                 href="/introduction"
                 className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-xl border border-primary bg-primary/10 px-6 py-3.5 font-mono text-xs sm:text-sm text-primary transition-all duration-500 hover:text-primary-foreground active:scale-[0.98] w-full sm:w-auto"
               >
-                <span className="relative z-10">more information about me</span>
+                <span className="relative z-10">{t.footer.moreAboutMe}</span>
                 <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">→</span>
                 <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-500 group-hover:translate-x-0" />
               </Link>
@@ -69,7 +76,7 @@ export function Footer() {
                 className="group inline-flex items-center justify-center gap-3 rounded-xl border border-foreground/30 bg-foreground/10 px-6 py-3.5 font-mono text-xs sm:text-sm font-medium text-foreground transition-all duration-300 hover:border-foreground/60 hover:bg-foreground/20 hover:scale-[1.01] active:scale-[0.98] w-full sm:w-auto"
               >
                 <MessageSquare className="h-4 w-4 text-foreground/80 transition-transform duration-300 group-hover:scale-110" />
-                <span>Quick contact</span>
+                <span>{t.footer.quickContact}</span>
               </button>
             </div>
           </div>
@@ -77,7 +84,7 @@ export function Footer() {
           {/* Right column - Links */}
           <div className="space-y-6 lg:text-right animate-fade-in-up stagger-2">
             <p className="font-mono text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-muted-foreground">
-              Find me elsewhere
+              {t.footer.findMeElsewhere}
             </p>
             <div className="space-y-2">
               {socialLinks.map((link, index) => {
@@ -123,9 +130,9 @@ export function Footer() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             </span>
-            <span>Forged with</span>
+            <span>{t.footer.forgedWith}</span>
             <Heart className="h-3.5 w-3.5 text-destructive animate-pulse" />
-            <span>& code</span>
+            <span>{t.footer.andCode}</span>
           </div>
 
           <div className="flex items-center gap-4">
@@ -168,11 +175,11 @@ export function Footer() {
               className="inline-flex items-center gap-1.5 transition-colors hover:text-primary"
             >
               <Bug className="h-3.5 w-3.5" />
-              <span>Report an issue</span>
+              <span>{t.footer.reportIssue}</span>
             </button>
             <span className="hidden sm:inline opacity-30">•</span>
             <p className="text-center sm:text-right">
-              © {new Date().getFullYear()} Martin Lužák — Human heart. Technical logic. AI assisted.
+              © {new Date().getFullYear()} Martin Lužák — {t.footer.copyrightSlogan}
             </p>
           </div>
         </div>

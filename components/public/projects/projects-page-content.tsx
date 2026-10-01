@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 import {
   Briefcase,
   Video,
@@ -13,109 +13,42 @@ import {
   ShieldCheck,
   Zap,
   Play,
-  Radio,
-  Server,
-  Building2,
-  Users,
   ChevronDown,
   ChevronUp,
-} from "lucide-react"
+} from "lucide-react";
+import { useLanguage } from "@/components/language-context";
+import { PROJECTS_DATA } from "@/lib/i18n/dictionaries/projects-data";
 
-// Work & Enterprise Milestones from real career experience
-const enterpriseProjects = [
-  {
-    id: "diatyrnavia",
-    title: "Senior Friendly Award & IT Leadership Support",
-    company: "DIATYRNAVIA NGO",
-    period: "2019 — 2026",
-    type: "Community Tech, Media & Executive Assistance",
-    icon: Users,
-    description:
-      "Direct technical and executive assistant to chairwoman. Managed Microsoft 365 administration, event IT logistics, digital upskilling for seniors, and produced promotional video materials contributing to winning the national Senior Friendly 2023 award.",
-    highlights: [
-      "Continuous digital training and executive IT support for organization leadership.",
-      "Produced multimedia promo materials and managed digital communication.",
-    ],
-    tags: ["Executive Assistance", "M365", "Senior Community", "Video Production"],
-    badge: "🏆 Senior Friendly 2023 Award",
-  },
-  {
-    id: "marlink",
-    title: "Maritime Satellite & Starlink Support",
-    company: "Marlink s.r.o.",
-    period: "2025",
-    type: "Tier 2 Satellite & Enterprise Networks",
-    icon: Radio,
-    description:
-      "Provided critical Tier 2 network and communications technical support for global maritime fleets under strict SLAs. Handled complex communication incidents across hybrid connectivity setups combining VSAT and modern Starlink satellite solutions.",
-    highlights: [
-      "Troubleshot vessel network topologies, VSAT terminals, and Starlink antennas.",
-      "Maintained 24/7 communications reliability under demanding maritime conditions.",
-    ],
-    tags: ["Satellite Networks", "VSAT", "Starlink", "Zabbix", "Network Security"],
-    badge: "🛰️ Hybrid Connectivity",
-  },
-  {
-    id: "dpd",
-    title: "Multi-Country Logistics Monitoring & API Testing",
-    company: "ForesServices / DPD",
-    period: "2024 — 2025",
-    type: "Logistics Infrastructure & API Validation",
-    icon: Server,
-    description:
-      "Proactive system health monitoring (07:00 – 23:00, 7 days/week) and systematic Insomnia API regression testing for DPD courier infrastructure across the Netherlands, Switzerland, Belgium, and Slovakia.",
-    highlights: [
-      "Monitored live server health and alert queues via Zabbix with swift escalation.",
-      "Validated critical API payloads to guarantee continuous logistics parcel flow.",
-    ],
-    tags: ["Zabbix Monitoring", "API Regression Testing", "Insomnia", "High Availability"],
-    badge: "📦 European Logistics",
-  },
-  {
-    id: "rcpc",
-    title: "Banking Terminal Parameters & Euro Transition",
-    company: "Regional Card Processing Centre",
-    period: "2021 — 2023",
-    type: "Financial Technology & High Availability",
-    icon: Building2,
-    description:
-      "End-to-end technical configurations for payment terminals and core banking systems. Key project milestones included Croatia's currency transition (Kuna → Euro) and technical transaction continuity during the Raiffeisen Bank to KBC Group acquisition.",
-    highlights: [
-      "Configured critical banking parameters with zero-downtime tolerance.",
-      "Managed Oracle SQL and MS SQL Server database configurations under strict compliance.",
-    ],
-    tags: ["Banking Systems", "Euro Transition", "Oracle SQL", "MS SQL Server", "Zero-Downtime"],
-    badge: "🏦 Banking Infrastructure",
-  },
-]
-
-type SectionCategory = "all" | "work" | "video" | "web"
+type SectionCategory = "all" | "work" | "video" | "web";
 
 export function ProjectsPageContent() {
-  const [activeTab, setActiveTab] = useState<SectionCategory>("all")
-  const [isWorkExpanded, setIsWorkExpanded] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
-  const workRef = useRef<HTMLDivElement>(null)
-  const videoRef = useRef<HTMLDivElement>(null)
-  const webRef = useRef<HTMLDivElement>(null)
+  const { locale } = useLanguage();
+  const data = PROJECTS_DATA[locale] || PROJECTS_DATA.en;
+
+  const [activeTab, setActiveTab] = useState<SectionCategory>("all");
+  const [isWorkExpanded, setIsWorkExpanded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const workRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLDivElement>(null);
+  const webRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setIsVisible(true)
-  }, [])
+    setIsVisible(true);
+  }, []);
 
   const scrollToSection = (tab: SectionCategory) => {
-    setActiveTab(tab)
+    setActiveTab(tab);
     if (tab === "work") {
-      setIsWorkExpanded(true)
+      setIsWorkExpanded(true);
       setTimeout(() => {
-        workRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
-      }, 50)
+        workRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
     } else if (tab === "video" && videoRef.current) {
-      videoRef.current.scrollIntoView({ behavior: "smooth", block: "start" })
+      videoRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     } else if (tab === "web" && webRef.current) {
-      webRef.current.scrollIntoView({ behavior: "smooth", block: "start" })
+      webRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }
+  };
 
   return (
     <section className="px-4 sm:px-6 py-12 sm:py-20">
@@ -124,13 +57,13 @@ export function ProjectsPageContent() {
         <div className={cn("space-y-6 opacity-0", isVisible && "animate-fade-in-up")}>
           <div className="space-y-3">
             <p className="font-mono text-xs uppercase tracking-[0.25em] sm:tracking-[0.35em] text-primary">
-              Portfolio &amp; Impact
+              {data.header.badge}
             </p>
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-balance">
-              My Successful Projects
+              {data.header.title}
             </h1>
             <p className="max-w-3xl text-base sm:text-lg text-muted-foreground leading-relaxed">
-              A showcase of enterprise IT troubleshooting, high-impact non-profit platforms, educational video production, and modern web applications.
+              {data.header.description}
             </p>
           </div>
 
@@ -142,10 +75,10 @@ export function ProjectsPageContent() {
                 "rounded-xl border px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all duration-300 active:scale-[0.98]",
                 activeTab === "all"
                   ? "border-primary bg-primary/15 text-primary shadow-sm shadow-primary/20"
-                  : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground hover:bg-secondary/40",
+                  : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground hover:bg-secondary/40"
               )}
             >
-              All Pillars
+              {data.tabs.all}
             </button>
             <button
               onClick={() => scrollToSection("web")}
@@ -153,11 +86,11 @@ export function ProjectsPageContent() {
                 "inline-flex items-center gap-2 rounded-xl border px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all duration-300 active:scale-[0.98]",
                 activeTab === "web"
                   ? "border-primary bg-primary/15 text-primary shadow-sm shadow-primary/20"
-                  : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground hover:bg-secondary/40",
+                  : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground hover:bg-secondary/40"
               )}
             >
               <Globe className="h-3.5 w-3.5" />
-              <span>Web Platforms</span>
+              <span>{data.tabs.web}</span>
             </button>
             <button
               onClick={() => scrollToSection("work")}
@@ -165,11 +98,11 @@ export function ProjectsPageContent() {
                 "inline-flex items-center gap-2 rounded-xl border px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all duration-300 active:scale-[0.98]",
                 activeTab === "work"
                   ? "border-primary bg-primary/15 text-primary shadow-sm shadow-primary/20"
-                  : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground hover:bg-secondary/40",
+                  : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground hover:bg-secondary/40"
               )}
             >
               <Briefcase className="h-3.5 w-3.5" />
-              <span>Work &amp; Enterprise</span>
+              <span>{data.tabs.work}</span>
             </button>
             <button
               onClick={() => scrollToSection("video")}
@@ -177,11 +110,11 @@ export function ProjectsPageContent() {
                 "inline-flex items-center gap-2 rounded-xl border px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all duration-300 active:scale-[0.98]",
                 activeTab === "video"
                   ? "border-primary bg-primary/15 text-primary shadow-sm shadow-primary/20"
-                  : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground hover:bg-secondary/40",
+                  : "border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground hover:bg-secondary/40"
               )}
             >
               <Video className="h-3.5 w-3.5" />
-              <span>Video Production</span>
+              <span>{data.tabs.video}</span>
             </button>
           </div>
         </div>
@@ -194,11 +127,13 @@ export function ProjectsPageContent() {
             <div className="space-y-1 border-b border-border/50 pb-5">
               <div className="inline-flex items-center gap-2 font-mono text-xs text-primary uppercase tracking-wider font-semibold">
                 <Globe className="h-4 w-4" />
-                <span>Pillar 01 • Flagship Web Platform</span>
+                <span>{data.pillar1.badge}</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Web Platforms &amp; Civic Innovation</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+                {data.pillar1.title}
+              </h2>
               <p className="text-sm text-muted-foreground max-w-xl">
-                Independent digital utilities and open-access software engineered for global scale, high reliability, and real human impact.
+                {data.pillar1.subtitle}
               </p>
             </div>
 
@@ -211,58 +146,57 @@ export function ProjectsPageContent() {
                   </div>
                   <div>
                     <div className="inline-flex items-center gap-2 flex-wrap">
-                      <span className="font-mono text-xs uppercase tracking-wider text-primary font-bold">Featured Platform</span>
+                      <span className="font-mono text-xs uppercase tracking-wider text-primary font-bold">
+                        {data.pillar1.featuredBadge}
+                      </span>
                       <span className="rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-0.5 text-[10px] font-mono">
-                        🏆 WSA 2026 Nominee
+                        {data.pillar1.nomineeBadge}
                       </span>
                       <span className="rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 text-[10px] font-mono">
-                        101 Languages • 252 Regions
+                        {data.pillar1.languagesBadge}
                       </span>
                     </div>
                     <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground mt-0.5">
-                      Why You Matter: Open-Access Civic Health Utility
+                      {data.pillar1.platformTitle}
                     </h3>
                   </div>
                 </div>
 
                 <div className="font-mono text-xs text-muted-foreground bg-secondary/50 px-3 py-1.5 rounded-xl border border-border/50">
-                  Founder, Architect &amp; Lead Engineer
+                  {data.pillar1.role}
                 </div>
               </div>
 
               <div className="grid gap-6 lg:grid-cols-12">
                 <div className="lg:col-span-7 space-y-4">
                   <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
-                    Developed under the personal motto <strong className="text-foreground">„Where Logic Meets Humanity“</strong>. An open-access, zero-tracking digital lifeline engineered to deliver immediate psychological first aid, somatic de-escalation, and verified crisis helplines across 252 countries and territories in 101 languages. Fusing 7+ years of non-profit community leadership (DIATYRNAVIA / Senior Friendly 2023 award) and psychology studies with modern software engineering.
+                    {data.pillar1.story}
                   </p>
 
                   <div className="space-y-3">
                     <h4 className="font-mono text-xs uppercase tracking-wider text-primary font-semibold">
-                      Key Technical &amp; Humanitarian Achievements:
+                      {data.pillar1.achievementsTitle}
                     </h4>
                     <ul className="space-y-2.5 text-xs sm:text-sm text-muted-foreground">
                       <li className="flex items-start gap-2.5">
                         <ShieldCheck className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                         <span>
-                          <strong className="text-foreground">100% Non-Profit &amp; Zero-Data Monetization:</strong> Strict privacy-first architecture with zero authentication, zero cookies, zero user tracking, and no paywalls.
+                          <strong className="text-foreground">{data.pillar1.achievement1Title}</strong>{" "}
+                          {data.pillar1.achievement1Desc}
                         </span>
                       </li>
                       <li className="flex items-start gap-2.5">
                         <Globe className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                         <span>
-                          <strong className="text-foreground">101 Languages &amp; 252 Territories:</strong> The world's most extensive open crisis directory, bridging the linguistic and digital divide for refugees, migrants, and marginalized groups.
+                          <strong className="text-foreground">{data.pillar1.achievement2Title}</strong>{" "}
+                          {data.pillar1.achievement2Desc}
                         </span>
                       </li>
                       <li className="flex items-start gap-2.5">
                         <Zap className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                         <span>
-                          <strong className="text-foreground">Safety by Design &amp; Disguise Mode:</strong> Instant 1-click screen camouflage protecting victims of domestic violence from exposure, paired with interactive 4-7-8 breathing and 5-4-3-2-1 grounding.
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2.5">
-                        <Users className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                        <span>
-                          <strong className="text-foreground">Franklian Logotherapy &amp; Resilience Hub:</strong> 15 historical figures and cognitive sublimation matrix transforming inner pain into enduring purpose.
+                          <strong className="text-foreground">{data.pillar1.achievement3Title}</strong>{" "}
+                          {data.pillar1.achievement3Desc}
                         </span>
                       </li>
                     </ul>
@@ -271,7 +205,9 @@ export function ProjectsPageContent() {
 
                 <div className="lg:col-span-5 flex flex-col justify-between rounded-2xl border border-border/70 bg-card/60 p-6 space-y-5">
                   <div className="space-y-3">
-                    <div className="font-mono text-xs text-primary font-semibold uppercase tracking-wider">Architecture &amp; Tech Stack</div>
+                    <div className="font-mono text-xs text-primary font-semibold uppercase tracking-wider">
+                      {data.pillar1.techStackTitle}
+                    </div>
                     <div className="flex flex-wrap gap-1.5">
                       {[
                         "Next.js 15 (App Router)",
@@ -298,7 +234,7 @@ export function ProjectsPageContent() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-xl border border-primary bg-primary px-5 py-2.5 font-mono text-xs font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                     >
-                      <span>Visit Why-You-Matter.org</span>
+                      <span>{data.pillar1.visitLiveBtn}</span>
                       <ExternalLink className="h-3.5 w-3.5" />
                     </a>
                   </div>
@@ -319,13 +255,13 @@ export function ProjectsPageContent() {
                 <div className="space-y-1">
                   <div className="inline-flex items-center gap-2 font-mono text-xs text-primary uppercase tracking-wider font-semibold">
                     <Briefcase className="h-4 w-4" />
-                    <span>Pillar 02 • Enterprise &amp; Work History</span>
+                    <span>{data.pillar2.badge}</span>
                   </div>
                   <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
-                    Work &amp; Enterprise Milestones
+                    {data.pillar2.title}
                   </h2>
                   <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl">
-                    Satellite network operations, high-availability European logistics, and zero-downtime banking system parameters.
+                    {data.pillar2.subtitle}
                   </p>
                 </div>
 
@@ -334,7 +270,7 @@ export function ProjectsPageContent() {
                     onClick={() => setIsWorkExpanded(!isWorkExpanded)}
                     className="inline-flex items-center gap-2 rounded-xl border border-primary/40 bg-primary/10 px-4 py-2.5 font-mono text-xs font-medium text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground active:scale-[0.98]"
                   >
-                    <span>{isWorkExpanded ? "Hide Highlights" : "Show 4 Enterprise Highlights"}</span>
+                    <span>{isWorkExpanded ? data.pillar2.collapseBtn : data.pillar2.expandBtn}</span>
                     {isWorkExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                   </button>
 
@@ -342,7 +278,7 @@ export function ProjectsPageContent() {
                     href="/introduction"
                     className="inline-flex items-center gap-2 rounded-xl border border-border/70 bg-card/60 px-4 py-2.5 font-mono text-xs text-muted-foreground transition-all duration-300 hover:border-primary/40 hover:text-foreground active:scale-[0.98]"
                   >
-                    <span>Full CV in About Me</span>
+                    <span>About Me</span>
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
@@ -357,7 +293,7 @@ export function ProjectsPageContent() {
                     <span className="rounded bg-secondary/60 px-2 py-0.5">DPD (Insomnia API &amp; Zabbix)</span>
                     <span className="rounded bg-secondary/60 px-2 py-0.5">RCPC (Banking &amp; Euro Transition)</span>
                   </div>
-                  <span className="font-mono text-[11px] text-primary/80">Click to expand 4 details ▾</span>
+                  <span className="font-mono text-[11px] text-primary/80">▾</span>
                 </div>
               )}
             </div>
@@ -366,8 +302,8 @@ export function ProjectsPageContent() {
             {isWorkExpanded && (
               <div className="space-y-8 animate-fade-in-up">
                 <div className="grid gap-6 md:grid-cols-2">
-                  {enterpriseProjects.map((project) => {
-                    const IconComponent = project.icon
+                  {data.pillar2.projects.map((project) => {
+                    const IconComponent = project.icon;
                     return (
                       <div
                         key={project.id}
@@ -425,7 +361,7 @@ export function ProjectsPageContent() {
                           ))}
                         </div>
                       </div>
-                    )
+                    );
                   })}
                 </div>
 
@@ -434,9 +370,9 @@ export function ProjectsPageContent() {
                   <div className="space-y-2 text-center sm:text-left">
                     <div className="flex items-center justify-center sm:justify-start gap-2 font-mono text-xs uppercase tracking-wider text-primary font-semibold">
                       <Sparkles className="h-4 w-4" />
-                      <span>Deep Dive Career Path</span>
+                      <span>{data.pillar2.title}</span>
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-bold">Want to see all 6 positions, responsibilities &amp; verified awards?</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold">Want to see all career positions, responsibilities &amp; verified awards?</h3>
                     <p className="text-sm text-muted-foreground max-w-xl">
                       Explore full timelines, verified links, technology stacks, and key milestones in my career introduction.
                     </p>
@@ -446,7 +382,7 @@ export function ProjectsPageContent() {
                     href="/introduction"
                     className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-xl border border-primary bg-primary px-7 py-3.5 font-mono text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shrink-0"
                   >
-                    <span>Read more in Work Experience</span>
+                    <span>{data.cta.aboutBtn}</span>
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -463,11 +399,13 @@ export function ProjectsPageContent() {
             <div className="space-y-1 border-b border-border/50 pb-5">
               <div className="inline-flex items-center gap-2 font-mono text-xs text-primary uppercase tracking-wider font-semibold">
                 <Video className="h-4 w-4" />
-                <span>Pillar 03 • Media &amp; Storytelling</span>
+                <span>{data.pillar3.badge}</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Video Production &amp; Education</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+                {data.pillar3.title}
+              </h2>
               <p className="text-sm text-muted-foreground max-w-xl">
-                Crafting engaging educational videos, technical tutorials, and multimedia stories that make complex concepts easy to understand.
+                {data.pillar3.subtitle}
               </p>
             </div>
 
@@ -490,42 +428,33 @@ export function ProjectsPageContent() {
               <div className="lg:col-span-5 space-y-5">
                 <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3.5 py-1 text-xs font-mono text-primary font-medium">
                   <Play className="h-3.5 w-3.5 fill-primary" />
-                  <span>Educational &amp; Explainer Videos</span>
+                  <span>{data.pillar3.card1Badge}</span>
                 </div>
 
                 <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
-                  Simplifying Technology Through Visual Storytelling
+                  {data.pillar3.card1Title}
                 </h3>
 
                 <p className="text-sm leading-relaxed text-muted-foreground">
-                  I believe that the best technical knowledge is knowledge that anyone can understand. Through clear structure, pacing, screen recordings, and precise editing, I produce content tailored for learners, seniors, and tech enthusiasts.
+                  {data.pillar3.card1Desc}
                 </p>
 
                 <div className="space-y-3 pt-2">
                   <div className="rounded-xl border border-border/60 bg-card/40 p-3.5 glass space-y-1">
                     <div className="font-semibold text-sm text-foreground flex items-center gap-2">
-                      <span className="text-primary">✦</span> Educational Walkthroughs
+                      <span className="text-primary">✦</span> {data.pillar3.card2Title}
                     </div>
                     <p className="text-xs text-muted-foreground">
-                      Step-by-step guides breaking down digital tools, setups, and workflows.
+                      {data.pillar3.card2Desc}
                     </p>
                   </div>
 
                   <div className="rounded-xl border border-border/60 bg-card/40 p-3.5 glass space-y-1">
                     <div className="font-semibold text-sm text-foreground flex items-center gap-2">
-                      <span className="text-primary">✦</span> Community &amp; Non-Profit Media
+                      <span className="text-primary">✦</span> {data.pillar3.card3Title}
                     </div>
                     <p className="text-xs text-muted-foreground">
-                      Promotional videos and event documentation for community awareness and health initiatives.
-                    </p>
-                  </div>
-
-                  <div className="rounded-xl border border-border/60 bg-card/40 p-3.5 glass space-y-1">
-                    <div className="font-semibold text-sm text-foreground flex items-center gap-2">
-                      <span className="text-primary">✦</span> Post-Production &amp; Editing
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      Crisp pacing, audio balancing, motion callouts, and clean subtitles for maximum accessibility.
+                      {data.pillar3.card3Desc}
                     </p>
                   </div>
                 </div>
@@ -535,5 +464,5 @@ export function ProjectsPageContent() {
         )}
       </div>
     </section>
-  )
+  );
 }

@@ -7,14 +7,10 @@ import { Rocket, Linkedin, Mail, Search } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 import { ThemeChanger } from "./theme-changer"
 import { SearchDialog } from "./search-dialog"
+import { LanguageSwitcher } from "./language-switcher"
+import { useLanguage } from "./language-context"
 import Link from "next/link"
 import Image from "next/image"
-
-const navItems = [
-  { label: "Home", href: "/" },
-  { label: "About me", href: "/introduction" },
-  { label: "Projects", href: "/projects" },
-]
 
 const socialLinks: {
   label: string
@@ -34,6 +30,13 @@ export function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isMac, setIsMac] = useState(true)
   const pathname = usePathname()
+  const { t } = useLanguage()
+
+  const navItems = [
+    { label: t.nav.home, href: "/" },
+    { label: t.nav.about, href: "/introduction" },
+    { label: t.nav.projects, href: "/projects" },
+  ]
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/"
@@ -97,7 +100,7 @@ export function Header() {
           <div className="hidden items-center gap-1 md:flex">
             {navItems.map((item, index) => (
               <Link
-                key={item.label}
+                key={item.href}
                 href={item.href}
                 className={cn(
                   "relative px-4 py-2.5 font-mono text-xs uppercase tracking-widest transition-all duration-300 rounded-lg",
@@ -148,13 +151,13 @@ export function Header() {
             <button
               type="button"
               onClick={() => setIsSearchOpen(true)}
-              aria-label="Search website"
-              title={`Search (${isMac ? "⌘K" : "Ctrl+K"})`}
+              aria-label={t.nav.search}
+              title={`${t.nav.search} (${isMac ? "⌘K" : "Ctrl+K"})`}
               className="group relative flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-all duration-300 hover:text-primary hover:bg-primary/10 active:scale-95"
             >
               <Search className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
               <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-card border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:-bottom-9 pointer-events-none shadow-lg">
-                Search {isMac ? "⌘K" : "Ctrl+K"}
+                {t.nav.search} {isMac ? "⌘K" : "Ctrl+K"}
               </span>
             </button>
 
@@ -181,12 +184,9 @@ export function Header() {
 
             <div className="hidden h-5 w-px bg-border sm:block" />
 
-            <div className="hidden items-center gap-2.5 font-mono text-xs text-muted-foreground sm:flex px-3 py-1.5 rounded-full bg-secondary/50 border border-border/50">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-              </span>
-              <span>status: building</span>
+            {/* Desktop Language Switcher */}
+            <div className="hidden sm:block">
+              <LanguageSwitcher />
             </div>
 
             <button
@@ -222,13 +222,13 @@ export function Header() {
         <div
           className={cn(
             "transition-all duration-400 md:hidden bg-background overflow-hidden",
-            isMobileMenuOpen ? "max-h-96 opacity-100 pt-4 pointer-events-auto" : "max-h-0 opacity-0 pointer-events-none",
+            isMobileMenuOpen ? "max-h-[500px] opacity-100 pt-4 pointer-events-auto" : "max-h-0 opacity-0 pointer-events-none",
           )}
         >
           <div className="flex flex-col gap-1 border-t border-border/50 pt-4">
             {navItems.map((item, index) => (
               <Link
-                key={item.label}
+                key={item.href}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="flex items-center gap-3 rounded-lg px-4 py-3.5 font-mono text-sm uppercase tracking-widest text-muted-foreground transition-all duration-200 active:bg-secondary hover:text-foreground hover:bg-secondary/50"
@@ -265,12 +265,9 @@ export function Header() {
               </div>
             </div>
 
-            <div className="mt-3 flex items-center gap-2.5 px-4 py-3 font-mono text-xs text-muted-foreground bg-secondary/30 rounded-lg mx-4 mb-2">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-              </span>
-              <span>status: building</span>
+            {/* Mobile Language Switcher */}
+            <div className="mt-3 px-4 pb-3">
+              <LanguageSwitcher variant="mobile" />
             </div>
           </div>
         </div>

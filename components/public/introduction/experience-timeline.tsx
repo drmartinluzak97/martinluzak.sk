@@ -7,163 +7,17 @@ import {
   Sparkles,
   ExternalLink,
   ChevronDown,
-  ChevronUp,
   Layers,
 } from "lucide-react";
-
-export interface ExperienceItem {
-  id: number;
-  title: string;
-  company: string;
-  period: string;
-  type: string;
-  description: string;
-  highlights: string[];
-  milestone?: {
-    badge: string;
-    text: string;
-    link?: string;
-    linkText?: string;
-    lang?: string;
-  };
-  tags: string[];
-}
-
-const experiencesData: ExperienceItem[] = [
-  {
-    id: 0,
-    title: "Nonprofit Assistant — Humans & IT",
-    company: "Zväz diabetikov Slovenska - DIATYRNAVIA",
-    period: "Feb 2019 — Aug 2026",
-    type: "Long-term Community & IT Support",
-    description:
-      "Direct executive and technical assistant to the chairwoman. Providing continuous IT education and administrative support to leadership, co-organizing community events with heavy senior participation, managing M365 systems, and producing promotional video materials.",
-    highlights: [
-      "Provided comprehensive direct support and continuous digital upskilling to the chairwoman in daily leadership workflows.",
-      "Co-organized large community gatherings and health awareness events tailored predominantly for seniors.",
-      "Managed Microsoft 365 administration, event IT logistics, and video production.",
-    ],
-    milestone: {
-      badge: "🏆 Award Milestone",
-      text: "Contributed to achieving the national Senior Friendly 2023 award through dedicated executive assistance to the chairwoman and organizing community events supporting seniors.",
-      link: "https://www.seniorfriendly.sk/news/showNew/ocenenia-sf-2023",
-      linkText: "Senior Friendly 2023 Award",
-      lang: "🇸🇰 SVK",
-    },
-    tags: ["Leadership Support", "Senior Community", "M365", "Windows Admin", "Video Production"],
-  },
-  {
-    id: 1,
-    title: "Technical Network Support Engineer",
-    company: "Marlink s.r.o.",
-    period: "Jun 2025 — Dec 2025",
-    type: "Maritime Satellite & Enterprise Networks",
-    description:
-      "Provided critical Tier 2 network and communications technical support for global maritime customers (vessel captains, onboard field engineers) via ticketing and live phone assistance under mission-critical SLA.",
-    highlights: [
-      "Troubleshot complex maritime satellite networks, VSAT systems, and onboard routers.",
-      "Monitored live network infrastructure and maintained high communication security.",
-      "Delivered calm, precise technical solutions under high-pressure maritime operational conditions.",
-    ],
-    milestone: {
-      badge: "🛰️ Hybrid VSAT & Starlink Support",
-      text: "Provided dedicated Tier 2 technical network support for global maritime fleets, addressing complex communication incidents across hybrid connectivity setups combining traditional VSAT with modern Starlink satellite solutions.",
-      link: "https://marlink.com/resources/knowledge-hub/starlink-and-marlink/",
-      linkText: "Marlink Starlink Integration",
-      lang: "🌐 EN",
-    },
-    tags: ["Technical Support", "Maritime VSAT", "Starlink Solutions", "Zabbix", "SQL Telemetry", "Network Security"],
-  },
-  {
-    id: 2,
-    title: "System Health Engineer & Tester",
-    company: "ForesServices, s. r. o.",
-    period: "Sep 2024 — Apr 2025",
-    type: "Logistics Infrastructure & API Testing",
-    description:
-      "Monitored high-volume system health and applications for DPD courier infrastructure across multiple European countries (NL, CH, BE, SK). Conducted systematic API validation and regression testing.",
-    highlights: [
-      "Monitored server health, service availability, and alert queues via Zabbix.",
-      "Executed API endpoint testing and payload inspection using Insomnia.",
-      "Ensured maximum uptime and swift incident escalation for logistics pipelines.",
-    ],
-    milestone: {
-      badge: "📦 Multi-Country Logistics Monitoring",
-      text: "Maintained proactive Zabbix system health monitoring (operating 07:00 – 23:00, 7 days a week) and Insomnia API regression testing for DPD courier infrastructure across the Netherlands, Switzerland, Belgium, and Slovakia.",
-      link: "https://www.fores.group/case-studies-logistics-dpd/",
-      linkText: "Fores & DPD Case Study",
-      lang: "🌐 EN",
-    },
-    tags: ["Zabbix Monitoring", "API Testing", "Insomnia", "DPD Logistics", "Shift Operations (7-23)", "System Health"],
-  },
-  {
-    id: 3,
-    title: "Banking Implementation Specialist",
-    company: "Regional Card Processing Centre, s. r. o.",
-    period: "Mar 2021 — Mar 2023",
-    type: "Financial Technology & High Availability",
-    description:
-      "Executed end-to-end implementation of banking products and application parameter changes. Maintained zero-downtime reliability according to strict financial and security installation criteria.",
-    highlights: [
-      "Configured sensitive technical parameters for banking terminals and card processing apps.",
-      "Collaborated with compliance and banking engineers to guarantee operational integrity.",
-      "Managed Oracle and MS SQL Server database configurations.",
-    ],
-    milestone: {
-      badge: "🏦 Selected Project Milestones",
-      text: "Delivered technical parameter configurations across a variety of banking projects, including notable examples such as Croatia's currency transition (Kuna → Euro) and technical transaction continuity during the Raiffeisen Bank to KBC Group acquisition.",
-      link: "https://newsroom.kbc.com/kbc-completes-acquisition-of-raiffeisen-bank-internationals-bulgarian-operations",
-      linkText: "KBC Raiffeisen Acquisition",
-      lang: "🌐 Global",
-    },
-    tags: ["Banking Systems", "Euro Transition", "Oracle SQL", "MS SQL Server", "High Availability", "Strict Compliance"],
-  },
-  {
-    id: 4,
-    title: "Customers Network Support Specialist",
-    company: "SWAN, a.s.",
-    period: "Mar 2020 — Feb 2021",
-    type: "Telecommunications & Tier 2 Support",
-    description:
-      "Delivered Tier 2 network troubleshooting and customer support via phone, email, and written requests for customers experiencing complex internet, IPTV, and telephony issues.",
-    highlights: [
-      "Diagnosed routing, DNS, optical line, and modem configuration issues.",
-      "Bridged complex ISP network diagnostics into plain, reassuring customer guidance.",
-    ],
-    milestone: {
-      badge: "🛡️ COVID-19 Critical Infrastructure",
-      text: "Maintained vital network uptime during the onset of the pandemic when schools closed nationwide — within just 10 days of lockdown, primary, middle, and high schools as well as universities fully relied on home connectivity for mandatory distance education.",
-      link: "https://kafkadeskdotorg.wordpress.com/2020/05/29/lessons-learned-in-slovakias-education-lockdown/",
-      linkText: "Slovakia Lockdown Context",
-      lang: "🌐 EN",
-    },
-    tags: ["Telecommunications", "Tier 2 Support", "COVID-19 Continuity", "Routing & Switching", "IPTV"],
-  },
-  {
-    id: 5,
-    title: "Manual Tester & Client Trainer",
-    company: "KASO TECHNOLOGIES, s. r. o.",
-    period: "Dec 2018 — May 2019",
-    type: "POS & ERP Systems",
-    description:
-      "Tested integrated software and hardware products, specifically self-service checkouts and ERP software suites. Conducted customized, hands-on technical training sessions for retail clients.",
-    highlights: [
-      "Executed comprehensive test cases on self-service POS checkout hardware and software.",
-      "Trained non-technical retail staff on point-of-sale workflows and troubleshooting.",
-    ],
-    milestone: {
-      badge: "🛒 eKasa Reform & POS Testing",
-      text: "Alongside continuous ERP and POS testing, one of the key milestones was implementing and validating self-service checkout systems during the Slovak legislative reform from legacy fiscal printers to online eKasa.",
-      link: "https://marosavat.com/vat-news/slovakia-full-ekasa-obligation-january-2026",
-      linkText: "Slovakia eKasa Reform",
-      lang: "🌐 EN",
-    },
-    tags: ["Manual Testing", "eKasa Reform", "ERP Systems", "Self-Service POS", "Client Training"],
-  },
-];
+import { useLanguage } from "@/components/language-context";
+import { INTRO_DATA } from "@/lib/i18n/dictionaries/introduction-data";
 
 export function ExperienceTimeline() {
-  // First item (DIATYRNAVIA, id: 0) is expanded by default, others collapsed
+  const { locale } = useLanguage();
+  const data = INTRO_DATA[locale] || INTRO_DATA.en;
+  const experiences = data.experiences;
+
+  // First item (id: 0) is expanded by default, others collapsed
   const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>({
     0: true,
   });
@@ -175,14 +29,14 @@ export function ExperienceTimeline() {
     }));
   };
 
-  const allExpanded = experiencesData.every((exp) => expandedItems[exp.id]);
+  const allExpanded = experiences.every((exp) => expandedItems[exp.id]);
 
   const toggleAll = () => {
     if (allExpanded) {
       setExpandedItems({ 0: true });
     } else {
       const all: Record<number, boolean> = {};
-      experiencesData.forEach((exp) => {
+      experiences.forEach((exp) => {
         all[exp.id] = true;
       });
       setExpandedItems(all);
@@ -194,7 +48,7 @@ export function ExperienceTimeline() {
       {/* Header controls: Counter & Expand/Collapse All */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border/40 pb-4">
         <div className="font-mono text-xs text-muted-foreground">
-          Showing <span className="text-foreground font-semibold">6 career positions</span> (2018 — Present)
+          Showing <span className="text-foreground font-semibold">{experiences.length} career positions</span> (2018 — Present)
         </div>
 
         <button
@@ -208,7 +62,7 @@ export function ExperienceTimeline() {
 
       {/* Timeline List */}
       <div className="relative space-y-6 before:absolute before:inset-0 before:left-4 sm:before:left-6 before:h-full before:w-0.5 before:bg-border/60">
-        {experiencesData.map((exp, index) => {
+        {experiences.map((exp, index) => {
           const isExpanded = !!expandedItems[exp.id];
 
           return (
@@ -247,7 +101,6 @@ export function ExperienceTimeline() {
                       <h3 className="text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors">
                         {exp.title}
                       </h3>
-                      
                     </div>
                     <div className="font-mono text-xs sm:text-sm font-medium text-primary">
                       {exp.company}
