@@ -36,6 +36,14 @@ export const SEARCH_ITEMS: SearchItem[] = [
     keywords: ["portfolio", "work", "apps", "code", "side projects"],
   },
   {
+    id: "app-time2go",
+    title: "time2go",
+    description: "Public transport journey planner for Central Europe (SK, CZ, HU, PL, AT)",
+    category: "Navigation",
+    href: "/apps/time2go",
+    keywords: ["time2go", "transport", "train", "bus", "timetable", "app", "cestovné poriadky", "vlak"],
+  },
+  {
     id: "nav-certs",
     title: "Certificates & Badges",
     description: "Verified global credentials in Agile, Project Management, and Negotiation",
