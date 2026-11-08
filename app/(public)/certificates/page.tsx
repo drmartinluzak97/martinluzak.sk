@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://martinluzak.sk";
 
 export const metadata: Metadata = {
-  title: "Verified Certificates & Credentials — Martin Lužák",
+  title: "Verified Certificates & Credentials",
   description:
     "Explore 29 verified certificates and credentials in Agile Project Management, Negotiation, ITIL® 4, Computer Networks, Cybersecurity, AI Management, and Creative Media.",
   keywords: [

@@ -49,6 +49,7 @@ const nextConfig = {
               "img-src 'self' data: blob: https://*",
               "font-src 'self' data: https://fonts.gstatic.com",
               "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.vercel-analytics.com https://*.vercel.app https://*.ingest.sentry.io https://*.sentry.io https://*.umami.is https://cloud.umami.is https://*.supabase.co",
+              "frame-src https://www.youtube.com https://www.youtube-nocookie.com",
               "worker-src 'self' blob:",
               "frame-ancestors 'none'",
               "form-action 'self'",

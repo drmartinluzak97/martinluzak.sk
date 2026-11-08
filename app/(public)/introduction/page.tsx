@@ -2,7 +2,7 @@ import { IntroductionContent } from "@/components/public/introduction/introducti
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Me & CV — Martin Lužák",
+  title: "About Me & CV",
   description:
     "Professional background, work experience, certifications, and philosophy of Martin Lužák — combining technical precision with human empathy.",
   alternates: {
