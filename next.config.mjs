@@ -84,6 +84,16 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/projects",
+        destination: "/apps",
+        permanent: true,
+      },
+      {
+        source: "/projects/:path*",
+        destination: "/apps/:path*",
+        permanent: true,
+      },
+      {
         source: "/index",
         destination: "/",
         permanent: true,
@@ -105,12 +115,12 @@ const nextConfig = {
       },
       {
         source: "/it/project",
-        destination: "/projects",
+        destination: "/apps",
         permanent: true,
       },
       {
         source: "/it/projects",
-        destination: "/projects",
+        destination: "/apps",
         permanent: true,
       },
       {

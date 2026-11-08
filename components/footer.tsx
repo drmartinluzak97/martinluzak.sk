@@ -17,9 +17,9 @@ const socialLinks: {
   { label: "Email", href: "mailto:hello@martinluzak.sk", handle: "hello@martinluzak.sk", icon: Mail },
   {
     label: "Projects",
-    hoverLabel: "My side projects",
-    href: "/projects",
-    handle: "/projects",
+    hoverLabel: "Things I've built",
+    href: "/apps",
+    handle: "/apps",
     icon: Rocket,
   },
 ]

@@ -12,14 +12,14 @@ export const en: PortfolioDictionary = {
     "search": "Search",
     "searchPlaceholder": "Search posts, projects, certificates...",
     "aboutMeCV": "about me / CV",
-    "mySideProjects": "my side projects"
+    "mySideProjects": "things I've built"
   },
   "hero": {
     "greeting": "Hello, I'm Martin",
     "tagline": "Where Logic Meets Humanity",
     "description": "From troubleshooting mission-critical networks and banking systems to mentoring people in everyday digital skills. I combine deep technical problem-solving with empathy, ensuring technology works seamlessly for the humans who rely on it.",
     "ctaAbout": "about me / CV",
-    "ctaProjects": "my side projects",
+    "ctaProjects": "things I've built",
     "cardStatus": "Open to Opportunities (2026)",
     "cardLocation": "Vienna, Austria / Remote Worldwide",
     "cardRole": "People & Technology | IT Support & Training",

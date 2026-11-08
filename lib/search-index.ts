@@ -32,7 +32,7 @@ export const SEARCH_ITEMS: SearchItem[] = [
     title: "Projects & Side Work",
     description: "Enterprise milestones, side projects, video editing, and web applications",
     category: "Navigation",
-    href: "/projects",
+    href: "/apps",
     keywords: ["portfolio", "work", "apps", "code", "side projects"],
   },
   {
@@ -74,7 +74,7 @@ export const SEARCH_ITEMS: SearchItem[] = [
     title: "Marlink — Maritime Satellite & Starlink Support",
     description: "Tier 2 enterprise satellite networks, VSAT terminal debugging, and Starlink fleet operations",
     category: "Experience",
-    href: "/projects#marlink",
+    href: "/apps#marlink",
     keywords: ["satellite", "starlink", "vsat", "maritime", "networking", "tier 2", "sla", "router"],
   },
   {
@@ -82,7 +82,7 @@ export const SEARCH_ITEMS: SearchItem[] = [
     title: "ForesServices / DPD — Logistics Monitoring & API Testing",
     description: "Zabbix system health monitoring across 4 European countries and Insomnia regression testing",
     category: "Experience",
-    href: "/projects#dpd",
+    href: "/apps#dpd",
     keywords: ["dpd", "zabbix", "monitoring", "api", "insomnia", "logistics", "servers"],
   },
   {
@@ -90,7 +90,7 @@ export const SEARCH_ITEMS: SearchItem[] = [
     title: "RCPC — Banking Terminals & Croatia Euro Transition",
     description: "High-availability payment terminals, Oracle SQL configurations, and Raiffeisen to KBC acquisition",
     category: "Experience",
-    href: "/projects#rcpc",
+    href: "/apps#rcpc",
     keywords: ["banking", "kbc", "raiffeisen", "oracle", "sql", "euro", "pos terminals"],
   },
   {
@@ -98,7 +98,7 @@ export const SEARCH_ITEMS: SearchItem[] = [
     title: "DIATYRNAVIA — Senior Friendly 2023 Award",
     description: "M365 administration, digital skills enablement for seniors, and national award-winning media production",
     category: "Experience",
-    href: "/projects#diatyrnavia",
+    href: "/apps#diatyrnavia",
     keywords: ["senior friendly", "award", "m365", "ngo", "executive assistant", "video"],
   },
 

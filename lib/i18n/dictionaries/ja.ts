@@ -12,14 +12,14 @@ export const ja: PortfolioDictionary = {
     "search": "検索",
     "searchPlaceholder": "記事、プロジェクト、資格を検索...",
     "aboutMeCV": "自己紹介 / 職務経歴書",
-    "mySideProjects": "サイドプロジェクト"
+    "mySideProjects": "作ったもの"
   },
   "hero": {
     "greeting": "こんにちは、マーティンです",
     "tagline": "技術的論理と人間的共感の交差点",
     "description": "基幹ネットワークや金融システムの障害対応から、人々の日常的なITスキル向上研修まで。確かな技術力と思いやりを融合し、テクノロジーが人々の生活を確実に支えるよう尽力しています。",
     "ctaAbout": "自己紹介 / 経歴書",
-    "ctaProjects": "サイドプロジェクト",
+    "ctaProjects": "作ったもの",
     "cardStatus": "新しい機会を歓迎 (2026)",
     "cardLocation": "ウィーン、オーストリア / リモート対応",
     "cardRole": "人とテクノロジー | ITサポート & 研修",

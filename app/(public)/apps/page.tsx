@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Projects — Martin Lužák",
     description: "Explore open source projects, experiments, and tools.",
-    url: `${baseUrl}/projects`,
+    url: `${baseUrl}/apps`,
     type: "website",
     images: [
       {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     images: [`${baseUrl}/og-image-projects.png`],
   },
   alternates: {
-    canonical: `${baseUrl}/projects`,
+    canonical: `${baseUrl}/apps`,
   },
 };
 

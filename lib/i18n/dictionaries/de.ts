@@ -12,14 +12,14 @@ export const de: PortfolioDictionary = {
     "search": "Suchen",
     "searchPlaceholder": "Beiträge, Projekte, Zertifikate suchen...",
     "aboutMeCV": "über mich / Lebenslauf",
-    "mySideProjects": "meine Projekte"
+    "mySideProjects": "was ich gebaut habe"
   },
   "hero": {
     "greeting": "Hallo, ich bin Martin",
     "tagline": "Wo Logik auf Menschlichkeit trifft",
     "description": "Von der Fehlerbehebung in kritischen Netzwerken und Bankensystemen bis hin zur Schulung digitaler Fähigkeiten. Ich verbinde technisches Know-how mit Empathie, damit Technologie den Menschen zuverlässig dient.",
     "ctaAbout": "über mich / Lebenslauf",
-    "ctaProjects": "meine Projekte",
+    "ctaProjects": "was ich gebaut habe",
     "cardStatus": "Offen für neue Möglichkeiten (2026)",
     "cardLocation": "Wien, Österreich / Remote weltweit",
     "cardRole": "Mensch & Technologie | IT-Support & Training",

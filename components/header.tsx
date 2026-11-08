@@ -20,7 +20,7 @@ const socialLinks: {
 }[] = [
   { label: "LinkedIn", href: "https://linkedin.com/in/martinluzak", icon: Linkedin },
   { label: "Email", href: "mailto:hello@martinluzak.sk", icon: Mail },
-  { label: "Projects", hoverLabel: "My side projects", href: "/projects", icon: Rocket },
+  { label: "Projects", hoverLabel: "Things I've built", href: "/apps", icon: Rocket },
 ]
 
 export function Header() {
@@ -35,7 +35,7 @@ export function Header() {
   const navItems = [
     { label: t.nav.home, href: "/" },
     { label: t.nav.about, href: "/introduction" },
-    { label: t.nav.projects, href: "/projects" },
+    { label: t.nav.projects, href: "/apps" },
   ]
 
   const isActive = (href: string) => {

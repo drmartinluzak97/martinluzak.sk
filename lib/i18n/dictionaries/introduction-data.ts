@@ -95,7 +95,7 @@ export const INTRO_DATA: Record<PortfolioLocale, LocalizedIntroData> = {
     description: "Since 2017, I have built a career defined by technical precision and human connection. From troubleshooting mission-critical networks and banking systems to mentoring individuals in everyday digital literacy, I ensure technology works reliably for the people who depend on it.",
     connectLinkedIn: "Connect on LinkedIn",
     emailMe: "hello@martinluzak.sk",
-    myProjects: "My side projects →",
+    myProjects: "Things I've built →",
     stats: [
       { label: "Experience in IT & Mentoring", value: "7+ Years", href: "#experience" },
       { label: "Systems & Network Focus", value: "Enterprise & Maritime", href: "#experience" },
@@ -319,7 +319,7 @@ export const INTRO_DATA: Record<PortfolioLocale, LocalizedIntroData> = {
     description: "Od roku 2017 budujem kariéru postavenú na technickej precíznosti a ľudskom prístupe. Od riešenia kritických sieťových a bankových systémov až po mentorovanie ľudí v digitálnych zručnostiach zabezpečujem, aby technológie slúžili ľuďom spoľahlivo a bez stresu.",
     connectLinkedIn: "Prepojiť sa na LinkedIn",
     emailMe: "hello@martinluzak.sk",
-    myProjects: "Moje vedľajšie projekty →",
+    myProjects: "Čo som vytvoril →",
     stats: [
       { label: "Skúsenosti v IT a mentoringu", value: "7+ rokov", href: "#experience" },
       { label: "Zameranie na siete a systémy", value: "Enterprise & Maritime", href: "#experience" },
@@ -543,7 +543,7 @@ export const INTRO_DATA: Record<PortfolioLocale, LocalizedIntroData> = {
     description: "Seit 2017 verbinde ich technische Präzision mit menschlichem Einfühlungsvermögen. Von der Fehlerbehebung in kritischen Netzwerken und Bankensystemen bis hin zur Schulung digitaler Kompetenzen sorge ich dafür, dass Technologie den Menschen zuverlässig dient.",
     connectLinkedIn: "Auf LinkedIn vernetzen",
     emailMe: "hello@martinluzak.sk",
-    myProjects: "Meine Projekte ansehen →",
+    myProjects: "Was ich gebaut habe →",
     stats: [
       { label: "Erfahrung in IT & Mentoring", value: "7+ Jahre", href: "#experience" },
       { label: "Netzwerk- & Systemfokus", value: "Enterprise & Maritim", href: "#experience" },
@@ -767,7 +767,7 @@ export const INTRO_DATA: Record<PortfolioLocale, LocalizedIntroData> = {
     description: "2017年以来、技術的正確さと人間味あふれる繋がりを軸にキャリアを築いてきました。基幹ネットワークや金融システムの障害対応から、日常的なITスキル研修まで、テクノロジーが人々の力になるよう支えています。",
     connectLinkedIn: "LinkedInでつながる",
     emailMe: "hello@martinluzak.sk",
-    myProjects: "サイドプロジェクトを見る →",
+    myProjects: "作ったものを見る →",
     stats: [
       { label: "IT & メンタリング経験", value: "7年以上", href: "#experience" },
       { label: "システム & ネットワーク", value: "エンタープライズ & 海事", href: "#experience" },
@@ -970,7 +970,7 @@ export const INTRO_DATA: Record<PortfolioLocale, LocalizedIntroData> = {
     description: "Depuis 2017, je construis une carrière alliant rigueur technique et écoute humaine. Du dépannage de réseaux maritimes et bancaires critiques à la formation numérique, je m'assure que la technologie serve sereinement les personnes qui en dépendent.",
     connectLinkedIn: "Se connecter sur LinkedIn",
     emailMe: "hello@martinluzak.sk",
-    myProjects: "Voir mes projets →",
+    myProjects: "Voir mes réalisations →",
     stats: [
       { label: "Expérience IT & Mentorat", value: "7+ ans", href: "#experience" },
       { label: "Focus Réseaux & Systèmes", value: "Entreprise & Maritime", href: "#experience" },
@@ -1173,7 +1173,7 @@ export const INTRO_DATA: Record<PortfolioLocale, LocalizedIntroData> = {
     description: "منذ عام 2017، بنيت مسيرتي المهنية على الدقة التقنية والتواصل الإنساني الصادق. من استكشاف أخطاء شبكات الملاحة البحرية والأنظمة المصرفية الحرجة وإصلاحها إلى تدريب الأفراد على المهارات الرقمية، أحرص على أن تعمل التكنولوجيا بسلاسة لخدمة الناس.",
     connectLinkedIn: "تواصل معي عبر LinkedIn",
     emailMe: "hello@martinluzak.sk",
-    myProjects: "مشاريعي الجانبية ←",
+    myProjects: "ما صنعته ←",
     stats: [
       { label: "خبرة في تكنولوجيا المعلومات والتوجيه", value: "+7 سنوات", href: "#experience" },
       { label: "التركيز على الشبكات والأنظمة", value: "المؤسسات والملاحة البحرية", href: "#experience" },

@@ -145,7 +145,7 @@ export function HeroSection() {
                 <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-500 group-hover:translate-x-0" />
               </Link>
               <Link
-                href="/projects"
+                href="/apps"
                 className="group inline-flex items-center justify-center gap-3 rounded-lg border border-foreground/30 bg-foreground/10 px-7 py-4 sm:py-3.5 font-mono text-sm font-medium text-foreground transition-all duration-300 hover:border-foreground/60 hover:bg-foreground/20 hover:scale-[1.01] active:scale-[0.98]"
               >
                 <span>{t.hero.ctaProjects}</span>

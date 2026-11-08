@@ -33,7 +33,7 @@ export default function NotFound() {
             Browse Blog
           </Link>
           <Link
-            href="/projects"
+            href="/apps"
             className="px-6 py-3 bg-secondary text-secondary-foreground rounded-lg font-medium hover:bg-secondary/80 transition-colors"
           >
             View Projects

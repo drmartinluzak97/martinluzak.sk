@@ -12,14 +12,14 @@ export const sk: PortfolioDictionary = {
     "search": "Hľadať",
     "searchPlaceholder": "Hľadať články, projekty, certifikáty...",
     "aboutMeCV": "o mne / Životopis",
-    "mySideProjects": "moje projekty"
+    "mySideProjects": "čo som vytvoril"
   },
   "hero": {
     "greeting": "Ahoj, som Martin",
     "tagline": "Kde sa logika stretáva s ľudskosťou",
     "description": "Od riešenia kritických sieťových a bankových systémov až po mentorovanie ľudí v digitálnych zručnostiach. Spájam hlboké technické myslenie s empatiou, aby technológie slúžili ľuďom spoľahlivo a bez stresu.",
     "ctaAbout": "o mne / Životopis",
-    "ctaProjects": "moje projekty",
+    "ctaProjects": "čo som vytvoril",
     "cardStatus": "Otvorený novým príležitostiam (2026)",
     "cardLocation": "Viedeň, Rakúsko / Remote kdekoľvek",
     "cardRole": "Ľudia a technológie | IT podpora a školenia",

@@ -74,7 +74,7 @@ export function IntroductionContent() {
             </a>
 
             <Link
-              href="/projects"
+              href="/apps"
               className="group inline-flex items-center justify-center gap-2.5 rounded-xl border border-border/80 bg-card/60 glass px-6 py-3.5 font-mono text-xs sm:text-sm text-foreground transition-all duration-300 hover:border-primary/50 hover:bg-secondary/60 hover:text-primary active:scale-[0.98]"
             >
               <Rocket className="h-4 w-4" />
