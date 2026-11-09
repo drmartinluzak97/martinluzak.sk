@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeftRight, ArrowRight, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/components/language-context";
 import { PENDLER_DATA, PENDLER_URL } from "@/lib/i18n/dictionaries/pendler-data";
+import { PendlerAndroidButton } from "@/components/public/projects/pendler-android";
 
 const TECH = ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "Leaflet", "OpenStreetMap", "PWA", "Vercel"];
 
@@ -77,6 +78,7 @@ export function PendlerCard() {
               <span>{d.openAppBtn}</span>
               <ExternalLink className="h-3.5 w-3.5" />
             </a>
+            <PendlerAndroidButton />
             <Link
               href="/apps/pendler"
               className="inline-flex items-center gap-2 rounded-xl border border-border/70 bg-card/60 px-4 py-2.5 font-mono text-xs text-muted-foreground transition-all duration-300 hover:border-primary/40 hover:text-foreground active:scale-[0.98]"
