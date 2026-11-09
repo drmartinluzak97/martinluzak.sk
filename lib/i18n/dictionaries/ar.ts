@@ -4,7 +4,7 @@ export const ar: PortfolioDictionary = {
   "nav": {
     "home": "الرئيسية",
     "about": "نبذة عني",
-    "projects": "المشاريع",
+    "projects": "أعمالي",
     "blog": "المدونة",
     "notes": "الملاحظات",
     "certificates": "الشهادات",

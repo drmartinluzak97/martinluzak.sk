@@ -4,7 +4,7 @@ export const en: PortfolioDictionary = {
   "nav": {
     "home": "Home",
     "about": "About me",
-    "projects": "Projects",
+    "projects": "Built",
     "blog": "Blog",
     "notes": "Notes",
     "certificates": "Certificates",

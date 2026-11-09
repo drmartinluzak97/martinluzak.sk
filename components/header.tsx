@@ -20,7 +20,7 @@ const socialLinks: {
 }[] = [
   { label: "LinkedIn", href: "https://linkedin.com/in/martinluzak", icon: Linkedin },
   { label: "Email", href: "mailto:hello@martinluzak.sk", icon: Mail },
-  { label: "Projects", hoverLabel: "Things I've built", href: "/apps", icon: Rocket },
+  { label: "Built", hoverLabel: "Things I've built", href: "/apps", icon: Rocket },
 ]
 
 export function Header() {

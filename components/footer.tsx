@@ -16,7 +16,7 @@ const socialLinks: {
   { label: "LinkedIn", href: "https://linkedin.com/in/martinluzak", handle: "/in/martinluzak", icon: Linkedin },
   { label: "Email", href: "mailto:hello@martinluzak.sk", handle: "hello@martinluzak.sk", icon: Mail },
   {
-    label: "Projects",
+    label: "Built",
     hoverLabel: "Things I've built",
     href: "/apps",
     handle: "/apps",
