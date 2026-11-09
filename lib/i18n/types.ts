@@ -40,6 +40,8 @@ export interface PortfolioDictionary {
     lookingForItem3Desc: string;
     languagesSpoken: string;
     remoteBadge: string;
+    ctaDownloadCV: string;
+    appsSeeAll: string;
   };
   footer: {
     talkBadge: string;
