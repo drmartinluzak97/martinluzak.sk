@@ -7,10 +7,10 @@ import { PortfolioLocale } from "../types";
 export const PENDLER_APK = {
   url: "/apps/download/pendler.apk",
   file: "pendler.apk",
-  version: "1.0.0",
-  sizeMb: 0.14,
-  minAndroid: "5.0",
-  sha256: "ef2324260bc1d4f3b545d09aec80902fc1bbf4329836814d2f7744055ea28072",
+  version: "2.0.0",
+  sizeMb: 9.4,
+  minAndroid: "7.0",
+  sha256: "7959791640ba1dc716922851d67bc64b5110c4436b01503c25fd4ea618f50007",
 };
 
 export interface LocalizedDownloadsData {
@@ -42,7 +42,7 @@ export const DOWNLOADS_DATA: Record<PortfolioLocale, LocalizedDownloadsData> = {
     ],
     checksum: "Kontrolný súčet SHA-256",
     pendlerTitle: "Pendler pre Android",
-    pendlerText: "Pendler v mobile na celú obrazovku s vlastnou ikonou. Obsah sa načítava z webu, takže každá novinka sa v aplikácii prejaví hneď.",
+    pendlerText: "Plnohodnotná aplikácia: sprievodca, checklist, kalkulačky aj frázy sú priamo v mobile a fungujú aj bez internetu. Pripomienky ti pošlú upozornenie na termín. Z internetu sa načítavajú len živé dáta, napríklad kurzy a ceny palív.",
     backBtn: "Späť na aplikácie",
   },
   en: {
@@ -59,7 +59,7 @@ export const DOWNLOADS_DATA: Record<PortfolioLocale, LocalizedDownloadsData> = {
     ],
     checksum: "SHA-256 checksum",
     pendlerTitle: "Pendler for Android",
-    pendlerText: "Pendler on your phone, full screen with its own icon. Content loads from the website, so every update shows up in the app straight away.",
+    pendlerText: "A full app: the guide, checklist, calculators and phrases live on your phone and work offline. Reminders send you a notification before each deadline. Only live data such as exchange rates and fuel prices comes from the internet.",
     backBtn: "Back to apps",
   },
   de: {
@@ -76,7 +76,7 @@ export const DOWNLOADS_DATA: Record<PortfolioLocale, LocalizedDownloadsData> = {
     ],
     checksum: "SHA-256-Prüfsumme",
     pendlerTitle: "Pendler für Android",
-    pendlerText: "Pendler auf dem Handy, im Vollbild mit eigenem Symbol. Inhalte kommen von der Website, jede Neuerung ist sofort in der App.",
+    pendlerText: "Eine vollwertige App: Ratgeber, Checkliste, Rechner und Sätze sind direkt auf dem Handy und funktionieren auch offline. Erinnerungen melden sich vor jeder Frist. Nur Live-Daten wie Wechselkurse und Spritpreise kommen aus dem Internet.",
     backBtn: "Zurück zu den Apps",
   },
   ja: {
@@ -93,7 +93,7 @@ export const DOWNLOADS_DATA: Record<PortfolioLocale, LocalizedDownloadsData> = {
     ],
     checksum: "SHA-256 チェックサム",
     pendlerTitle: "Android 版 Pendler",
-    pendlerText: "専用アイコン付きで全画面表示される Pendler。内容はウェブサイトから読み込まれるため、更新はすぐにアプリに反映されます。",
+    pendlerText: "本格的なアプリです。ガイド、チェックリスト、計算ツール、フレーズはスマートフォン内にあり、オフラインでも使えます。リマインダーは期限の前に通知します。為替レートや燃料価格などのリアルタイムデータだけをインターネットから取得します。",
     backBtn: "アプリ一覧に戻る",
   },
   fr: {
@@ -110,7 +110,7 @@ export const DOWNLOADS_DATA: Record<PortfolioLocale, LocalizedDownloadsData> = {
     ],
     checksum: "Somme de contrôle SHA-256",
     pendlerTitle: "Pendler pour Android",
-    pendlerText: "Pendler sur votre téléphone, en plein écran avec sa propre icône. Le contenu vient du site, chaque nouveauté apparaît tout de suite dans l’application.",
+    pendlerText: "Une vraie application : guide, checklist, calculateurs et phrases sont sur votre téléphone et fonctionnent hors ligne. Les rappels vous préviennent avant chaque échéance. Seules les données en direct, comme les taux de change et les prix des carburants, viennent d’internet.",
     backBtn: "Retour aux applications",
   },
   ar: {
@@ -127,7 +127,7 @@ export const DOWNLOADS_DATA: Record<PortfolioLocale, LocalizedDownloadsData> = {
     ],
     checksum: "المجموع الاختباري SHA-256",
     pendlerTitle: "Pendler لأندرويد",
-    pendlerText: "Pendler على هاتفك بملء الشاشة وبأيقونته الخاصة. يُحمَّل المحتوى من الموقع، لذلك يظهر كل تحديث في التطبيق فورًا.",
+    pendlerText: "تطبيق متكامل: الدليل وقائمة المهام والحاسبات والعبارات موجودة على هاتفك وتعمل دون إنترنت. ترسل لك التذكيرات إشعارًا قبل كل موعد. فقط البيانات المباشرة مثل أسعار الصرف وأسعار الوقود تأتي من الإنترنت.",
     backBtn: "العودة إلى التطبيقات",
   },
 };
