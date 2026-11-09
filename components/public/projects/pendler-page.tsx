@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowLeftRight, Check, ExternalLink, Hammer } from "lucide-react";
 import { useLanguage } from "@/components/language-context";
 import { PENDLER_DATA, PENDLER_URL } from "@/lib/i18n/dictionaries/pendler-data";
+import { PendlerAndroidSection } from "@/components/public/projects/pendler-android";
 
 export function PendlerPage() {
   const { locale } = useLanguage();
@@ -64,6 +65,8 @@ export function PendlerPage() {
             </div>
           ))}
         </div>
+
+        <PendlerAndroidSection />
 
         <div className="rounded-3xl border border-dashed border-primary/40 bg-card/40 p-6 space-y-3">
           <h2 className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-primary font-semibold">
