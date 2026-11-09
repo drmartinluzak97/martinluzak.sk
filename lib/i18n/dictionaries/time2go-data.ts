@@ -3,6 +3,16 @@ import { PortfolioLocale } from "../types";
 export const TIME2GO_URL = "https://time2go.martinluzak.sk";
 export const TIME2GO_REPO = "https://github.com/drmartinluzak97/time-2-go";
 
+// Android app download, served from public/apps/download/ with the APK content
+// type and a download header (see next.config.mjs).
+export const TIME2GO_APK = {
+  url: "/apps/download/time2go.apk",
+  version: "1.0",
+  sizeMb: 3.4,
+  minAndroid: "7.0",
+  sha256: "b8629760774ba2db13aaf31d05693bfac5c090cc5855194df10a5ba6eed7f6e8",
+};
+
 export interface LocalizedTime2GoData {
   badge: string;
   title: string;
@@ -19,6 +29,13 @@ export interface LocalizedTime2GoData {
   placeholderTitle: string;
   placeholderText: string;
   backBtn: string;
+  androidTitle: string;
+  androidText: string;
+  androidBtn: string;
+  androidMeta: string;
+  androidStepsTitle: string;
+  androidSteps: string[];
+  androidChecksum: string;
 }
 
 export const TIME2GO_DATA: Record<PortfolioLocale, LocalizedTime2GoData> = {
@@ -47,6 +64,17 @@ export const TIME2GO_DATA: Record<PortfolioLocale, LocalizedTime2GoData> = {
     placeholderTitle: "time2go",
     placeholderText: "This page is being prepared. In the meantime, you can open the app directly.",
     backBtn: "Back to things I've built",
+    androidTitle: "Android app",
+    androidText: "Install time2go on your phone. It opens full screen with its own icon, and every update to the website shows up in the app straight away.",
+    androidBtn: "Download for Android",
+    androidMeta: "Version {version} · {size} MB · Android {min}+",
+    androidStepsTitle: "How to install:",
+    androidSteps: [
+      "Download the file on your Android phone.",
+      "Open it. Android will ask you to allow installs from this source: allow it.",
+      "Tap Install. If Google Play Protect warns about an unknown developer, choose Install anyway.",
+    ],
+    androidChecksum: "SHA-256 checksum",
   },
   sk: {
     badge: "Nová appka • 2026",
@@ -73,6 +101,17 @@ export const TIME2GO_DATA: Record<PortfolioLocale, LocalizedTime2GoData> = {
     placeholderTitle: "time2go",
     placeholderText: "Táto stránka sa pripravuje. Zatiaľ môžeš aplikáciu otvoriť priamo.",
     backBtn: "Späť na čo som vytvoril",
+    androidTitle: "Android aplikácia",
+    androidText: "Nainštaluj si time2go do mobilu. Otvára sa na celú obrazovku s vlastnou ikonou a každá úprava webu sa v aplikácii prejaví hneď.",
+    androidBtn: "Stiahnuť pre Android",
+    androidMeta: "Verzia {version} · {size} MB · Android {min}+",
+    androidStepsTitle: "Ako nainštalovať:",
+    androidSteps: [
+      "Stiahni súbor v mobile s Androidom.",
+      "Otvor ho. Android sa spýta, či povoliť inštaláciu z tohto zdroja: povoľ ju.",
+      "Ťukni na Inštalovať. Ak Google Play Protect upozorní na neznámeho vývojára, zvoľ Napriek tomu nainštalovať.",
+    ],
+    androidChecksum: "Kontrolný súčet SHA-256",
   },
   de: {
     badge: "Neue App • 2026",
@@ -99,6 +138,17 @@ export const TIME2GO_DATA: Record<PortfolioLocale, LocalizedTime2GoData> = {
     placeholderTitle: "time2go",
     placeholderText: "Diese Seite wird gerade vorbereitet. Bis dahin kannst du die App direkt öffnen.",
     backBtn: "Zurück zu was ich gebaut habe",
+    androidTitle: "Android-App",
+    androidText: "Installiere time2go auf deinem Handy. Die App startet im Vollbild mit eigenem Symbol, und jede Änderung der Website ist sofort in der App sichtbar.",
+    androidBtn: "Für Android herunterladen",
+    androidMeta: "Version {version} · {size} MB · Android {min}+",
+    androidStepsTitle: "So installierst du sie:",
+    androidSteps: [
+      "Lade die Datei auf deinem Android-Handy herunter.",
+      "Öffne sie. Android fragt, ob Installationen aus dieser Quelle erlaubt sind: erlaube es.",
+      "Tippe auf Installieren. Warnt Google Play Protect vor einem unbekannten Entwickler, wähle Trotzdem installieren.",
+    ],
+    androidChecksum: "SHA-256-Prüfsumme",
   },
   ja: {
     badge: "新しいアプリ • 2026",
@@ -125,6 +175,17 @@ export const TIME2GO_DATA: Record<PortfolioLocale, LocalizedTime2GoData> = {
     placeholderTitle: "time2go",
     placeholderText: "このページは準備中です。アプリは直接開くことができます。",
     backBtn: "作ったものに戻る",
+    androidTitle: "Android アプリ",
+    androidText: "time2go をスマートフォンにインストールできます。専用アイコンから全画面で起動し、ウェブサイトの更新はすぐにアプリにも反映されます。",
+    androidBtn: "Android 版をダウンロード",
+    androidMeta: "バージョン {version} · {size} MB · Android {min} 以上",
+    androidStepsTitle: "インストール方法:",
+    androidSteps: [
+      "Android スマートフォンでファイルをダウンロードします。",
+      "ファイルを開きます。このソースからのインストールを許可するか尋ねられたら、許可してください。",
+      "「インストール」をタップします。Google Play プロテクトが不明なデベロッパーについて警告した場合は、「インストールする」を選択してください。",
+    ],
+    androidChecksum: "SHA-256 チェックサム",
   },
   fr: {
     badge: "Nouvelle app • 2026",
@@ -151,6 +212,17 @@ export const TIME2GO_DATA: Record<PortfolioLocale, LocalizedTime2GoData> = {
     placeholderTitle: "time2go",
     placeholderText: "Cette page est en préparation. En attendant, vous pouvez ouvrir l'application directement.",
     backBtn: "Retour à mes réalisations",
+    androidTitle: "Application Android",
+    androidText: "Installez time2go sur votre téléphone. Elle s'ouvre en plein écran avec sa propre icône, et chaque mise à jour du site apparaît immédiatement dans l'application.",
+    androidBtn: "Télécharger pour Android",
+    androidMeta: "Version {version} · {size} Mo · Android {min}+",
+    androidStepsTitle: "Installation :",
+    androidSteps: [
+      "Téléchargez le fichier sur votre téléphone Android.",
+      "Ouvrez-le. Android vous demandera d'autoriser les installations depuis cette source : autorisez-les.",
+      "Appuyez sur Installer. Si Google Play Protect signale un développeur inconnu, choisissez Installer quand même.",
+    ],
+    androidChecksum: "Somme de contrôle SHA-256",
   },
   ar: {
     badge: "تطبيق جديد • 2026",
@@ -177,5 +249,16 @@ export const TIME2GO_DATA: Record<PortfolioLocale, LocalizedTime2GoData> = {
     placeholderTitle: "time2go",
     placeholderText: "هذه الصفحة قيد الإعداد. يمكنك في الأثناء فتح التطبيق مباشرة.",
     backBtn: "العودة إلى ما صنعته",
+    androidTitle: "تطبيق أندرويد",
+    androidText: "ثبّت time2go على هاتفك. يفتح بملء الشاشة بأيقونته الخاصة، وتظهر كل تحديثات الموقع في التطبيق فورًا.",
+    androidBtn: "تنزيل لأندرويد",
+    androidMeta: "الإصدار {version} · {size} ميغابايت · أندرويد {min} أو أحدث",
+    androidStepsTitle: "طريقة التثبيت:",
+    androidSteps: [
+      "نزّل الملف على هاتف أندرويد.",
+      "افتح الملف. سيطلب أندرويد السماح بالتثبيت من هذا المصدر: اسمح بذلك.",
+      "اضغط على تثبيت. إذا حذّرك Google Play Protect من مطوّر غير معروف، اختر التثبيت على أي حال.",
+    ],
+    androidChecksum: "المجموع الاختباري SHA-256",
   },
 };

@@ -59,6 +59,15 @@ const nextConfig = {
         ],
       },
       {
+        // Android app downloads: correct type so phones offer to install them
+        source: '/apps/download/:file*.apk',
+        headers: [
+          { key: 'Content-Type', value: 'application/vnd.android.package-archive' },
+          { key: 'Content-Disposition', value: 'attachment' },
+          { key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' },
+        ],
+      },
+      {
         source: '/pictures/(.*)',
         headers: [
           {
@@ -83,6 +92,11 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/apps/download/time2go.appk",
+        destination: "/apps/download/time2go.apk",
+        permanent: false,
+      },
       {
         source: "/app",
         destination: "/apps",

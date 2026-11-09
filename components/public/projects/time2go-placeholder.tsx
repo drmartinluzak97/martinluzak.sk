@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, ExternalLink, TrainFront } from "lucide-react";
 import { useLanguage } from "@/components/language-context";
 import { TIME2GO_DATA, TIME2GO_URL } from "@/lib/i18n/dictionaries/time2go-data";
+import { Time2GoAndroidSection } from "@/components/public/projects/time2go-android";
 
 export function Time2GoPlaceholder() {
   const { locale } = useLanguage();
@@ -38,6 +39,7 @@ export function Time2GoPlaceholder() {
             <span>{d.backBtn}</span>
           </Link>
         </div>
+        <Time2GoAndroidSection />
       </div>
     </section>
   );

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink, Github, TrainFront } from "lucide-react";
 import { useLanguage } from "@/components/language-context";
 import { TIME2GO_DATA, TIME2GO_REPO, TIME2GO_URL } from "@/lib/i18n/dictionaries/time2go-data";
+import { Time2GoAndroidButton } from "@/components/public/projects/time2go-android";
 
 const TECH = ["Next.js", "React", "TypeScript", "MapLibre", "OpenStreetMap", "Transitous / MOTIS", "Vercel"];
 
@@ -69,6 +70,7 @@ export function Time2GoCard() {
               <span>{d.openAppBtn}</span>
               <ExternalLink className="h-3.5 w-3.5" />
             </a>
+            <Time2GoAndroidButton />
             <Link
               href="/apps/time2go"
               className="inline-flex items-center gap-2 rounded-xl border border-border/70 bg-card/60 px-4 py-2.5 font-mono text-xs text-muted-foreground transition-all duration-300 hover:border-primary/40 hover:text-foreground active:scale-[0.98]"
