@@ -36,6 +36,14 @@ export const SEARCH_ITEMS: SearchItem[] = [
     keywords: ["portfolio", "work", "apps", "code", "side projects"],
   },
   {
+    id: "app-pendler",
+    title: "Pendler",
+    description: "Guide for commuters between Slovakia and AT, CZ, HU, PL, UA – taxes, insurance, net salary, offices",
+    category: "Navigation",
+    href: "/apps/pendler",
+    keywords: ["pendler", "commuter", "cross-border", "work abroad", "dochádzanie", "práca v zahraničí", "čistá mzda", "rakúsko"],
+  },
+  {
     id: "app-time2go",
     title: "time2go",
     description: "Public transport journey planner for Central Europe (SK, CZ, HU, PL, AT)",
