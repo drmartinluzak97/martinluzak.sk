@@ -4,7 +4,7 @@ export const sk: PortfolioDictionary = {
   "nav": {
     "home": "Domov",
     "about": "O mne",
-    "projects": "Projekty",
+    "projects": "Vytvorené",
     "blog": "Blog",
     "notes": "Poznámky",
     "certificates": "Certifikáty",

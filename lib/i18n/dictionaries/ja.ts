@@ -4,7 +4,7 @@ export const ja: PortfolioDictionary = {
   "nav": {
     "home": "ホーム",
     "about": "自己紹介",
-    "projects": "プロジェクト",
+    "projects": "制作",
     "blog": "ブログ",
     "notes": "ノート",
     "certificates": "資格",
