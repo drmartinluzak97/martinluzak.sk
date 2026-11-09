@@ -19,6 +19,7 @@ import {
 import { useLanguage } from "@/components/language-context";
 import { PROJECTS_DATA } from "@/lib/i18n/dictionaries/projects-data";
 import { Time2GoCard } from "@/components/public/projects/time2go-card";
+import { PendlerCard } from "@/components/public/projects/pendler-card";
 
 type SectionCategory = "all" | "work" | "video" | "web";
 
@@ -138,7 +139,10 @@ export function ProjectsPageContent() {
               </p>
             </div>
 
-            {/* NEW APP: time2go (first item) */}
+            {/* NEW APP: Pendler (first item) */}
+            <PendlerCard />
+
+            {/* APP: time2go */}
             <Time2GoCard />
 
             {/* SPOTLIGHT HERO CARD: Why You Matter */}
