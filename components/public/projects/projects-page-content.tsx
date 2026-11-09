@@ -20,6 +20,7 @@ import { useLanguage } from "@/components/language-context";
 import { PROJECTS_DATA } from "@/lib/i18n/dictionaries/projects-data";
 import { Time2GoCard } from "@/components/public/projects/time2go-card";
 import { PendlerCard } from "@/components/public/projects/pendler-card";
+import { DiatyrnaviaCard } from "@/components/public/projects/diatyrnavia-card";
 
 type SectionCategory = "all" | "work" | "video" | "web";
 
@@ -144,6 +145,9 @@ export function ProjectsPageContent() {
 
             {/* APP: time2go */}
             <Time2GoCard />
+
+            {/* WEB: Diatyrnavia (third item) */}
+            <DiatyrnaviaCard />
 
             {/* SPOTLIGHT HERO CARD: Why You Matter */}
             <div className="relative overflow-hidden rounded-3xl border border-primary/40 bg-gradient-to-br from-primary/10 via-card/70 to-card/90 p-7 sm:p-10 glass shadow-2xl space-y-6 group hover:border-primary/60 transition-all duration-300">
