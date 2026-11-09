@@ -1,7 +1,7 @@
 import { PortfolioLocale } from "../types";
 
-/** Live URL of the new Diatyrnavia website. Leave empty until it is deployed — the "open" button is hidden then. */
-export const DIATYRNAVIA_URL = "";
+/** Live URL of the new Diatyrnavia website (the "open" button is hidden when empty). */
+export const DIATYRNAVIA_URL = "https://diatyrnavia.martinluzak.sk";
 export const DIATYRNAVIA_ORIGINAL_URL = "https://www.diatyrnavia.sk";
 export const DIATYRNAVIA_PREVIEW = "/pictures/diatyrnavia-preview.webp";
 
