@@ -2,9 +2,11 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { MapPin, Briefcase, Sparkles, CheckCircle2, Globe, ArrowUpRight } from "lucide-react"
+import { MapPin, Briefcase, Sparkles, Globe, ArrowUpRight, Download, Hammer, Heart } from "lucide-react"
 import { useLanguage } from "./language-context"
 import { PortfolioLocale } from "@/lib/i18n/types"
+
+export const CV_PDF_URL = "/cv/Martin_Luzak_CV.pdf"
 
 const rolesByLocale: Record<PortfolioLocale, { prefix: string; items: string[] }> = {
   en: {
@@ -134,25 +136,33 @@ export function HeroSection() {
               {t.hero.description}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up stagger-3">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 animate-fade-in-up stagger-3">
               <Link
-                href="/introduction"
+                href="/apps"
                 className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-lg border border-primary bg-primary/10 px-7 py-4 sm:py-3.5 font-mono text-sm text-primary transition-all duration-500 hover:bg-primary hover:text-primary-foreground active:scale-[0.98]"
               >
-                <span className="relative z-10">{t.hero.ctaAbout}</span>
+                <span className="relative z-10">{t.hero.ctaProjects}</span>
                 <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">→</span>
                 {/* Animated background */}
                 <span className="absolute inset-0 -translate-x-full bg-primary transition-transform duration-500 group-hover:translate-x-0" />
               </Link>
               <Link
-                href="/apps"
+                href="/introduction"
                 className="group inline-flex items-center justify-center gap-3 rounded-lg border border-foreground/30 bg-foreground/10 px-7 py-4 sm:py-3.5 font-mono text-sm font-medium text-foreground transition-all duration-300 hover:border-foreground/60 hover:bg-foreground/20 hover:scale-[1.01] active:scale-[0.98]"
               >
-                <span>{t.hero.ctaProjects}</span>
+                <span>{t.hero.ctaAbout}</span>
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
               </Link>
+              <a
+                href={CV_PDF_URL}
+                download
+                className="group inline-flex items-center justify-center gap-2.5 rounded-lg border border-border/70 px-6 py-4 sm:py-3.5 font-mono text-sm text-muted-foreground transition-all duration-300 hover:border-primary/50 hover:text-foreground active:scale-[0.98]"
+              >
+                <Download className="h-4 w-4" />
+                <span>{t.hero.ctaDownloadCV}</span>
+              </a>
             </div>
           </div>
 
@@ -198,15 +208,15 @@ export function HeroSection() {
                 </div>
                 <ul className="space-y-2.5 text-xs sm:text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                    <Briefcase className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                     <span><strong>{t.hero.lookingForItem1Title}:</strong> {t.hero.lookingForItem1Desc}</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                    <Hammer className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                     <span><strong>{t.hero.lookingForItem2Title}:</strong> {t.hero.lookingForItem2Desc}</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                    <Heart className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                     <span><strong>{t.hero.lookingForItem3Title}:</strong> {t.hero.lookingForItem3Desc}</span>
                   </li>
                 </ul>

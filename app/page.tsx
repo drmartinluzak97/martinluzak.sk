@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
+import { HomeApps } from "@/components/home-apps"
 import { Workbench } from "@/components/workbench"
 import { Footer } from "@/components/footer"
 import { CursorGlow } from "@/components/cursor-glow"
@@ -35,6 +36,7 @@ export default function Home() {
         <div className="relative z-10">
           <Header />
           <HeroSection />
+          <HomeApps />
           <Workbench />
           <Footer />
         </div>
