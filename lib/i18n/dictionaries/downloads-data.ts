@@ -7,10 +7,10 @@ import { PortfolioLocale } from "../types";
 export const PENDLER_APK = {
   url: "/apps/download/pendler.apk",
   file: "pendler.apk",
-  version: "2.0.0",
-  sizeMb: 9.4,
+  version: "2.1.0",
+  sizeMb: 9.5,
   minAndroid: "7.0",
-  sha256: "7959791640ba1dc716922851d67bc64b5110c4436b01503c25fd4ea618f50007",
+  sha256: "a8a21ff6a92b6b5589df181d8c8f361ffa7c12f7416a8f3df59fbd0f0d79a4c6",
 };
 
 export interface LocalizedDownloadsData {
@@ -132,7 +132,7 @@ export const DOWNLOADS_DATA: Record<PortfolioLocale, LocalizedDownloadsData> = {
   },
 };
 
-export function fillMeta(template: string, apk: { version: string; sizeMb: number; minAndroid: string }, locale: string) {
+export function fillMeta(template: string, apk: { version: string; sizeMb: 9.5number; minAndroid: string }, locale: string) {
   return template
     .replace("{version}", apk.version)
     .replace("{size}", apk.sizeMb.toLocaleString(locale))
