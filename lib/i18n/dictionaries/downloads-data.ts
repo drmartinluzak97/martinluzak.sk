@@ -132,7 +132,7 @@ export const DOWNLOADS_DATA: Record<PortfolioLocale, LocalizedDownloadsData> = {
   },
 };
 
-export function fillMeta(template: string, apk: { version: string; sizeMb: 9.5number; minAndroid: string }, locale: string) {
+export function fillMeta(template: string, apk: { version: string; sizeMb: number; minAndroid: string }, locale: string) {
   return template
     .replace("{version}", apk.version)
     .replace("{size}", apk.sizeMb.toLocaleString(locale))
