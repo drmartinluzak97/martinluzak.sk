@@ -1,17 +1,30 @@
 import { NextResponse, type NextRequest } from "next/server"
 
 /**
- * Ochrana starej verzie webu (/old a všetko pod ňou, vrátane PDF) heslom
- * cez HTTP Basic Auth.
+ * Ochrana vybraných častí webu heslom cez HTTP Basic Auth.
+ * Chráni cestu aj všetko pod ňou (podstránky, CSS, PDF…).
  *
- * Nastavenie vo Verceli (Settings → Environment Variables):
- *   OLD_PASSWORD  – povinné, heslo
- *   OLD_USER      – nepovinné; ak nie je nastavené, meno môže byť ľubovoľné
+ * Premenné vo Verceli (Settings → Environment Variables):
+ *   /old   → OLD_PASSWORD  (+ nepovinné OLD_USER)
+ *   /trip  → TRIP_PASSWORD (+ nepovinné TRIP_USER)
  *
- * Ak OLD_PASSWORD chýba, prístup je zamietnutý (fail-closed).
+ * Ak *_USER nie je nastavené, meno môže byť ľubovoľné.
+ * Ak heslo chýba, prístup je zamietnutý (fail-closed).
  */
 
-const REALM = "Stara verzia webu"
+type Area = {
+  prefix: string
+  realm: string
+  passwordEnv: string
+  userEnv: string
+}
+
+const AREAS: Area[] = [
+  { prefix: "/old", realm: "Stara verzia webu", passwordEnv: "OLD_PASSWORD", userEnv: "OLD_USER" },
+  { prefix: "/trip", realm: "Japan Trip", passwordEnv: "TRIP_PASSWORD", userEnv: "TRIP_USER" },
+]
+
+const NO_INDEX = "noindex, nofollow"
 
 async function sha256(value: string): Promise<Uint8Array> {
   const data = new TextEncoder().encode(value)
@@ -26,56 +39,63 @@ async function safeEqual(a: string, b: string): Promise<boolean> {
   return diff === 0
 }
 
-function unauthorized(message = "Vyžaduje sa heslo.") {
+function unauthorized(realm: string, message = "Vyžaduje sa heslo.") {
   return new NextResponse(message, {
     status: 401,
     headers: {
-      "WWW-Authenticate": `Basic realm="${REALM}", charset="UTF-8"`,
+      "WWW-Authenticate": `Basic realm="${realm}", charset="UTF-8"`,
       "Cache-Control": "no-store",
-      "X-Robots-Tag": "noindex, nofollow",
+      "X-Robots-Tag": NO_INDEX,
       "Content-Type": "text/plain; charset=utf-8",
     },
   })
 }
 
+function parseBasicAuth(header: string | null): { user: string; password: string } | null {
+  const [scheme, encoded] = (header ?? "").split(" ")
+  if (scheme?.toLowerCase() !== "basic" || !encoded) return null
+  try {
+    const bytes = Uint8Array.from(atob(encoded), (c) => c.charCodeAt(0))
+    const decoded = new TextDecoder().decode(bytes)
+    const sep = decoded.indexOf(":")
+    if (sep === -1) return null
+    return { user: decoded.slice(0, sep), password: decoded.slice(sep + 1) }
+  } catch {
+    return null
+  }
+}
+
+function findArea(pathname: string): Area | undefined {
+  return AREAS.find((a) => pathname === a.prefix || pathname.startsWith(a.prefix + "/"))
+}
+
 export async function proxy(request: NextRequest) {
-  const expectedPassword = process.env.OLD_PASSWORD
-  const expectedUser = process.env.OLD_USER
+  const area = findArea(request.nextUrl.pathname)
+  if (!area) return NextResponse.next()
+
+  const expectedPassword = process.env[area.passwordEnv]
+  const expectedUser = process.env[area.userEnv]
 
   if (!expectedPassword) {
-    return new NextResponse("Stará verzia webu je nedostupná.", {
+    return new NextResponse("Táto časť webu je nedostupná.", {
       status: 503,
-      headers: { "Cache-Control": "no-store", "X-Robots-Tag": "noindex, nofollow" },
+      headers: { "Cache-Control": "no-store", "X-Robots-Tag": NO_INDEX },
     })
   }
 
-  const header = request.headers.get("authorization") ?? ""
-  const [scheme, encoded] = header.split(" ")
-  if (scheme?.toLowerCase() !== "basic" || !encoded) return unauthorized()
+  const creds = parseBasicAuth(request.headers.get("authorization"))
+  if (!creds) return unauthorized(area.realm)
 
-  let decoded: string
-  try {
-    const bytes = Uint8Array.from(atob(encoded), (c) => c.charCodeAt(0))
-    decoded = new TextDecoder().decode(bytes)
-  } catch {
-    return unauthorized()
-  }
-
-  const sep = decoded.indexOf(":")
-  if (sep === -1) return unauthorized()
-  const user = decoded.slice(0, sep)
-  const password = decoded.slice(sep + 1)
-
-  const passwordOk = await safeEqual(password, expectedPassword)
-  const userOk = expectedUser ? await safeEqual(user, expectedUser) : true
-  if (!passwordOk || !userOk) return unauthorized("Nesprávne heslo.")
+  const passwordOk = await safeEqual(creds.password, expectedPassword)
+  const userOk = expectedUser ? await safeEqual(creds.user, expectedUser) : true
+  if (!passwordOk || !userOk) return unauthorized(area.realm, "Nesprávne heslo.")
 
   const response = NextResponse.next()
-  response.headers.set("X-Robots-Tag", "noindex, nofollow")
+  response.headers.set("X-Robots-Tag", NO_INDEX)
   response.headers.set("Cache-Control", "private, no-store")
   return response
 }
 
 export const config = {
-  matcher: ["/old", "/old/:path*"],
+  matcher: ["/old", "/old/:path*", "/trip", "/trip/:path*"],
 }
