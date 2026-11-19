@@ -5,7 +5,7 @@ import { useLanguage } from "@/components/language-context";
 import { TRIP_DATA, TRIP_FILTERS, TRIP_PLACES, type TripFilterKey } from "@/lib/i18n/dictionaries/trip-data";
 
 export default function TripClient() {
-  const { locale, setLocale, languages } = useLanguage();
+  const { locale } = useLanguage();
   const t = TRIP_DATA[locale] ?? TRIP_DATA.en;
   const isArabic = locale === "ar";
   const [area, setArea] = useState<TripFilterKey>("all");
@@ -23,28 +23,12 @@ export default function TripClient() {
   }, [area, query, t]);
 
   return (
-    <main className={`min-h-screen ${isArabic ? "[&_*]:tracking-normal!" : ""} bg-[#f4f1e9] text-[#20251f] selection:bg-[#c6a66b] selection:text-[#20251f]`}>
+    <div className="pt-24"><div className={`${isArabic ? "[&_*]:tracking-normal!" : ""} bg-[#f4f1e9] text-[#20251f] selection:bg-[#c6a66b] selection:text-[#20251f]`}>
       <div className="mx-auto max-w-6xl px-5 pb-20 pt-7 sm:px-8 lg:px-12">
         <header className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-b border-[#d8d2c5] pb-5">
           <a href="/" className="text-xs font-semibold uppercase tracking-[0.24em] text-[#5c6559]">{t.headerBrand}</a>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
             <span className="text-xs uppercase tracking-[0.2em] text-[#77796f]">{t.headerSeason}</span>
-            <nav aria-label={t.languageLabel} className="flex flex-wrap gap-1" dir="ltr">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  type="button"
-                  lang={lang.code}
-                  title={lang.nativeName}
-                  aria-label={lang.nativeName}
-                  aria-pressed={lang.code === locale}
-                  onClick={() => setLocale(lang.code)}
-                  className={`min-w-9 border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] transition-colors ${lang.code === locale ? "border-[#263328] bg-[#263328] text-[#f4f1e9]" : "border-[#c9c1b2] text-[#62675e] hover:border-[#8a6e43]"}`}
-                >
-                  {lang.code}
-                </button>
-              ))}
-            </nav>
           </div>
         </header>
 
@@ -116,6 +100,6 @@ export default function TripClient() {
 
         <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-[#c9c1b2] pt-5 text-[10px] uppercase tracking-[0.18em] text-[#8b8b7e]"><span>{t.footerLeft}</span><span>{t.footerRight}</span></footer>
       </div>
-    </main>
+    </div></div>
   );
 }
