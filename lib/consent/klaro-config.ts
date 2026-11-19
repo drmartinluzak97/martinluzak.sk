@@ -3,9 +3,23 @@ import type { PortfolioLocale } from "@/lib/i18n/types";
 /**
  * Cookie consent (Klaro) configuration for martinluzak.sk.
  *
- * Consent is stored in the "ml_consent" cookie on ".martinluzak.sk", so the
- * same choice is shared with time2go.martinluzak.sk and pendler.martinluzak.sk
- * once they use the same storageName + cookieDomain.
+ * Consent is stored in the "ml_consent" cookie on ".martinluzak.sk", so any
+ * subdomain that uses the same storageName + cookieDomain reads and writes the
+ * same choice.
+ *
+ * Only share "ml_consent" with a site whose Klaro `services` list is IDENTICAL
+ * to this one (same service names). Klaro's ConsentManager._checkConsents()
+ * deletes every stored consent whose key is not a service in the current
+ * site's config, and marks consent as unconfirmed when a configured service is
+ * missing. A subdomain with a different list would therefore erase visitors'
+ * main-site consents (e.g. YouTube, Umami) when it saves, and the sites would
+ * keep re-asking each other's visitors.
+ *
+ * A site with a different services list must use its own storageName and no
+ * cookieDomain (host-only cookie) — e.g. inspiration.martinluzak.sk uses
+ * "ml_consent_inspiration". This applies to time2go.martinluzak.sk and
+ * pendler.martinluzak.sk too: share "ml_consent" only if their services list
+ * matches this one exactly.
  */
 
 export type ConsentService = "umami" | "vercel-analytics" | "sentry-replay" | "youtube";
