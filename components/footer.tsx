@@ -2,9 +2,10 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Rocket, Linkedin, Mail, ExternalLink, Heart, MessageSquare, Bug, Terminal } from "lucide-react"
+import { Rocket, Linkedin, Mail, ExternalLink, Heart, MessageSquare, Bug, Terminal, Cookie } from "lucide-react"
 import { ContactModal } from "@/components/contact-modal"
 import { useLanguage } from "@/components/language-context"
+import { useConsent } from "@/components/consent/consent-provider"
 
 const socialLinks: {
   label: string
@@ -26,6 +27,7 @@ const socialLinks: {
 
 export function Footer() {
   const { t } = useLanguage()
+  const { openSettings, texts: consentTexts } = useConsent()
   const [modalOpen, setModalOpen] = useState(false)
   const [modalType, setModalType] = useState<"contact" | "bug">("contact")
 
@@ -176,6 +178,15 @@ export function Footer() {
             >
               <Bug className="h-3.5 w-3.5" />
               <span>{t.footer.reportIssue}</span>
+            </button>
+            <span className="hidden sm:inline opacity-30">•</span>
+            <button
+              type="button"
+              onClick={openSettings}
+              className="inline-flex items-center gap-1.5 transition-colors hover:text-primary"
+            >
+              <Cookie className="h-3.5 w-3.5" />
+              <span>{consentTexts.settingsLink}</span>
             </button>
             <span className="hidden sm:inline opacity-30">•</span>
             <p className="text-center sm:text-right">
