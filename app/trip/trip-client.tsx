@@ -112,7 +112,7 @@ export default function TripClient() {
             <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search temples, shrines, gardens…" className="w-full border-b border-[#bdb5a6] bg-transparent px-0 py-4 text-base outline-none placeholder:text-[#969589] focus:border-[#8a6e43]" />
           </label>
           <div className="mb-8 flex gap-2 overflow-x-auto pb-2">
-            {areas.map((item) => <button key={item} onClick={() => setArea(item)} className={\`shrink-0 border px-4 py-2 text-xs uppercase tracking-[0.13em] transition-colors \${area === item ? "border-[#263328] bg-[#263328] text-[#f4f1e9]" : "border-[#c9c1b2] text-[#62675e] hover:border-[#8a6e43]"}\`}>{item}</button>)}
+            {areas.map((item) => <button key={item} onClick={() => setArea(item)} className={`shrink-0 border px-4 py-2 text-xs uppercase tracking-[0.13em] transition-colors ${area === item ? "border-[#263328] bg-[#263328] text-[#f4f1e9]" : "border-[#c9c1b2] text-[#62675e] hover:border-[#8a6e43]"}`}>{item}</button>)}
           </div>
 
           <div className="grid gap-x-8 sm:grid-cols-2">
@@ -122,7 +122,7 @@ export default function TripClient() {
                 <div className="flex flex-wrap items-center gap-2"><h3 className="font-serif text-xl">{place.name}</h3>{place.priority && <span className="border border-[#8a6e43]/40 px-2 py-0.5 text-[9px] uppercase tracking-widest text-[#80633b]">{place.priority}</span>}</div>
                 <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-[#8a6e43]">{place.area} · {place.kind}</p>
                 <p className="mt-2 text-sm leading-6 text-[#686d63]">{place.note}</p>
-                <a className="mt-3 inline-block text-xs font-semibold uppercase tracking-[0.15em] text-[#344638] underline decoration-[#b9a47f] underline-offset-4 hover:text-[#8a6e43]" href={\`https://www.google.com/maps/search/?api=1&query=\${encodeURIComponent(place.name + " Japan")}\`} target="_blank" rel="noreferrer">Open in Maps ↗</a>
+                <a className="mt-3 inline-block text-xs font-semibold uppercase tracking-[0.15em] text-[#344638] underline decoration-[#b9a47f] underline-offset-4 hover:text-[#8a6e43]" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.name + " Japan")}`} target="_blank" rel="noreferrer">Open in Maps ↗</a>
               </div>
             </article>)}
           </div>
