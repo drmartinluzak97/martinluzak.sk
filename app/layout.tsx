@@ -1,11 +1,10 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { AIAssistantWidget } from "@/components/ai-assistant-widget"
 import { LinuxTerminal } from "@/components/linux-terminal"
-import { UmamiAnalytics } from "@/components/umami-analytics"
+import { ConsentProvider } from "@/components/consent/consent-provider"
 import "./globals.css"
 
 // Configure fonts with proper options
@@ -101,14 +100,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable}`}>
       <body className="font-sans antialiased">
         <LanguageProvider>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true} storageKey="theme-mode">
-            {children}
-            {/* <AIAssistantWidget /> */}
-            <LinuxTerminal />
-          </ThemeProvider>
+          <ConsentProvider>
+            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true} storageKey="theme-mode">
+              {children}
+              {/* <AIAssistantWidget /> */}
+              <LinuxTerminal />
+            </ThemeProvider>
+          </ConsentProvider>
         </LanguageProvider>
-        <Analytics />
-        <UmamiAnalytics />
       </body>
     </html>
   )

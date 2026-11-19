@@ -1,5 +1,6 @@
 "use client";
 
+import { ConsentEmbed } from "@/components/consent/consent-embed";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -425,14 +426,16 @@ export function ProjectsPageContent() {
               {/* YouTube Video Player Embed */}
               <div className="lg:col-span-7">
                 <div className="relative overflow-hidden rounded-2xl border border-border/80 bg-black shadow-2xl shadow-black/50 aspect-video group">
-                  <iframe
-                    className="w-full h-full"
-                    src="https://www.youtube.com/embed/ztOUj1yFXLo?si=TfWUTeJnv5Wr90Ff"
-                    title="YouTube video player — Educational Content"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
+                  <ConsentEmbed service="youtube" serviceName="YouTube">
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/ztOUj1yFXLo?si=TfWUTeJnv5Wr90Ff"
+                      title="YouTube video player — Educational Content"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    />
+                  </ConsentEmbed>
                 </div>
               </div>
 
